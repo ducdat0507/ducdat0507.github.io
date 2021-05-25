@@ -68,9 +68,6 @@ body > div > div {
 .intro {
     transform: scale(0.5, 0.5); filter: blur(20px); opacity: 0;
 }
-.intro > .topic {
-    pointer-events: none !important;
-}
 
 #flavor {
     font-size: 0.75rem;

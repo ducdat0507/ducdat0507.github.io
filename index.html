@@ -5,44 +5,31 @@
         <link rel="stylesheet" href="styles.css"/>
         <script src="scripts.js"></script>
     </head>
-    <body onload="onLoad()">
+    <body onload="onLoad()" onmousedown="skipIntro()">
         <div>
-            <div id="mainDiv" class="intro" onmousedown="skipIntro()">
+            <div id="mainDiv" class="intro" style="pointer-events:none">
                 <div style="font-size: 1rem">¤ says hello.</div>
                 I make random things, mainly for fun and stuff.
                 <br/><br/>
                 Check out my:
                 <br/>
+                <button class="topic" onclick="setTopic('games')">
+                    <div style="font-size: 1rem">Incremental Games</div>
+                    Games where numbers go brrrrr
+                </button>
                 <button class="topic" onclick="setTopic('apps')">
                     <div style="font-size: 1rem">Applications</div>
                     Various useful gadgets
-                </button>
-                <button class="topic" onclick="setTopic('pocs')">
-                    <div style="font-size: 1rem">Proof of Concepts</div>
-                    Modifications of stuff
                 </button>
                 <br/>
                 <div id="flavor"></div>
             </div>
         </div>
-        <div class="topicWindow" id="apps">
+        <div class="topicWindow" id="games">
             <div>
                 <div class="titlebar" style="text-align:left;width:100%">
-                    <button class="back" onclick="setTopic()"> ¤ Back </button>
-                    <span style="font-size: 1rem">Applications</span>
-                </div>
-                <br/> - THE PRESTIGE TREE -
-                <a href="/prestreestuck/finder.html" class="app">
-                    <div style="font-size: 1rem">ducdat0507's The Prestige Tree Modfinder™</div>
-                    <div>A site that fetches all the forks from TMT's repository and display it for you.</div>
-                </a>
-            </div>
-        </div>
-        <div class="topicWindow" id="pocs">
-            <div>
-                <div class="titlebar" style="text-align:left;width:100%">
-                    <button class="back" onclick="setTopic()"> ¤ Back </button>
-                    <span style="font-size: 1rem">Proof of Concepts</span>
+                    <button class="back" onclick="setTopic()"> ¤ </button>
+                    <span style="font-size: 1rem">Incremental Games</span>
                 </div>
                 <br/> - THE PRESTIGE TREE MODS -
                 <a href="/prestreestuck/" class="app">
@@ -56,6 +43,27 @@
                 <a href="/thedynastree/" class="app">
                     <div style="font-size: 1rem">The Dynas Tree</div>
                     <div>My first The Prestige Tree mod about conquering universes. 10 layers. Forever inactive and pretty much broken :(</div>
+                </a>
+                <br/> - PROTOTYPES -
+                <a href="/incremental/" class="app">
+                    <div style="font-size: 1rem">Project: Incremental</div>
+                    <div>An unfinished Unity incremental game. May become too repetitive for some people.</div>
+                </a><a href="http://orteil.dashnet.org/igm/?g=vf6B873N" class="app">
+                    <div style="font-size: 1rem">Sparklifer!</div>
+                    <div>An unfinished IGM incremental game about making universes...</div>
+                </a>
+            </div>
+        </div>
+        <div class="topicWindow" id="apps">
+            <div>
+                <div class="titlebar" style="text-align:left;width:100%">
+                    <button class="back" onclick="setTopic()"> ¤ </button>
+                    <span style="font-size: 1rem">Applications</span>
+                </div>
+                <br/> - THE PRESTIGE TREE -
+                <a href="/prestreestuck/finder.html" class="app">
+                    <div style="font-size: 1rem">ducdat0507's The Prestige Tree Modfinder™</div>
+                    <div>A site that fetches all the forks from TMT's repository and display it for you.</div>
                 </a>
             </div>
         </div>

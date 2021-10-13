@@ -1,11 +1,5 @@
 var flavorTexts = [
-    "( Made with love and Github Pages )",
-    "( Made with love and some Javascript magic )",
-    "( Made with Car- wait, no, it wasn't )",
-    "( Made with love by ducdat0507 )",
-    "( This is a flavor text, oh and, made by ducdat0507 )",
-    "( Something... love... something... ducdat0507 )",
-    "( Look ma, I'm on the internet! -ducdat0507 )",
+    "( Definitely not made with Carrd )",
 ]
 
 function onLoad() {

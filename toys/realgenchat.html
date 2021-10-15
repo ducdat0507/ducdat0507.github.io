@@ -26,24 +26,17 @@
                 padding: 3px 30px;
             }
 
-            name {
+            name, mention {
                 color: yellow;
                 font-weight: bold;
             }
             #chat-input {
                 position: fixed;
                 bottom: 1em;
-                left: 4em;
+                left: 1em;
                 right: 5.5em;
-                width: calc(100% - 10.5em);
+                width: calc(100% - 7.5em);
                 margin: 0;
-            }
-            #chat-back {
-                position: fixed;
-                bottom: calc(1em - 1px);
-                left: calc(.5em + 4px);
-                width: calc(2.5em - 2px);
-                padding: .5em;
             }
             #chat-send {
                 position: fixed;
@@ -306,6 +299,11 @@
             }
             
             function beginSim() {
+                genName = document.getElementById("init-gen-name").value || document.getElementById("init-gen-name").placeholder;
+                gameName = document.getElementById("init-game-name").value || document.getElementById("init-game-name").placeholder;
+                curName = document.getElementById("init-cur-name").value || document.getElementById("init-cur-name").placeholder;
+                username = document.getElementById("init-username").value || document.getElementById("init-username").placeholder;
+
                 document.getElementById("init-page").style.display = "none"
                 document.getElementById("chat-page").style.display = ""
                 document.getElementById("chat").innerHTML = ""
@@ -314,16 +312,21 @@
                 messages = allMessages();
                 addItem("Welcome to the chatroom, posting links or spamming will result in a kick.");
                 addChat(usernames[random(0, usernames.length)], messages[random(0, messages.length)]);
+                
                 document.getElementById("chat-input").onkeypress = function(e) {
+                    if (e.keyCode == 13) document.getElementById("chat-send").onclick();
+                }
+
+                document.getElementById("chat-send").onclick = function(e) {
                     if (username == '') {
                     } else {
                         let msg = document.getElementById("chat-input").value;
                         document.getElementById("chat-input").value = "";
                         addChat(username, msg);
-                        if ($msg.indexOf("bots") >= 0 || msg.indexOf("bot") >= 0 || msg.indexOf("robots") >= 0) {
+                        if (msg.indexOf("bots") >= 0 || msg.indexOf("bot") >= 0 || msg.indexOf("robots") >= 0) {
                             setTimeout(function() {
-                                addChat(usernames[random(0, usernames.length)], '<mention>@ ' + username + ' &nbsp;</mention>' + ChatAntiBot[rng(0, ChatAntiBot.length)]);
-                            }, rng(7250, 9300));
+                                addChat(usernames[random(0, usernames.length)], '<mention>@ ' + username + ' &nbsp;</mention>' + ChatAntiBot[random(0, ChatAntiBot.length)]);
+                            }, random(7250, 9300));
                         }
                         if (!replied) {
                             setTimeout(function() {
@@ -332,7 +335,7 @@
                                 setTimeout(function() {
                                     addChat(usernames[random(0, usernames.length)], '<mention>@ ' + username + " &nbsp;</mention>  is this your first time here? this is like the only legit " + gameName.toLowerCase() + " " + curName.toLowerCase() + " generator out there");
                                     setTimeout(function() {
-                                        addChat(usernames[random(0, usernames.length)], 'guys dont listen to ' + '<mention>@ ' + username + ' &nbsp;</mention> ' + ' he just wants all " + curName.toLowerCase() + " for himself haha');
+                                        addChat(usernames[random(0, usernames.length)], 'guys dont listen to ' + '<mention>@ ' + username + ' &nbsp;</mention> ' + " he just wants all " + curName.toLowerCase() + " for himself haha");
             
                                     }, random(11500, 19500));
                                 }, random(6500, 8500));
@@ -390,7 +393,6 @@
         </div>
         <div id="chat-page" style="display:none;">
             <div id="chat" style="text-align:left;width:100%;padding:0 0 4em 0"></div>
-            <button id="chat-back" onclick="endSim()">&lt;-</button>
             <input type="text" id="chat-input" autocomplete="off"></input>
             <button id="chat-send">Send</button>
         </div>

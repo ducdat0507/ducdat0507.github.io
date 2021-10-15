@@ -21,6 +21,10 @@
                     <div style="font-size: 1rem">Applications</div>
                     Various useful gadgets
                 </button>
+                <button class="topic" onclick="setTopic('toys')">
+                    <div style="font-size: 1rem">Toys</div>
+                    Other random not-so-useful things
+                </button>
                 <br/>
                 <div id="flavor"></div>
             </div>
@@ -62,9 +66,36 @@
                 </div>
                 <br/> - THE PRESTIGE TREE -
                 <a href="/prestreestuck/finder.html" class="app">
-                    <div style="font-size: 1rem">ducdat0507's The Prestige Tree Modfinder™</div>
+                    <div style="font-size: 1rem">The Prestige Tree</div>
                     <div>A site that fetches all the forks from TMT's repository and display it for you.</div>
                 </a>
+                <br/> - OTHER -
+                <a href="https://github.com/ducdat0507/Grandfather" class="app">
+                    <div style="font-size: 1rem">Grandfather</div>
+                    <div>It's another Gemini/Gopher client, I guess.</div>
+                </a>
+            </div>
+        </div>
+        <div class="topicWindow" id="toys">
+            <div>
+                <div class="titlebar" style="text-align:left;width:100%">
+                    <button class="back" onclick="setTopic()"> ¤ </button>
+                    <span style="font-size: 1rem">Toys</span>
+                </div>
+                <br/> - INSTANT TOYS -
+                <a onclick="openInstant('toys/realgenchat.html')" class="app">
+                    <div style="font-size: 1rem">totally real robux generator chat</div>
+                    <div>A (shockingly but not shockingly) accurate simulation of what you would see on those generator site chat rooms.</div>
+                </a>
+            </div>
+        </div>
+        <div class="topicWindow" id="instantWindow">
+            <div style="padding:0;margin:0;">
+                <button class="back" onclick="setTopic()"> ¤ </button>
+                <br/>
+                <iframe id="instant-frame" src="">
+
+                </iframe>
             </div>
         </div>
     </body>

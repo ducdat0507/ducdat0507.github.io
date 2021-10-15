@@ -42,3 +42,8 @@ function setTopic(id) {
 
     currentTopic = id
 }
+
+function openInstant(url) {
+    document.getElementById("instant-frame").src = url;
+    setTopic("instantWindow");
+}

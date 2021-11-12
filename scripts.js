@@ -7,6 +7,7 @@ function onLoad() {
     setTimeout(() => { 
         hasSkipped = true 
         document.getElementById("mainDiv").style.pointerEvents = ''
+        
     }, 5000)
 
     document.getElementById("flavor").innerText = flavorTexts[Math.floor(Math.random() * flavorTexts.length)]
@@ -34,6 +35,7 @@ function setTopic(id) {
 
     if (currentTopic) {
         var c = document.getElementById(currentTopic)
+        c.tabIndex = -1
         c.classList.remove("open")
     }
 

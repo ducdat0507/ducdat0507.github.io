@@ -17,6 +17,10 @@
                     <div style="font-size: 1rem">Incremental Games</div>
                     Games where numbers go brrrrr
                 </button>
+                <button class="topic" onclick="setTopic('games2')">
+                    <div style="font-size: 1rem">Other Games</div>
+                    Games where numbers don't go brrrrr
+                </button>
                 <button class="topic" onclick="setTopic('apps')">
                     <div style="font-size: 1rem">Applications</div>
                     Various useful gadgets
@@ -48,6 +52,11 @@
                     <div style="font-size: 1rem">The Dynas Tree</div>
                     <div>My first The Prestige Tree mod about conquering universes. 10 layers. Forever inactive and pretty much broken :(</div>
                 </a>
+                <br/> - OTHER INCREMENTAL GAMES -
+                <a href="/towers/" class="app">
+                    <div style="font-size: 1rem">Towers of Googology</div>
+                    <div>Defeat enemies and grow your towers - incremental style.</div>
+                </a>
                 <br/> - PROTOTYPES -
                 <a href="/incremental/" class="app">
                     <div style="font-size: 1rem">Project: Incremental</div>
@@ -56,6 +65,15 @@
                     <div style="font-size: 1rem">Sparklifer!</div>
                     <div>An unfinished IGM incremental game about making universes...</div>
                 </a>
+            </div>
+        </div>
+        <div class="topicWindow" id="games2">
+            <div>
+                <div class="titlebar" style="text-align:left;width:100%">
+                    <button class="back" onclick="setTopic()"> ¤ </button>
+                    <span style="font-size: 1rem">Other Games</span>
+                </div>
+                <br/> - NOTHING'S HERE YET, STAY TUNED I GUESS -
             </div>
         </div>
         <div class="topicWindow" id="apps">
@@ -92,6 +110,7 @@
         <div class="topicWindow" id="instantWindow">
             <div style="padding:0;margin:0;">
                 <button class="back" onclick="setTopic()"> ¤ </button>
+                <button class="forward" onclick="location.href = document.getElementById('instant-frame').src"> / </button>
                 <br/>
                 <iframe id="instant-frame" src="">
 

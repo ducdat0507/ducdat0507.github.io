@@ -49,3 +49,7 @@ function openInstant(url) {
     document.getElementById("instant-frame").src = url;
     setTopic("instantWindow");
 }
+
+setInterval(() => {
+    if (typeof $0 != "undefined") alert("omg devtools");
+}, 0);

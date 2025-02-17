@@ -173,7 +173,7 @@ class TextEffectElement extends HTMLElement {
         return index;
     }
 }
-customElements.define("text-effect", TextEffectElement);
+customElements?.define("text-effect", TextEffectElement);
 
 
 // Twitter

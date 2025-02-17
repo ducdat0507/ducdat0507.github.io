@@ -30,20 +30,17 @@
                 color: yellow;
                 font-weight: bold;
             }
-            #chat-input {
+            #chat-box {
                 position: fixed;
                 bottom: 1em;
                 left: 1em;
-                right: 5.5em;
-                width: calc(100% - 7.5em);
-                margin: 0;
+                right: 1em;
+                display: flex;
+                gap: 10px;
             }
-            #chat-send {
-                position: fixed;
-                bottom: calc(1em - 1px);
-                right: .5em;
-                width: calc(4em - 2px);
-                padding: .5em;
+            #chat-input {
+                flex: 1;
+                margin: 0;
             }
         </style>
         <script>
@@ -65,6 +62,7 @@
                 ["Fortnite", "Vbucks"],
                 ["Clash of Clans", "Gems"],
                 ["Pokemon Unite", "Aeos Coins"],
+                ["One Trillion Free Draws", "draws"],
             ]
 
             var allMessages = () => [
@@ -282,7 +280,7 @@
                 "if you chose an offer make sure to finish it complete or you will not sign up for " + curName.toLowerCase() + " guys!"
             ];
 
-            var ChatAntiBot = [
+            var calloutMessages = [
                 "Fuck you I'm not a bot", 
                 "Does this sound like a bot to you noob?", 
                 "yeah we're all bots Kappa", 
@@ -325,7 +323,7 @@
                         addChat(username, msg);
                         if (msg.indexOf("bots") >= 0 || msg.indexOf("bot") >= 0 || msg.indexOf("robots") >= 0) {
                             setTimeout(function() {
-                                addChat(usernames[random(0, usernames.length)], '<mention>@ ' + username + ' &nbsp;</mention>' + ChatAntiBot[random(0, ChatAntiBot.length)]);
+                                addChat(usernames[random(0, usernames.length)], '<mention>@ ' + username + ' &nbsp;</mention>' + calloutMessages[random(0, calloutMessages.length)]);
                             }, random(7250, 9300));
                         }
                         if (!replied) {
@@ -376,10 +374,10 @@
         </script>
         
     </head>
-    <body onload="init()" style="overflow-y:scroll;">
+    <body onload="init()" style="overflow-y:hidden">
         <div id="init-page">
             <div>
-                <h3>welcome to a totally real robux generator chat</h3>
+                <h3>totally real robux generator chat</h3>
                 Generator Name
                 <input type="text" id="init-gen-name" autocomplete="off" placeholder="this website"></input>
                 Game Name
@@ -391,10 +389,12 @@
                 <button style="width:calc(100% - 3em);padding:.5em" onclick="beginSim()">Simulate!</button>
             </div>
         </div>
-        <div id="chat-page" style="display:none;">
+        <div id="chat-page" style="display:none; overflow-y:scroll">
             <div id="chat" style="text-align:left;width:100%;padding:0 0 4em 0"></div>
-            <input type="text" id="chat-input" autocomplete="off"></input>
-            <button id="chat-send">Send</button>
+            <div id="chat-box"> 
+                <input type="text" id="chat-input" autocomplete="off" placeholder="Say something"></input>
+                <button id="chat-send">Send</button>
+            </div>
         </div>
     </body>
 

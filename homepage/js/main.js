@@ -24,7 +24,7 @@ function setActivePage(page, options) {
 }
 document.addEventListener("DOMContentLoaded", () => {
     pages = Object.fromEntries(
-        document.querySelectorAll("x-page").values().map(x => [x.getAttribute("name"), x])
+        [...document.querySelectorAll("x-page").values()].map(x => [x.getAttribute("name"), x])
     );
     console.log(pages);
 

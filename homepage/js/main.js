@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         elm.$description = [...elm.childNodes];
         elm.innerHTML = `
             <a href="${elm.getAttribute("href")}" aria-label="${elm.getAttribute("name")}">
-                <img src="${elm.getAttribute("image")}">
+                <img src="${elm.getAttribute("image")}" loading="lazy">
             </a>
         `
         if (elm.classList.contains("with-title")) {
@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             `;
         }
         elm.addEventListener("click", (e) => {
-            if (e.shiftKey || e.ctrlKey) return;
+            if (e.shiftKey || e.ctrlKey || elm.classList.contains("instant")) return;
             e.preventDefault();
             openItem(elm);
         })

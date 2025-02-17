@@ -77,6 +77,12 @@
                             <p>the place where i blarb</p>
                         </a>
                     </li>
+                    <li class="nav-link">
+                        <a class="page-link"" href="?outlinks">
+                            <h4>outlink collection</h4>
+                            <p>it is a duty of a website to outlink</p>
+                        </a>
+                    </li>
                 </nav>
             </x-box>
             <x-box class="widget-box" style="--width: 210px"> 
@@ -160,7 +166,7 @@
                     <h3 class="side-nav-title">keep in touch:</h3>
                     <nav class="nav-list">
                         <li class="nav-list-group">
-                            <h4 class="nav-list-box">discord servers that I'm in</h4>
+                            <h4 class="nav-list-box">discord servers that I'm in<br>(discord handle = name)</h4>
                             <li class="nav-link"><a href="https://galaxy.click/discord">
                                 galaxy (+ ego)
                             </a></li>
@@ -539,7 +545,7 @@
                                     </li>
                                     <li class="nav-link">
                                         <a href="https://github.com/FFF40/JANOARG">
-                                            <b>github repository</b>
+                                            <b>git repository</b>
                                         </a>
                                     </li>
                                     <li class="nav-link">
@@ -645,6 +651,21 @@
                     <li>
                         <h4>the modding tools</h4>
                         <span class="item-grid">
+                            <item-box name="The Modding Tree Docs" href="//ducdat0507.github.io/tmt-docs" 
+                                image="/homepage/res/images/nongames/tmt-docs.png" class="with-title">
+                                <div class="scroll-content">
+                                    <p>
+                                        The documentation of TMT made into a website.
+                                    </p>
+                                </div>
+                                <nav class="nav-list">
+                                    <li class="nav-link">
+                                        <a href="//ducdat0507.github.io/tmt-docs">
+                                            <b>launch</b>
+                                        </a>
+                                    </li>
+                                </nav>
+                            </item-box>
                             <item-box name="ducdat0507's TPT Modfinder™" href="//ducdat0507.github.io/prestreestuck/finder.html" 
                                 image="/homepage/res/images/nongames/modfinder.png" class="with-title">
                                 <div class="scroll-content">
@@ -663,7 +684,7 @@
                         </span>
                     </li>
                     <li>
-                        <h4>the old web</h4>
+                        <h4>the old/small web tools</h4>
                         <span class="item-grid">
                             <item-box name="the stampbook" href="//ducdat0507.github.io/stampbook" 
                                 image="/homepage/res/images/nongames/stampbook.png" class="broken with-title">
@@ -688,12 +709,104 @@
                                     </li>
                                 </nav>
                             </item-box>
+                            <item-box name="Grandfather" href="https://github.com/ducdat0507/Grandfather" 
+                                image="/homepage/res/images/nongames/grandfather.png" class="broken with-title">
+                                <div class="scroll-content">
+                                    <p>
+                                        A terminal-based web browser for the small web (Gemini, Gopher, e.t.c.).
+                                        You'll need to compile the app yourself, it's for my personal uses. 
+                                    </p>
+                                </div>
+                                <nav class="nav-list">
+                                    <li class="nav-link">
+                                        <a href="https://github.com/ducdat0507/Grandfather">
+                                            <b>git repository</b>
+                                        </a>
+                                    </li>
+                                </nav>
+                            </item-box>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>not mine but I helped develop</h4>
+                        <span class="item-grid">
+                            <item-box name="galaxy.click" href="//galaxy.click" 
+                                image="/homepage/res/images/nongames/galaxy.png" class="with-title">
+                                <div class="scroll-content">
+                                    <p>
+                                        A website for discovering and playing incremental games, with features reminiscent of old game portals like Kongregate
+                                        such as a forum and live chat rooms.
+                                    </p>
+                                    <p>
+                                        Owned by <a href="//yhvr.me">yhvr</a>, with my help on basically the entire interface design.
+                                    </p>
+                                </div>
+                                <nav class="nav-list">
+                                    <li class="nav-link">
+                                        <a href="//galaxy.click">
+                                            <b>launch</b>
+                                        </a>
+                                    </li>
+                                </nav>
+                            </item-box>
                         </span>
                     </li>
                 </nav>
             </x-box>
         </x-group>
         <x-group class="right" style="--width: 800px">
+            <x-box class="item-shelf" style="--width: 800px">
+                <h3>webmasters and developers' resources</h3>
+                <nav class="items">
+                    <li>
+                        <h4>widgets</h4>
+                        <span class="item-grid">
+                            <item-box name="Custom Discord embeds" href="https://github.com/ducdat0507/custom-discord-widget" 
+                                image="/homepage/res/images/nongames/dembed.png" class="with-title">
+                                <div class="scroll-content">
+                                    <p>
+                                        Make your own stylable Discord invite widgets!
+                                    </p>
+                                    <p>
+                                        Choose the default ones or bring your own CSS file!
+                                    </p>
+                                </div>
+                                <nav class="nav-list">
+                                    <li class="nav-link">
+                                        <a href="https://github.com/ducdat0507/custom-discord-widget">
+                                            <b>git repository / instructions</b>
+                                        </a>
+                                    </li>
+                                </nav>
+                            </item-box>
+                        </span>
+                    </li>
+                    <li>
+                        <h4>libraries</h4>
+                        <span class="item-grid">
+                            <item-box name="lootalot" href="https://ducdat0507.github.io/lootalot" 
+                                image="/homepage/res/images/nongames/lootalot.png" class="with-title">
+                                <div class="scroll-content">
+                                    <p>
+                                        A JS library for handling loot drops/gacha pulls/other random events of arbitrary counts.
+                                    </p>
+                                    <p>
+                                        Do you ever find yourself having to simulate doing a random event <a href="/gacha">one trillion times</a>?
+                                        Then this library is for you!
+                                    </p>
+                                </div>
+                                <nav class="nav-list">
+                                    <li class="nav-link">
+                                        <a href="https://ducdat0507.github.io/lootalot">
+                                            <b>landing page</b>
+                                        </a>
+                                    </li>
+                                </nav>
+                            </item-box>
+                        </span>
+                    </li>
+                </nav>
+            </x-box>
             <x-box class="item-shelf" style="--width: 800px">
                 <h3>toys</h3>
                 <nav class="items">
@@ -726,5 +839,43 @@
             </x-box>
         </x-group>
     </x-page>
+    <x-page id="outlinks-page" name="outlinks">
+        <x-group style="--width: 800px">
+            <x-box style="--width: 800px">
+                <h1 class="big-title">
+                    <text-effect class="h1">duducat's outlink collection</text-effect>
+                </h1>
+            </x-box>
+        </x-group>
+        <x-group style="--width: 800px">
+            <x-box class="back-box" style="--width: 100px">
+                <button class="back">go back</button>
+            </x-box>
+        </x-group>
+        <x-group class="mobile-scroll" style="--width: 800px">
+            <x-box class="item-shelf" style="--width: 800px">
+                <h3>sites</h3>
+                <nav class="items">
+                    <li>
+                        <h4>people I've met online</h4>
+                        <span class="item-grid">
+                            <item-box name="The Paper Pilot" href="https://www.thepaperpilot.org/" 
+                                image="/homepage/res/images/outlinks/-.png" class="instant button with-title">
+                            </item-box>
+                            <item-box name="yhvr" href="//yhvr.me" 
+                                image="/homepage/res/images/outlinks/yhvr.gif" class="instant button with-title">
+                            </item-box>
+                            <item-box name="Demonin" href="https://demonin.com/" 
+                                image="/homepage/res/images/outlinks/-.png" class="instant button with-title">
+                            </item-box>
+                            <item-box name="Clawrez" href="https://clawrez.gay/" 
+                                image="/homepage/res/images/outlinks/clawrez.gif" class="instant button with-title">
+                            </item-box>
+                        </span>
+                    </li>
+                </nav>
+            </x-box>
+        </x-group>
+    </x-page
 </body>
 </html>

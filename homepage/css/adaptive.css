@@ -40,11 +40,11 @@
     x-group.mobile-scroll::after {
         content: "";
         display: block;
+        flex: 0 0 10px;
         width: 10px;
         height: 1px;
-        flex: 0 0 10px;
         margin: -10px;
-        background: transparent;
+        background: #00000001;
     }
 
     x-box.item-shelf {
@@ -66,8 +66,11 @@
     }
 
     .fc2-counter img {
-        height: 50px;
+        height: 30px;
         image-rendering: pixelated;
+    }
+    .fc2-counter nobr {
+        border-width: 4px 2px 4px 4px;
     }
     .increment-badge {
         height: 62px;

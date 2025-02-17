@@ -174,10 +174,12 @@ button:active {
     margin-top: 10px;
 }
 .side-nav-title {
-    writing-mode: sideways-lr;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    transform: rotate(180deg);
     border: 2px solid white;
     background: black;
-    padding: 5px 0 5px 3px;
+    padding: 5px 3px 5px 0;
     font-size: 1em;
 }
 .side-nav .nav-list {
@@ -217,10 +219,12 @@ button:active {
     max-width: 100%;
 }
 .widget-header {
-    writing-mode: sideways-lr;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    transform: rotate(180deg);
     border: 2px solid white;
     background: black;
-    padding: 5px 0 5px 3px;
+    padding: 5px 3px 5px 0;
     font-size: 1em;
 }
 .widget-center {
@@ -235,6 +239,11 @@ button:active {
     background: black;
     padding: 5px;
     flex: 1;
+}
+.fc2-counter nobr {
+    display: inline-flex;
+    border: solid white;
+    border-width: 2px 1px 2px 2px;
 }
 
 
@@ -279,19 +288,18 @@ x-box.item-shelf {
     opacity: 0.8;
     font-size: 0.8em;
     font-weight: normal;
-    writing-mode: sideways-lr;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    padding-inline: 0 8px;
+    transform: rotate(180deg) translate(1px);
     flex-shrink: 0;
     line-height: 1em;
     width: 1em;
-    padding-top: 5px;
 }
 .right .item-shelf > .items h4 {
-    opacity: 0.8;
-    font-size: 0.8em;
-    font-weight: normal;
-    writing-mode: sideways-rl;
+    transform: none;
     text-align: end;
-    flex-shrink: 0;
+    padding-inline: 8px 0;
 }
 
 
@@ -353,7 +361,11 @@ item-box img {
     width: 50px;
     height: 50px;
     image-rendering: pixelated;
-    flex-shrink: 0;
+    flex: 0 0 50px;
+}
+item-box.button img {
+    width: 88px;
+    height: 31px;
 }
 item-box:hover {
     animation: .1s steps(1) poppy-button;

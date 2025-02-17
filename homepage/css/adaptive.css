@@ -43,8 +43,11 @@
         flex: 0 0 10px;
         width: 10px;
         height: 1px;
-        margin: -10px;
+        margin-inline: -10px 0;
         background: #00000001;
+    }
+    x-group.right.mobile-scroll::after {
+        margin-inline: 0px -10px;
     }
 
     x-box.item-shelf {

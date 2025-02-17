@@ -140,7 +140,7 @@ a:hover {
     display: block;
     color: black;
     text-decoration: none;
-    padding: 7px 7px 4px 7px;
+    padding: 7px;
 }
 
 button {
@@ -196,7 +196,7 @@ button:active {
     --hover-to: 1px;
 }
 .side-nav .nav-link a {
-    padding: 3px 5px 0 5px;
+    padding: 3px 5px;
 }
 
 .big-title {

@@ -203,6 +203,6 @@ function xify(e) {
     xifySound.volume = 0.2;
     xifySound.playbackRate = Math.random() * 0.2 + 0.9;
     xifySound.preservesPitch = false;
-    xifySound.fastSeek(0);
+    xifySound.fastSeek?.(0);
     xifySound.play();
 }

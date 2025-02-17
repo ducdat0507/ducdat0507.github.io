@@ -20,7 +20,7 @@
         flex: 0 0 var(--width);
         scroll-snap-align: start;
         scroll-margin: 20px;
-        overflow: hidden scroll;
+        overflow: hidden auto;
     }
     x-group.mobile-paged.right > * {
         scroll-snap-align: end;

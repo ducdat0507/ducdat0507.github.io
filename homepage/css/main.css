@@ -257,8 +257,7 @@ button:active {
 }
 .fc2-counter nobr {
     display: inline-flex;
-    border: solid white;
-    border-width: 2px 1px 2px 2px;
+    margin-bottom: 7px;
 }
 
 

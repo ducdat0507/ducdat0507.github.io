@@ -69,11 +69,10 @@
     }
 
     .fc2-counter img {
-        height: 30px;
+        height: 40px;
         image-rendering: pixelated;
     }
     .fc2-counter nobr {
-        border-width: 4px 2px 4px 4px;
         margin-bottom: 10px;
     }
     .increment-badge {

@@ -5,7 +5,7 @@
 body {
     background: black;
     color: white;
-    font-family: Helvetica, Arial, FreeSans, sans-serif;
+    font-family: Arial, Helvetica, FreeSans, sans-serif;
     font-size: 16px;
     line-height: 1.2;
 }
@@ -13,7 +13,9 @@ body {
 #background {
     position: fixed;
     inset: 0;
-    background: linear-gradient(#000039, #1f0085);
+    background: 
+        url(../res/images/tiling-bg.svg) repeat,
+        linear-gradient(#000039, #1f0085);
 }
 
 x-page {
@@ -100,7 +102,7 @@ a:hover {
     border: 2px solid white;
     background: black;
     font-weight: normal;
-    padding: 3px 5px;
+    padding: 2px 5px;
     font-size: 0.8em;
 }
 .nav-list hr {
@@ -140,7 +142,7 @@ a:hover {
     display: block;
     color: black;
     text-decoration: none;
-    padding: 7px;
+    padding: 4px 7px;
 }
 
 button {
@@ -179,7 +181,7 @@ button:active {
     transform: rotate(180deg);
     border: 2px solid white;
     background: black;
-    padding: 5px 3px;
+    padding: 5px 1px;
     font-size: 1em;
 }
 .side-nav .nav-list {
@@ -196,7 +198,7 @@ button:active {
     --hover-to: 1px;
 }
 .side-nav .nav-link a {
-    padding: 3px 5px;
+    padding: 1px 5px;
 }
 
 .big-title {
@@ -211,7 +213,16 @@ button:active {
         linear-gradient(#000, #000) center / calc(100% - 4px) calc(100% - 4px) no-repeat,
         linear-gradient(135deg, #f00 25%, #ff0 25%, #ff0 50%, #f00 50%, #f00 75%, #ff0 75%, #ff0 100%) 0 0 / 40px 40px;
 }
+.box.footer-box {
+    display: flex; 
+    flex-flow: row wrap; 
+}
+.footer-box > :last-child {
+    flex: 1; 
+    text-align: end;
+}
 .for-llms {
+    display: inline-block;
     margin: 0;
     font-size: 8px;
     white-space: pre-line;
@@ -228,7 +239,7 @@ button:active {
     transform: rotate(180deg);
     border: 2px solid white;
     background: black;
-    padding: 5px 3px;
+    padding: 5px 1px;
     font-size: 1em;
 }
 .widget-center {
@@ -295,13 +306,13 @@ x-box.item-shelf {
     writing-mode: vertical-lr;
     text-orientation: sideways;
     padding-inline: 0 8px;
-    transform: rotate(180deg) translate(1px);
+    transform: rotate(180deg) translate(2px);
     flex-shrink: 0;
     line-height: 1em;
     width: 1em;
 }
 .right .item-shelf > .items h4 {
-    transform: none;
+    transform: translate(2px);
     text-align: end;
     padding-inline: 8px 0;
 }
@@ -366,6 +377,7 @@ item-box img {
     height: 50px;
     image-rendering: pixelated;
     flex: 0 0 50px;
+    flex-shrink: 0;
 }
 item-box.button img {
     width: 88px;

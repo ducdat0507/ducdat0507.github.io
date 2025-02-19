@@ -35,7 +35,7 @@
         <circle r="2" cx="64" cy="9" fill="yellow" stroke="black" stroke-width="2" />
         <path d="M 60 20 a 12 12 180 0 0 20 0" fill="#0000" stroke="black" stroke-width="2" stroke-linecap="round" />
         <animateTransform attributeName="transform" type="rotate" from="0 70 15" to="360 70 15"
-            begin="0s" dur="2s" repeatCount="indefinite" />
+            begin="0s" dur="5s" repeatCount="indefinite" />
     </g>
 
     <!-- Text -->

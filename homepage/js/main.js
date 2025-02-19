@@ -1,7 +1,12 @@
 // Setup
 window.addEventListener("DOMContentLoaded", (e) => {
-    document.querySelectorAll("x-group.right").forEach(elm => {
+    document.querySelectorAll("bento-group.right").forEach(elm => {
         elm.scrollLeft = elm.scrollWidth;        
+    })
+
+    document.getElementById("donate-read").addEventListener("click", elm => {
+        elm.preventDefault();
+        openDonateNotice();
     })
 });
 
@@ -24,7 +29,7 @@ function setActivePage(page, options) {
 }
 document.addEventListener("DOMContentLoaded", () => {
     pages = Object.fromEntries(
-        [...document.querySelectorAll("x-page").values()].map(x => [x.getAttribute("name"), x])
+        [...document.querySelectorAll("bento-page").values()].map(x => [x.getAttribute("name"), x])
     );
     console.log(pages);
 
@@ -78,26 +83,62 @@ window.addEventListener("DOMContentLoaded", (e) => {
     })
 });
 
-function openItem(item) {
+function openPopup() {
     const popup = document.createElement("div");
     popup.classList.add("item-popup");
+    popup.close = () => popup.remove();
     document.body.append(popup);
 
     const body = document.createElement("div");
     body.classList.add("item-popup-body");
-    popup.append(body);
+    popup.append(popup.$body = body);
 
     const close = document.createElement("button");
     close.innerHTML = "<iconify-icon icon='material-symbols:close' inline>"
     close.classList.add("item-popup-close-button");
     close.ariaLabel = "close popup";
-    close.onclick = () => popup.remove();
+    close.onclick = () => popup.close();
     body.append(close);
 
-    body.insertAdjacentHTML("beforeend", `
+    return popup;
+}
+
+function openItem(item) {
+    const popup = openPopup();
+
+    popup.$body.insertAdjacentHTML("beforeend", `
         <h3>${item.getAttribute("name")}</h3>    
     `)
-    body.append(...item.$description);
+    popup.$body.append(...item.$description);
+}
+
+function openDonateNotice() {
+    const popup = openPopup();
+    popup.$body.insertAdjacentHTML("beforeend", `
+        <h3>a word of notice:</h3>
+        <div class="scroll-content">
+            <p>
+                Though I would appreciate it if you ever decide to throw money at me, I don't wish to (and legally cannot)
+                take money on behalf of projects that I don't fully own the rights of (such as The Prestreestuck.)
+            </p>
+            <p>
+                Your money will be used to feed my family, pay student debts, and if there are leftover money, purchase
+                song licenses and commission artists for the game <a href="https://github.com/FFF40/JANOARG">JANOARG.</a>
+            </p>
+        </div>
+        <nav class="nav-list">
+            <li class="nav-link">
+                <a class="close-link" href="#">
+                    <b>alrighty</b>
+                </a>
+            </li>
+        </nav>
+    `)
+
+    popup.querySelector(".close-link").addEventListener("click", elm => {
+        elm.preventDefault();
+        popup.close();
+    })
 }
 
 

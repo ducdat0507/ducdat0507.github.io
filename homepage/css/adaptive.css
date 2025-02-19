@@ -1,9 +1,9 @@
 @media screen and (max-width: 700px) {
-    x-page.mobile-paged {
+    bento-page.mobile-paged {
         scroll-snap-type: y mandatory;
         scroll-snap-stop: always;
     }
-    x-group.mobile-paged {
+    bento-group.mobile-paged {
         scroll-snap-align: center;
         scroll-snap-type: x mandatory;
         scroll-snap-stop: always;
@@ -12,32 +12,32 @@
         align-items: stretch;
         padding-inline: 20px 0;
     }
-    x-group.right.mobile-paged {
+    bento-group.right.mobile-paged {
         padding-inline: 0 20px;
     }
-    x-group.mobile-paged > * {
+    bento-group.mobile-paged > * {
         --width: min(400px, calc(100vw - 70px)) !important;
         flex: 0 0 var(--width);
         scroll-snap-align: start;
         scroll-margin: 20px;
         overflow: hidden auto;
     }
-    x-group.mobile-paged.right > * {
+    bento-group.mobile-paged.right > * {
         scroll-snap-align: end;
     }
-    x-group.mobile-paged::after {
+    bento-group.mobile-paged::after {
         content: "";
         flex: 0 0 max(40px, calc(100vw - 430px));
     }
 
-    x-group.mobile-scroll {
+    bento-group.mobile-scroll {
         overflow-x: scroll;
         padding-inline: 10px 0;
     }
-    x-group.right.mobile-scroll {
+    bento-group.right.mobile-scroll {
         padding-inline: 0px 10px;
     }
-    x-group.mobile-scroll::after {
+    bento-group.mobile-scroll::after {
         content: "";
         display: block;
         flex: 0 0 10px;
@@ -46,11 +46,15 @@
         margin-inline: -10px 0;
         background: #00000001;
     }
-    x-group.right.mobile-scroll::after {
+    bento-group.right.mobile-scroll::after {
         margin-inline: 0px -10px;
     }
 
-    x-box.item-shelf {
+    bento-box.clear {
+        border-block: 4px solid white;
+        padding: 10px 0 10px 20px;
+    }
+    bento-box.item-shelf {
         max-width: none;
     }
     .item-shelf > .items {

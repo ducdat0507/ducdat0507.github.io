@@ -391,6 +391,7 @@ item-box img {
 item-box.button img {
     width: 88px;
     height: 31px;
+    flex: 0 0 88px;
 }
 item-box:hover {
     animation: .1s steps(1) poppy-button;

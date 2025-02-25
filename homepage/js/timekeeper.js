@@ -631,7 +631,7 @@ function sfc32(a, b, c, d) {
         c = c + t | 0;
         return (t >>> 0) / 4294967296;
     }
-    random();
+    for (let x = 0; x < 10; x++) random();
     return random;
 }
 

@@ -238,12 +238,19 @@ button:active {
     white-space: pre-line;
 }
 
+.toy-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
 .widget-box {
     display: flex;
+    flex: 1;
     gap: 2px;
     max-width: 100%;
+    min-height: 280px;
 }
-.widget-header {
+#widget-header {
     writing-mode: vertical-lr;
     text-orientation: sideways;
     transform: rotate(180deg);
@@ -251,6 +258,7 @@ button:active {
     background: black;
     padding: 5px 1px;
     font-size: 1em;
+    z-index: 1;
 }
 .widget-center {
     height: 100%;
@@ -258,18 +266,119 @@ button:active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+.widget-text {
+    font-size: 12px;
 }
 .widget-content {
+    flex: 1;
+    position: relative;
+}
+widget-box {
     border: 2px solid white;
     background: black;
     padding: 5px;
     flex: 1;
+    position: absolute;
+    inset: 0;
+    display: none;
 }
+widget-box.active {
+    display: block;
+}
+#widget-controls {
+    display: flex;
+    gap: 2px;
+}
+#widget-controls > button {
+    flex: 1;
+}
+#widget-controls > button:disabled {
+    cursor: default;
+    flex: 1;
+    background: black;
+    animation: none;
+    box-shadow: none;
+    transform: none;
+}
+
 .fc2-counter nobr {
     display: inline-flex;
     margin-bottom: 7px;
 }
 
+.timekeeper-widget {
+    gap: 0.35rem;
+}
+.timekeeper-widget h4 {
+    opacity: 0.5;
+}
+.timekeeper-widget .content {
+    display: block;
+    font-weight: 900;
+    font-size: 1.5em;
+}
+.timekeeper-widget .content small {
+    font-size: 0.75em;
+}
+
+.timekeeper-widget .binary-clock {
+    display: grid;
+    gap: 2px;
+    justify-content: center;
+    padding-block: .2em;
+}
+.binary-clock > * {
+    width: 8px;
+    height: 8px;
+    border: 2px solid #fff3;
+}
+.binary-clock > .active {
+    background: #fff;
+    border-color: #fff;
+}
+.timekeeper-widget .analog-clock-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analog-clock {
+    width: 5em;
+    height: 5em;
+}
+.analog-clock .face-holder > g {
+    transform-origin: center;
+    transform: rotate(var(--rotate));
+}
+.analog-clock .face-holder text {
+    fill: white;
+    font-size: 0.5em;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+.analog-clock .hand-holder > g {
+    transform-origin: center;
+    transform: rotate(var(--rotate));
+}
+
+.timekeeper-widget .time-bar {
+    display: block;
+    position: relative;
+    width: 160px;
+    max-width: 100%;
+    height: 1em;
+    box-shadow: inset 0 0 0 2px #fff7;
+    margin-block: .2em;
+}
+.timekeeper-widget .time-bar > span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--fill);
+    background: white;
+}
 
 bento-box.item-shelf {
     width: auto;

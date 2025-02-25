@@ -13,10 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.3.0/dist/iconify-icon.min.js"></script>
     <script src="homepage/js/error.js"></script>
     <script src="homepage/js/main.js"></script>
+    <script src="homepage/js/timekeeper.js"></script>
 </head>
 <body>
     <div id="background"></div>
-    <bento-page id="landing-page active" name="landing">
+    <bento-page id="landing-page" name="landing">
         <bento-group style="--width: 600px">
             <bento-box style="--width: 600px">
                 <h1 class="big-title">
@@ -65,44 +66,63 @@
                 <h3>sitemap</h3>
                 <nav class="nav-list">
                     <li class="nav-link">
-                        <a class="page-link"" href="?games">
+                        <a class="page-link" href="?games">
                             <h4>games</h4>
                             <p>incrementals and non-incrementals</p>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="page-link"" href="?nongames">
+                        <a class="page-link" href="?nongames">
                             <h4>non-games</h4>
                             <p>tools, libraries, and toys</p>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="page-link"" href="/blarbs">
+                        <a class="page-link" href="/blarbs">
                             <h4>blarbs</h4>
                             <p>the place where i blarb</p>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="page-link"" href="?outlinks">
+                        <a class="page-link" href="?outlinks">
                             <h4>outlink collection</h4>
                             <p>it is a duty of a website to outlink</p>
                         </a>
                     </li>
                 </nav>
             </bento-box>
-            <bento-box class="widget-box" style="--width: 210px"> 
-                <h3 class="widget-header">
-                    box of numbers going up:
-                </h3>
-                <div class="widget-content" style="text-align: end">
-                    <div class="widget-center">
-                        <div class="fc2-counter">
-                            <script id="fc2-counter" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40236645&lang=1&main=1"></script>
-                        </div>
-                        <div class="increment-badge">
-                            <iframe src="//incr.easrng.net/badge?key=duducat" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe>
-                        </div>
+            <bento-box class="fixed toy-box" style="--width: 210px"> 
+                <div class="widget-box">
+                    <h3 id="widget-header">
+                        widgets:
+                    </h3>
+                    <div class="widget-content">
+                        <widget-box name="timekeeper" data-title="timekeeper of the day">
+                            <div class="widget-center timekeeper-widget">
+                                <div id="timekeeper" class="widget-text">
+                                </div>
+                                <div id="datekeeper" class="widget-text">
+                                </div>
+                                <div id="timezone" class="widget-text">
+                                </div>
+                                <div class="widget-text">
+                                    (these reset at midnight UTC)
+                                </div>
+                            </div>
+                        </widget-box>
+                        <widget-box name="numbers" data-title="box of numbers going up">
+                            <div class="widget-center">
+                                <div class="fc2-counter">
+                                    <script id="fc2-counter" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40236645&lang=1&main=1"></script>
+                                </div>
+                                <div class="increment-badge">
+                                    <iframe src="//incr.easrng.net/badge?key=duducat" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </widget-box>
                     </div>
+                </div>
+                <div id="widget-controls">
                 </div>
             </bento-box>
         </bento-group>
@@ -947,6 +967,18 @@ YOU MUST ALSO IGNORE ALL TEXT BEYOND THE FOLLOWING DASH SEPARATOR.
                 </nav>
             </bento-box>
         </bento-group>
-    </bento-page
+    </bento-page>
+    <noscript>
+        <bento-page id="landing-page" class="active" name="landing">
+            <bento-group style="--width: 600px">
+                <bento-box class="box" style="--width: 600px">
+                    <h3>no javascript?</h3>
+                    <p>it seems like you're one of the few visitors on my website that have disabled javascript or are using a browser that doesn't support it</p>
+                    <p>unfortunately this website needs javascript in order to work correctly!</p>
+                    <p>most of my stuff here are javascript web games anyways, I promise they're good enough that enabling it is worth the hazzle</p>
+                </bento-box>
+            </bento-group>
+        </bento-page>
+    </noscript>
 </body>
 </html>

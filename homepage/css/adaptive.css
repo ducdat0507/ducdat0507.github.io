@@ -72,6 +72,16 @@
         display: none;
     }
 
+    .widget-box {
+        min-height: none;
+    }
+    .widget-text {
+        font-size: 16px;
+    }
+    #widget-controls > button {
+        min-height: 1.5em;
+    }
+
     .fc2-counter img {
         height: 40px;
         image-rendering: pixelated;
@@ -87,6 +97,15 @@
         transform-origin: center top;
         transform: scale(200%);
     }
+
+    .timekeeper-widget {
+        gap: 0.6rem;
+    }
+    .binary-clock > * {
+        width: 12px;
+        height: 12px;
+    }
+
 }
 @media screen and (min-width: 701px) {
     .mobile-only {

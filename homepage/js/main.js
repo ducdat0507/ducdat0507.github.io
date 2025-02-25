@@ -26,6 +26,10 @@ function setActivePage(page, options) {
     if (!options.isBack) {
         pages[activePage].scrollTop = 0;
     }
+    if (page == "main") {
+        let widgetList = Object.keys(widgets);
+        setActiveWidget(widgetList[Math.floor(Math.random() * widgetList.length)]);
+    }
 }
 document.addEventListener("DOMContentLoaded", () => {
     pages = Object.fromEntries(
@@ -57,6 +61,48 @@ window.addEventListener("popstate", (e) => {
     if(e.state){
         setActivePage(e.state.page, {isBack: true});
     }
+});
+
+// Widgets
+let widgets = {};
+let activeWidget = "", lastWidget = "";
+function setActiveWidget(widget) {
+    console.log(activeWidget, widget);
+    if (activeWidget == widget) return;
+
+    widgets[lastWidget]?.classList.remove("animate-out");
+    if (widgets[activeWidget]) {
+        widgets[activeWidget].classList.remove("active");
+        widgets[activeWidget].classList.add("animate-out");
+        widgets[activeWidget].$btn.disabled = false;
+    }
+
+    lastWidget = activeWidget;
+    activeWidget = widget;
+
+    if (widgets[activeWidget]) {
+        widgets[activeWidget]?.classList.add("active");
+        widgets[activeWidget].$btn.disabled = true;
+    }
+    document.querySelector("#widget-header").innerHTML = widgets[activeWidget]?.getAttribute("data-title") + ":";
+}
+window.addEventListener("DOMContentLoaded", (e) => {
+    let widgetList = [...document.querySelectorAll("widget-box").values()];
+    widgets = Object.fromEntries(
+        widgetList.map(x => [x.getAttribute("name"), x])
+    );
+    console.log(pages);
+
+    let controls = document.querySelector("#widget-controls");
+    for (let widget of widgetList) {
+        let name = widget.getAttribute("name");
+        let btn = document.createElement("button");
+        btn.onclick = () => setActiveWidget(name);
+        widget.$btn = btn;
+        controls.append(btn);
+    }
+
+    setActiveWidget(widgetList[Math.floor(Math.random() * widgetList.length)].getAttribute("name"));
 });
 
 // Item boxes
@@ -242,8 +288,6 @@ function xify(e) {
     }, 1000)
 
     xifySound.volume = 0.2;
-    xifySound.playbackRate = Math.random() * 0.2 + 0.9;
-    xifySound.preservesPitch = false;
     xifySound.fastSeek?.(0);
     xifySound.play();
 }

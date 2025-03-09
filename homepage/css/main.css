@@ -103,6 +103,14 @@ hr {
     gap: 4px;
     padding: 3px 0;
 }
+.nav-list-group {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0;
+    margin: 0;
+}
 .nav-list-box {
     display: block;
     border: 2px solid white;
@@ -110,6 +118,16 @@ hr {
     font-weight: normal;
     padding: 2px 5px;
     font-size: 0.8em;
+}
+.nav-list-button .nav-list-group {
+    flex-flow: row wrap;
+}
+.nav-list-button h4 {
+    width: 100%;
+    flex: 0 0 100%;
+}
+.nav-list-button h4 img {
+    display: block;
 }
 .nav-list hr {
     width: 100%;

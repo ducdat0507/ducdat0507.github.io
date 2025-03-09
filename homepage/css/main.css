@@ -181,6 +181,7 @@ button {
     background: #ccf;
     color: black;
     padding: 7px;
+    margin: 0;
     cursor: pointer;
 }
 button:hover {

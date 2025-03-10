@@ -31,11 +31,11 @@
         }
         text.left {
             font-size: 12px;
-            alignment-baseline: baseline;
+            dominant-baseline: baseline;
             text-anchor: start;
         }
         text.right {
-            alignment-baseline: baseline;
+            dominant-baseline: baseline;
             text-anchor: end;
         }
     </style>

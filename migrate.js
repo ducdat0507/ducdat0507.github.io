@@ -1,5 +1,5 @@
 (() => {
-    // if (!window.location.href.toLowerCase().includes("ducdat0507.github.io")) return;
+    if (!window.location.origin != "https://ducdat0507.github.io")) return;
 
     async function migrateAll(iframe, status) {
         let index = 0;

@@ -115,12 +115,7 @@
         iframe = document.createElement("iframe");
         iframe.src = "//duducat.moe";
         iframe.onload = () => {
-            if (!localStorage.getItem("duducat-migrated"))
-                migrateAll(iframe, status);
-            else {
-                status.textContent = "Status: completed";
-                setTimeout(() => banner.remove(), 2000);
-            }
+            migrateAll(iframe, status);
         }
         banner.append(iframe);
     })

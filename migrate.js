@@ -14,10 +14,6 @@
         setTimeout(() => banner.remove(), 5000);
     }
 
-    /**
-     * @param {HTMLIFrameElement} iframe 
-     * @param {String} key 
-     */
     function migrateOne(iframe, key) {
         console.log("Migrating " + key);
         requestAnimationFrame(() => {
@@ -30,11 +26,7 @@
             });
         })
         let promise = new Promise(((resolve, reject) => {
-            /**
-             * @param {MessageEvent} e 
-             */
             let eventHandler = (e) => {
-                console.log(e);
                 if (
                     e.origin != "https://duducat.moe"
                     || e.data?.type != "duducat-set-local-storage"

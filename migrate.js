@@ -27,11 +27,13 @@
              * @param {MessageEvent} e 
              */
             let eventHandler = (e) => {
+                console.log(e);
                 if (
                     e.origin != "https://duducat.moe"
                     || e.data?.type != "duducat-set-local-storage"
                     || e.data.key != key
                 ) return;
+                window.removeEventListener("message", eventHandler);
                 if (e.data.success) resolve();
                 else reject();
             }

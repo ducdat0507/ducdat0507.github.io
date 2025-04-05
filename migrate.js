@@ -6,13 +6,16 @@
         let key = "";
         while ((key = localStorage.key(index)) != null) {
             index++;
+            if (key == "duducat-migrated") continue;
             status.textContent = "Status: migrating (" + index + " / " + localStorage.length + ")";
             await migrateOne(iframe, key);
         }
         status.textContent = "Status: complete";
-        // localStorage.setItem("duducat-migrated", true);
-        setTimeout(() => iframe.parentElement.remove(), 5000);
+        setTimeout(() => iframe.parentElement.remove(), localStorage.getItem("duducat-migrated") ? 2000 : 5000);
+        localStorage.setItem("duducat-migrated", "true");
     }
+
+    let iframe;
 
     function migrateOne(iframe, key) {
         console.log("Migrating " + key);
@@ -109,14 +112,14 @@
         status = banner.querySelector(".__migration-status");
         status.textContent = "Status: loading iframe...";
 
-        let iframe = document.createElement("iframe");
+        iframe = document.createElement("iframe");
         iframe.src = "//duducat.moe";
         iframe.onload = () => {
             if (!localStorage.getItem("duducat-migrated"))
                 migrateAll(iframe, status);
             else {
                 status.textContent = "Status: completed";
-                setTimeout(() => banner.remove(), 5000);
+                setTimeout(() => banner.remove(), 2000);
             }
         }
         banner.append(iframe);

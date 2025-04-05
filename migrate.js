@@ -11,7 +11,7 @@
         }
         status.textContent = "Status: complete";
         // localStorage.setItem("duducat-migrated", true);
-        setTimeout(() => banner.remove(), 5000);
+        setTimeout(() => iframe.parentElement.remove(), 5000);
     }
 
     function migrateOne(iframe, key) {

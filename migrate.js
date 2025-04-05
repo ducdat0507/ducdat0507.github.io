@@ -18,12 +18,7 @@
      */
     function migrateOne(iframe, key) {
         console.log("Migrating " + key);
-        iframe.contentWindow.postMessage({
-            type: "duducat-set-local-storage",
-            key: key,
-            value: localStorage.getItem(key)
-        });
-        return new Promise(((resolve, reject) => {
+        let promise = new Promise(((resolve, reject) => {
             /**
              * @param {MessageEvent} e 
              */
@@ -39,7 +34,13 @@
                 else reject();
             }
             window.addEventListener("message", eventHandler);
-        }))
+        }));
+        iframe.contentWindow.postMessage({
+            type: "duducat-set-local-storage",
+            key: key,
+            value: localStorage.getItem(key)
+        });
+        return promise;
     }
 
     window.addEventListener("DOMContentLoaded", () => {

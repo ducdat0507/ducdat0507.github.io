@@ -10,6 +10,8 @@
             await migrateOne(iframe, key);
         }
         status.textContent = "Status: complete";
+        // localStorage.setItem("duducat-migrated", true);
+        setTimeout(() => banner.remove(), 5000);
     }
 
     /**
@@ -18,6 +20,15 @@
      */
     function migrateOne(iframe, key) {
         console.log("Migrating " + key);
+        requestAnimationFrame(() => {
+            iframe.contentWindow.postMessage({
+                type: "duducat-set-local-storage",
+                key: key,
+                value: localStorage.getItem(key)
+            }, {
+                targetOrigin: "https://duducat.moe"
+            });
+        })
         let promise = new Promise(((resolve, reject) => {
             /**
              * @param {MessageEvent} e 
@@ -35,11 +46,6 @@
             }
             window.addEventListener("message", eventHandler);
         }));
-        iframe.contentWindow.postMessage({
-            type: "duducat-set-local-storage",
-            key: key,
-            value: localStorage.getItem(key)
-        });
         return promise;
     }
 
@@ -116,6 +122,10 @@
         iframe.onload = () => {
             if (!localStorage.getItem("duducat-migrated"))
                 migrateAll(iframe, status);
+            else {
+                status.textContent = "Status: completed";
+                setTimeout(() => banner.remove(), 5000);
+            }
         }
         banner.append(iframe);
     })

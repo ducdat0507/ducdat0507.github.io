@@ -17,6 +17,7 @@
      * @param {String} key 
      */
     function migrateOne(iframe, key) {
+        console.log("Migrating " + key);
         iframe.contentWindow.postMessage({
             type: "duducat-set-local-storage",
             key: key,

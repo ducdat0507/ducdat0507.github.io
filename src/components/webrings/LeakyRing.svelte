@@ -66,7 +66,7 @@
     <h4>Leaky Homepage Ring</h4>
     <WebringNav 
         indexLink="https://melonking.net/free/software/flood" 
-        allSites={allSites} />
+        allLinks={allSites} />
 </div>
 
 <style>

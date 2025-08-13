@@ -132,7 +132,7 @@
     padding: 1em;
 }
 
-@media (width >= 70em) {
+@media (min-width: 70em) {
     .category-box .box.big {
         padding: 2em;
     }

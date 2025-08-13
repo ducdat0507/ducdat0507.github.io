@@ -108,13 +108,13 @@
         inset: 0 -1em 0 50%;
     }
 
-    @media (width <= 84em) {
+    @media not (min-width:= 84em) {
         :global(body) {
             font-size: 0.9em;
         }
     }
 
-    @media (width < 50em) {
+    @media not (min-width: 50em) {
         .main-container .content-background { 
             position: fixed;
         }
@@ -176,7 +176,7 @@
     }
 
 
-    @media (width >= 50em) {
+    @media (min-width: 50em) {
 
         .main-container.home {
             --inset-block: max(0px, calc(50dvh - 20em));
@@ -300,13 +300,13 @@
 
     }
 
-    @media (width >= 70em) {
+    @media (min-width: 70em) {
         .main-container:not(.home) .content-background { 
             inset: 0 calc(50dvw - 25em);
         }
     }
 
-    @media (width >= 74em) {
+    @media (min-width: 74em) {
         .main-container.home .content-background { 
             inset: 0 -1em 0 50%;
         }

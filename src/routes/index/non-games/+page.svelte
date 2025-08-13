@@ -16,7 +16,7 @@
 
 <style>
 
-  @media (width < 50em) {
+  @media not (min-width: 50em) {
     .category-box :global(h2) {
       overflow: hidden;
       width: 0.0001px;
@@ -25,7 +25,7 @@
     }
   }
 
-  @media (width >= 50em) {
+  @media (min-width: 50em) {
     .category-box {
       display: grid;
       margin-top: 2em;
@@ -35,7 +35,7 @@
     }
   }
 
-  @media (width >= 70em) {
+  @media (min-width: 70em) {
     .category-box {
       width: 70em;
     }

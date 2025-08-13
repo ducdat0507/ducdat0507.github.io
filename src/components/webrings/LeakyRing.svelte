@@ -26,8 +26,8 @@
     let lastUpdate: 0;
 
     function doRequest(bilge: boolean = false, fullInfo: boolean = true) {
-        clearInterval(lastUpdate);
-        setInterval(() => {doRequest()}, updateInterval * 1000)
+        clearTimeout(lastUpdate);
+        setTimeout(() => {doRequest()}, updateInterval * 1000)
         fetch(
             `${backend}/flood?bilge=${bilge}&info=${fullInfo}&path=${page.url.pathname}`,
             {

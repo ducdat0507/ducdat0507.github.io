@@ -53,7 +53,7 @@
         let now = Date.now()
         if (now - lastBilge >= bilgeCooldown * 1000) {
             fillAmount = Math.max(0, fillAmount - bilgeAmount);
-            lastBilge = now();
+            lastBilge = Date.now();
             doRequest(true);
         } else {
 

@@ -108,7 +108,7 @@
         inset: 0 -1em 0 50%;
     }
 
-    @media not (min-width:= 84em) {
+    @media not (min-width: 84em) {
         :global(body) {
             font-size: 0.9em;
         }

@@ -1,1 +1,0 @@
-import{t,h as e,a as r}from"../chunks/F5ys5NO9.js";import"../chunks/CnODYT-Q.js";import{$ as p}from"../chunks/DcpxvBcB.js";var c=t('<div class="category-box">TBA</div>');function m(o){var a=c();e(d=>{p.title="duducat's non-code projects"}),r(o,a)}export{m as component};

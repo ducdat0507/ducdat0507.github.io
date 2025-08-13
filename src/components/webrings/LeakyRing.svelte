@@ -41,7 +41,7 @@
                 if (x.headers.get("Content-Type")?.includes("text/html")) {
                     throw new Error(await x.text());
                 }
-                data = await x.json();
+                let data = await x.json();
                 fillAmount = data.fill;
                 allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain);
             })

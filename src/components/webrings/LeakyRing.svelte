@@ -22,8 +22,8 @@
     let fillAmount: number = $state(0);
     let allSites: $state(string[]);
 
-    let lastBilge: 0;
-    let lastUpdate: 0;
+    let lastBilge = 0;
+    let lastUpdate = 0;
 
     function doRequest(bilge: boolean = false, fullInfo: boolean = true) {
         clearTimeout(lastUpdate);

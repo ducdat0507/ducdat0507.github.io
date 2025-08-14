@@ -37,7 +37,7 @@
     margin: 0;
   }
 
-  @media not (min-width: 50em) {
+  @media (not (min-width: 50em)) {
     .category-box :global(h2) {
       overflow: hidden;
       width: 0.0001px;

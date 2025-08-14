@@ -114,7 +114,7 @@
         }
     }
 
-    @media not (min-width: 50em) {
+    @media (not (min-width: 50em)) {
         .main-container .content-background { 
             position: fixed;
         }

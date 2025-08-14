@@ -121,7 +121,7 @@
     margin: -1em;
   }
 
-  @media not (min-width: 50em) {
+  @media (not (min-width: 50em)) {
 
     #about-me > :not(:first-child) {
       margin-top: 1em;

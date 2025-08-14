@@ -35,7 +35,7 @@
 
     onMount(() => {
         navBar = document.querySelector(".nav-bar") as HTMLElement;
-        mobileTest = window.matchMedia("not (min-width: 50em)");
+        mobileTest = window.matchMedia("(not (min-width: 50em))");
         document.querySelector(".main-container")?.addEventListener("scroll", onScroll)
         setTimeout(() => {
             metroHeader.scrollBy({left: 0.01});

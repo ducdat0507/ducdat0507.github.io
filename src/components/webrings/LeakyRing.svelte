@@ -11,6 +11,9 @@
 
     onMount(() => {
         doRequest()
+        return () => {
+            clearTimeout(lastUpdate);
+        }
     })
 
     // Constants found in https://melonking.net/scripts/flood.js

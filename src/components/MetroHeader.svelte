@@ -88,7 +88,7 @@
     .metro-header {
         position: fixed;
         inset: 0 0 auto 0;
-        height: 8em;
+        height: 9em;
         display: flex;
         align-items: end;
         overflow: hidden;
@@ -98,10 +98,10 @@
         padding-right: 100dvw;
     }
     .metro-header-items > :global(a) {
-        font-size: 4em;
+        font-size: min(4em, 10dvw);
         font-weight: 300;
         color: white;
-        padding-left: 0.5em;
+        padding-left: 1.8rem;
         text-decoration: none;
         opacity: calc(0.3 + 0.7 * var(--highlight, 0));
         white-space: nowrap;

@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div class="category-box">
-  <ProjectLister projects={nongames} altNames={["app&sites", "fun", "resources"]} />
+  <ProjectLister projects={nongames} altNames={["apps & sites", "fun stuff", "web resources"]} />
 </div>
 
 <style>

@@ -136,11 +136,12 @@
             flex-flow: column;
             justify-content: safe end;
             flex: 0 0 min(30em, calc(100dvw - 3em));
-            padding-block: 10em 2em;
+            padding-block: 2em;
             padding-inline: 1em;
             z-index: 1;
             scroll-snap-align: start;
             scroll-snap-stop: normal;
+            scrollbar-width: none;
         }
         .content-container {
             flex: 0 1;
@@ -168,6 +169,7 @@
             overflow-y: auto;
             scroll-snap-align: start;
             scroll-snap-stop: normal;
+            scrollbar-width: none;
         }
         main :global(.category-box::after) {
             content: "";
@@ -224,7 +226,7 @@
             border-right: 2px solid white;
             width: calc(4em + 2px);
             white-space: nowrap;
-            overflow-x: hidden;
+            overflow: hidden;
             transition: all .3s;
             transition-timing-function: var(--ease-out-expo);
             animation: .8s nav-bar-in var(--ease-out-expo);
@@ -240,7 +242,7 @@
             flex-flow: column;
             align-items: start;
             justify-content: safe center;
-            overflow-y: auto;
+            overflow: hidden auto;
         }
         .main-container:not(.home) .nav-bar :global(nav a) {
             display: flex;

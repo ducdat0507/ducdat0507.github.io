@@ -384,7 +384,7 @@ export const nongames: ProjectCollection = {
             },
         ],
     },
-    "fun": {
+    "fun stuff": {
         "instant toys": [
             {
                 name: "totally real robux generator chat",

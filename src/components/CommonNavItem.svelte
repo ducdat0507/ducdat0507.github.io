@@ -11,7 +11,7 @@
 </script>
 
 <li class:active={selected}>
-    <a href={href} target={target} aria-selected={selected}>
+    <a href={href} target={target} aria-current={selected}>
         <Icon icon={icon} inline />
         <span>{@render children()}</span>
     </a>

@@ -48,7 +48,6 @@
     function onScroll(ev: Event) {
         if (!mobileTest.matches) return;
         let progress = (ev.target as HTMLElement).scrollLeft / navBar.offsetWidth;
-        console.log(progress);
 
         updateHeader(progress);
     }
@@ -64,8 +63,6 @@
         let posStart = scrollProgressInt < 0 ? 0 : items[scrollProgressInt]?.offsetLeft;
         let posEnd = items[scrollProgressInt + 1]?.offsetLeft;
         let posTarget = posStart + (posEnd - posStart) * ((scrollProgress % 1 + 1) % 1);
-        console.log(posTarget);
-        console.log(scrollProgressInt, posStart, posEnd, posTarget);
         metroHeader.scrollLeft = posTarget;
 
         // Update highlight

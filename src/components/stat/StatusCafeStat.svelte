@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+    import { onMount } from "svelte";
+    import DOMPurify from 'dompurify';
 
     type Status = {
         author: string,
@@ -27,6 +28,6 @@
     <div class="status-cafe-face">{lastStatus?.face}</div>
     <div class="status-cafe">
         <time style="opacity: .5">{lastStatus?.timeAgo}</time><br/>
-        {lastStatus?.content}
+        {@html DOMPurify.sanitize(lastStatus.content)}
     </div>
 {/if}

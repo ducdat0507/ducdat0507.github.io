@@ -23,6 +23,7 @@
 	},
 	"dependencies": {
 		"@sveltejs/adapter-static": "^3.0.8",
+		"dompurify": "^3.2.6",
 		"planck": "^1.4.2"
 	}
 }

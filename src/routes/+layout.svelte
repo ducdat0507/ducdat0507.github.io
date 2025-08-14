@@ -108,7 +108,7 @@
         inset: 0 -1em 0 50%;
     }
 
-    @media not (min-width: 84em) {
+    @media (not (min-width: 84em)) {
         :global(body) {
             font-size: 0.9em;
         }
@@ -140,7 +140,7 @@
             padding-inline: 1em;
             z-index: 1;
             scroll-snap-align: start;
-            scroll-snap-stop: normal;
+            scroll-snap-stop: always;
             scrollbar-width: none;
         }
         .content-container {
@@ -168,7 +168,7 @@
             padding-inline: 1em;
             overflow-y: auto;
             scroll-snap-align: start;
-            scroll-snap-stop: normal;
+            scroll-snap-stop: always;
             scrollbar-width: none;
         }
         main :global(.category-box::after) {

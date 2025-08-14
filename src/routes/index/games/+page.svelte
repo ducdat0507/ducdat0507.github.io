@@ -29,7 +29,7 @@
       {/each}
     </div>
   </section>
-  <ProjectLister projects={games} altNames={["incremental", "non-incremental"]} />
+  <ProjectLister projects={games} altNames={["incrementals", "non-incrementals"]} />
 </div>
 
 <style>

@@ -40,11 +40,21 @@ export const websites: WebsiteCollection = {
                 button: "yhvr.gif",
             },
         ],
-        "in the name of the indie web (10MB worth of gifs, let's go):": [
+        "in the name of the indie web (10 megabytes worth of gifs, *go*):": [
             {
                 site: "https://darkosparko.nekoweb.org/",
                 name: "darkosparko",
                 button: "https://darkosparko.nekoweb.org/rocket-button.gif",
+            },
+            {
+                site: "https://melonking.net/",
+                name: "Melonking",
+                button: "https://melonking.net/images/badges/MELON-BADGE.GIF",
+            },
+            {
+                site: "https://rabbitnet.neocities.org/",
+                name: "RabbitNET",
+                button: "rabbitnet.png",
             },
         ],
     }

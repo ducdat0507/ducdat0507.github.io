@@ -41,7 +41,7 @@
       min-height: 8em;
   }
 
-  @media (not (min-width: 800px)) {
+  @media not (min-width: 800px) {
     .category-box :global(h2) {
       overflow: hidden;
       width: 0.0001px;

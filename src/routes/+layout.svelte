@@ -108,13 +108,13 @@
         inset: 0 -1em 0 50%;
     }
 
-    @media (not (min-width: 1344px)) {
+    @media not (min-width: 1344px) {
         :global(body) {
             font-size: 0.9em;
         }
     }
 
-    @media (not (min-width: 800px)) {
+    @media not (min-width: 800px) {
         .main-container .content-background { 
             position: fixed;
         }

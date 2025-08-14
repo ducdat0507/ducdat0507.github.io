@@ -89,6 +89,26 @@
               <span>sign the guestbook!</span>
           </a>
         </div>
+        <div class="link-tile button-snagger" style="--col: 2; --row: 1">
+          <div>
+            <img src="/index/res/buttons/duducat.svg" alt='"duducat&amp;s website" button' />
+            <span>snag this button!</span>
+            <div class="button-links">
+              <div class="link-tile">
+                <a href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
+                  <Icon icon="iconoir:arrow-down" />
+                  <span>.svg</span>
+                </a>
+              </div>
+              <div class="link-tile">
+                <a href="/index/res/buttons/duducat.gif" aria-label="download .gif" download="duducat.gif">
+                  <Icon icon="iconoir:arrow-down" />
+                  <span>.gif</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -209,6 +229,48 @@
   }
   .image-link, .image-link > img {
     display: block;
+  }
+
+  .button-snagger {
+    text-align: end;
+  }
+  .button-snagger img {
+    margin: 0.5em;
+  }
+  .button-snagger > * > span {
+    text-align: start;
+    padding-right: 7em;
+    display: block;
+  }
+
+  .button-links {
+    position: absolute;
+    inset: auto -.3em -.3em auto;
+    min-width: calc(100%);
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
+    gap: 4px;
+  }
+  .button-links > .link-tile {
+    flex: 0 0 2.4em;
+    aspect-ratio: 1;
+  }
+  .button-links > .link-tile span {
+    line-height: 1;
+    bottom: .4em;
+  }
+  .button-links > .flex-space {
+    flex: 1;
+  }
+  .button-links .link-tile > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    background: black;
+    color: white;
+    padding: 0.5em;
   }
 
   @media (min-width: 50em) {

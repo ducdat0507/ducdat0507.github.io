@@ -43,7 +43,7 @@
     font-size: 1em;
   }
 
-  @media (min-width: 50em) {
+  @media (min-width: 800px) {
     .website-categories {
       display: flex;
       flex-direction: column;
@@ -51,7 +51,7 @@
     }
   }
 
-  @media (min-width: 70em) {
+  @media (min-width: 1120px) {
     .website-categories {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

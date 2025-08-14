@@ -273,7 +273,7 @@
     padding: 0.5em;
   }
 
-  @media (min-width: 50em) {
+  @media (min-width: 800px) {
     .category-box {
       display: flex;
       flex-direction: column;
@@ -281,7 +281,7 @@
     }
   }
 
-  @media (min-width: 74em) {
+  @media (min-width: 1184px) {
     .category-box {
       flex-direction: row;
       gap: 1em;

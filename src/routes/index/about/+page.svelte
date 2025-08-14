@@ -121,14 +121,14 @@
     margin: -1em;
   }
 
-  @media (not (min-width: 50em)) {
+  @media (not (min-width: 800px)) {
 
     #about-me > :not(:first-child) {
       margin-top: 1em;
     }
   }
 
-  @media (min-width: 50em) {
+  @media (min-width: 800px) {
     .category-box {
       display: grid;
       margin-top: 2em;
@@ -149,7 +149,7 @@
   }
 
 
-  @media (min-width: 70em) {
+  @media (min-width: 1120px) {
     .category-box {
       width: 70em;
     }

@@ -35,7 +35,7 @@
 
     onMount(() => {
         navBar = document.querySelector(".nav-bar") as HTMLElement;
-        mobileTest = window.matchMedia("(not (min-width: 50em))");
+        mobileTest = window.matchMedia("(not (min-width: 800px))");
         document.querySelector(".main-container")?.addEventListener("scroll", onScroll)
         setTimeout(() => {
             metroHeader.scrollBy({left: 0.01});
@@ -103,7 +103,7 @@
         opacity: calc(0.3 + 0.7 * var(--highlight, 0));
         white-space: nowrap;
     }
-    @media (min-width: 50em) {
+    @media (min-width: 800px) {
         .metro-header {
             display: none;
         }

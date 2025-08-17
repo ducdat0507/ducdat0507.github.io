@@ -31,10 +31,10 @@
       link.removeAttribute("onmouseout");
       images.forEach(img => img.removeAttribute("title"));
       link.ariaLabel = `FC2 Counter - ${count.toLocaleString("en-US")} visitors`
-      elm.querySelector("nobr").ariaHidden = true;
+      elm.querySelector("nobr")!.ariaHidden = "true";
 
       clearInterval(setupInterval);
-    }, 100);
+    }, 30);
   }
 
 </script>

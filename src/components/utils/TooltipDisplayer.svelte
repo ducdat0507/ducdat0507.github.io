@@ -47,6 +47,7 @@
 
         // TODO add more alignment options
         top -= (parentRect.height + tooltipRect.height) / 2;
+        if (top < 0) top = parentRect.top + parentRect.height;
         
         // Keep tooltip inside viewport
         left = Math.min(Math.max(left, 0), window.innerWidth - tooltipRect.width);

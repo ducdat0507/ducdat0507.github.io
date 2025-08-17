@@ -7,6 +7,35 @@
   import NewgroundsTankIcon from "../components/icons/NewgroundsTankIcon.svelte";
   import VorkedLarfleezeIcon from "../components/icons/VorkedLarfleezeIcon.svelte";
   import StatusCafeStat from "../components/stat/StatusCafeStat.svelte";
+  import Tooltip from "../components/utils/Tooltip.svelte";
+  import type { Action } from "svelte/action";
+
+  let count: number = $state(0);
+  let graphURL: string = $state("");
+  let setupInterval: number = 0;
+
+  const setupCounter: Action = (elm) => {
+    setupInterval = setInterval(() => {
+      let link = elm.querySelector("a");
+      console.log(...elm.children);
+      if (!link) return;
+
+      let images = [...elm.querySelectorAll("img")];
+
+      count = +images.map(img => img.src.charAt(img.src.length - 5)).filter(x => !Number.isNaN(+x)).join("");
+      let id = link.getAttribute("onmouseover")?.match(/_FC2COUNTER(.*)_\d/)![1];
+      graphURL = `https://counter1-cdn-ssl.fc2.com/popup.php?id=${id}&main=1&lang=1`;
+
+      link.prepend(elm.querySelector("x-tooltip")!);
+      link.removeAttribute("onmouseover");
+      link.removeAttribute("onmouseout");
+      images.forEach(img => img.removeAttribute("title"));
+      link.ariaLabel = `FC2 Counter - ${count.toLocaleString("en-US")} visitors`
+      elm.querySelector("nobr").ariaHidden = true;
+
+      clearInterval(setupInterval);
+    }, 100);
+  }
 
 </script>
 
@@ -21,46 +50,53 @@
       <div class="widget-box live-tiles">
         <div class="link-tile">
           <a href="https://github.com/ducdat0507" rel="me">
-              <Icon icon="cib:github" />
-              <span>github</span>
-              <GitHubStat />
+            <Tooltip>@ducdat0507</Tooltip>
+            <Icon icon="cib:github" />
+            <span>github</span>
+            <GitHubStat />
           </a>
         </div>
         <div class="link-tile">
           <a href="https://bsky.app/profile/duducat.moe" rel="me">
-              <Icon icon="bi:bluesky" />
-              <span>bluesky</span>
-              <BlueskyStat />
+            <Tooltip>@duducat.moe</Tooltip>
+            <Icon icon="bi:bluesky" />
+            <span>bluesky</span>
+            <BlueskyStat />
           </a>
         </div>
         <div class="link-tile">
           <a href="https://galaxy.click/@ducdat0507" rel="me">
-              <GalaxyIcon />
-              <span>galaxy.click</span>
+            <Tooltip>@ducdat0507</Tooltip>
+            <GalaxyIcon />
+            <span>galaxy.click</span>
           </a>
         </div>
         <div class="link-tile">
           <a href="https://mastodon.gamedev.place/@ducdat0507" rel="me">
-              <Icon icon="bi:mastodon" />
-              <span>mastodon</span>
+            <Tooltip>@ducdat0507@mastodon.gamedev.place</Tooltip>
+            <Icon icon="bi:mastodon" />
+            <span>mastodon</span>
           </a>
         </div>
         <div class="link-tile" style="--col: 2">
           <a href="https://status.cafe/users/duducat" rel="me">
-              <span>status.cafe</span>
-              <StatusCafeStat />
+            <Tooltip>@duducat</Tooltip>
+            <span>status.cafe</span>
+            <StatusCafeStat />
           </a>
         </div>
         <div class="link-tile">
           <a href="https://ducdat0507.newgrounds.com" rel="me">
-              <NewgroundsTankIcon />
-              <span>newgrounds</span>
+            <Tooltip>@ducdat0507</Tooltip>
+            <NewgroundsTankIcon />
+            <span>newgrounds</span>
           </a>
         </div>
         <div class="link-tile">
           <a href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
-              <VorkedLarfleezeIcon />
-              <span>mspfa</span>
+            <Tooltip>@ducdat0507</Tooltip>
+            <VorkedLarfleezeIcon />
+            <span>mspfa</span>
           </a>
         </div>
       </div>
@@ -71,22 +107,37 @@
       <div class="widget-box live-tiles">
         <div class="link-tile" style="--col: 2; --row: 1">
           <a href="https://discord.gg/vXJTPFQBHm" rel="me">
-              <Icon icon="bi:discord" />
-              <span>fff40 studios<br/>discord server</span>
-              <DiscordInviteStat invite="vXJTPFQBHm" />
+            <Tooltip>
+              <p>
+                @duducat<br/>
+                (my rhythm game studio)
+              </p>
+            </Tooltip>
+            <Icon icon="bi:discord" />
+            <span>fff40 studios<br/>discord server</span>
+            <DiscordInviteStat invite="vXJTPFQBHm" />
           </a>
         </div>
         <div class="link-tile" style="--col: 2; --row: 1">
           <a href="https://galaxy.click/discord" rel="me">
-              <Icon icon="bi:discord" />
-              <span>galaxy (+ego)<br/>discord server</span>
-              <DiscordInviteStat invite="6FD2bYMqV9" />
+            <Tooltip>
+              <p>
+                @duducat<br/>
+                (for incremental game related stuff)
+              </p>
+            </Tooltip>
+            <Icon icon="bi:discord" />
+            <span>galaxy (+ego)<br/>discord server</span>
+            <DiscordInviteStat invite="6FD2bYMqV9" />
           </a>
         </div>
         <div class="link-tile" style="--col: 2; --row: 1">
           <a href="https://duducat.atabook.org" rel="me">
-              <Icon icon="hugeicons:pen-tool-03" />
-              <span>sign the guestbook!</span>
+            <Tooltip>
+              (note: I don't check this very often)
+            </Tooltip>
+            <Icon icon="hugeicons:pen-tool-03" />
+            <span>sign the guestbook!</span>
           </a>
         </div>
         <div class="link-tile button-snagger" style="--col: 2; --row: 1">
@@ -96,12 +147,18 @@
             <div class="button-links">
               <div class="link-tile">
                 <a href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
+                  <Tooltip>
+                    (&infin; resolution, &infin; frame rate, though with less than ideal support)
+                  </Tooltip>
                   <Icon icon="iconoir:arrow-down" />
                   <span>.svg</span>
                 </a>
               </div>
               <div class="link-tile">
                 <a href="/index/res/buttons/duducat.gif" aria-label="download .gif" download="duducat.gif">
+                  <Tooltip>
+                    (88&times;31 pixels, 12.5fps, is more likely to be played correctly by your OS's image viewer)
+                  </Tooltip>
                   <Icon icon="iconoir:arrow-down" />
                   <span>.gif</span>
                 </a>
@@ -117,8 +174,9 @@
       <div class="widget-box live-tiles">
         <div class="link-tile" style="--col: 2; --row: 1">
           <a href="https://en.liberapay.com/ducdat0507" rel="me">
-              <Icon icon="simple-icons:liberapay" />
-              <span>liberapay</span>
+            <Tooltip>@ducdat0507</Tooltip>
+            <Icon icon="simple-icons:liberapay" />
+            <span>liberapay</span>
           </a>
         </div>
       </div>
@@ -133,7 +191,14 @@
         <div style="--col: 3; --row: 1">
           <div class="x2">
             <div>
-              <div class="fc2-counter">
+              <div use:setupCounter class="fc2-counter">
+                <Tooltip>
+                  <p>
+                    FC2 Counter<br/>
+                    (is the number saying {count.toLocaleString("en-US")}?)
+                  </p>
+                  <img src={graphURL} alt="" style="margin-left:32px" aria-hidden="true" />
+                </Tooltip>
                 <script id="fc2-counter" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40236645&amp;lang=1&amp;main=1"></script>
               </div>
             </div>
@@ -151,7 +216,8 @@
         <!-- Internet button -->
         <div style="--col: 1; --row: 1">
           <div class="center-child">
-            <a href='http://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" title="the infamous internet button">
+            <a href='http://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" aria-label="the infamous internet button">
+              <Tooltip>the infamous internet button</Tooltip>
               <img src='http://internetometer.com/imagesmall/50959.png' style="width:100%;height:100%;object-fit:cover" alt="the infamous internet button"/>
             </a>
           </div>
@@ -159,7 +225,8 @@
         <!-- FC2 Clap -->
         <div style="--col: 1; --row: 1">
           <div class="center-child" style="image-rendering: pixelated">
-            <a href="//clap.fc2.com/post/duducat/?url=https%3A%2F%2Fduducat.moe" class="image-link" target="_blank" title="Web Clap by FC2">
+            <a href="//clap.fc2.com/post/duducat/?url=https%3A%2F%2Fduducat.moe" class="image-link" target="_blank" aria-label="Web Clap by FC2">
+              <Tooltip>Web Clap by FC2</Tooltip>
               <img src="//clap.fc2.com/images/button/white/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />
               <img src="//clap.fc2.com/images/button/black/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />
               <img src="//clap.fc2.com/images/button/blue/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />

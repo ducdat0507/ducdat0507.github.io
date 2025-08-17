@@ -3,6 +3,7 @@
   import { page } from '$app/state';
   import CommonNav from '../components/CommonNav.svelte';
   import MetroHeader from '../components/MetroHeader.svelte';
+  import TooltipDisplayer from '../components/utils/TooltipDisplayer.svelte';
 
     let { 
         children
@@ -42,6 +43,7 @@
         </main>
     </div>
     <MetroHeader />
+    <TooltipDisplayer />
 </div>
 
 <style>

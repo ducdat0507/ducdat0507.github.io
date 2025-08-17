@@ -2,6 +2,7 @@
   import Icon from "@iconify/svelte";
     import { Body, Box, Edge, Vec2, World } from "planck";
     import { onMount } from "svelte";
+  import Tooltip from "../utils/Tooltip.svelte";
 
     export type TechStackItem = {
         name: string,
@@ -100,6 +101,7 @@ Box
             style:--size={`${items[index].priority}em`}
             style={items[index].boxStyle}
             aria-label={items[index].name}>
+            <Tooltip>{items[index].name}</Tooltip>
             {#if items[index].iconURL}
                 <img src={items[index].iconURL} alt="" aria-hidden={true} />
             {:else}

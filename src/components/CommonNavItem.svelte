@@ -1,12 +1,17 @@
 <script>
     import { page } from "$app/state";
     import Icon from "@iconify/svelte";
+  import { onMount } from "svelte";
 
     let {
-        href, target = "", icon, children
+        href, target = "_self", icon, children
     } = $props();
 
     let selected = $derived(page.url.pathname == href)
+
+    onMount(() => {
+        if (target == "_self") target = ""
+    })
 
 </script>
 

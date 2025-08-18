@@ -262,8 +262,8 @@
       <h2>random internet widgets go:</h2>
       <div class="widget-box live-tiles">
         <div style="--col: 2; --row: 2">
-          <a href="https://tamanotchi.world/25353c" class="center-child">
-            <img src="https://tamanotchi.world/i2/25353" alt="It's tamaNOTchi! Click to feed!">
+          <a href="https://tamanotchi.world/25572c" class="center-child">
+            <img src="https://tamanotchi.world/i2/25572" alt="It's tamaNOTchi! Click to feed!">
           </a>
         </div>
       </div>

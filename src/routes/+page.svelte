@@ -71,7 +71,10 @@
       <div class="widget-box live-tiles">
         <div class="link-tile">
           <a href="https://github.com/ducdat0507" rel="me">
-            <Tooltip>@ducdat0507</Tooltip>
+            <Tooltip>
+              <p>@ducdat0507</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <Icon icon="cib:github" />
             <span>github</span>
             <GitHubStat />
@@ -79,7 +82,10 @@
         </div>
         <div class="link-tile">
           <a href="https://bsky.app/profile/duducat.moe" rel="me">
-            <Tooltip>@duducat.moe</Tooltip>
+            <Tooltip>
+              <p>@duducat.moe</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <Icon icon="bi:bluesky" />
             <span>bluesky</span>
             <BlueskyStat />
@@ -87,35 +93,50 @@
         </div>
         <div class="link-tile">
           <a href="https://galaxy.click/@ducdat0507" rel="me">
-            <Tooltip>@ducdat0507</Tooltip>
+            <Tooltip>
+              <p>@duducat.moe</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <GalaxyIcon />
             <span>galaxy.click</span>
           </a>
         </div>
         <div class="link-tile">
           <a href="https://mastodon.gamedev.place/@ducdat0507" rel="me">
-            <Tooltip>@ducdat0507@mastodon.gamedev.place</Tooltip>
+            <Tooltip>
+              <p>@ducdat0507@mastodon.gamedev.place</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <Icon icon="bi:mastodon" />
             <span>mastodon</span>
           </a>
         </div>
         <div class="link-tile" style="--col: 2">
           <a href="https://status.cafe/users/duducat" rel="me">
-            <Tooltip>@duducat</Tooltip>
+            <Tooltip>
+              <p>@duducat</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <span>status.cafe</span>
             <StatusCafeStat />
           </a>
         </div>
         <div class="link-tile">
           <a href="https://ducdat0507.newgrounds.com" rel="me">
-            <Tooltip>@ducdat0507</Tooltip>
+            <Tooltip>
+              <p>@ducdat0507</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <NewgroundsTankIcon />
             <span>newgrounds</span>
           </a>
         </div>
         <div class="link-tile">
           <a href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
-            <Tooltip>@ducdat0507</Tooltip>
+            <Tooltip>
+              <p>@ducdat0507</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <VorkedLarfleezeIcon />
             <span>mspfa</span>
           </a>
@@ -133,6 +154,7 @@
                 @duducat<br/>
                 (my rhythm game studio)
               </p>
+              <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>
             <Icon icon="bi:discord" />
             <span>fff40 studios<br/>discord server</span>
@@ -146,6 +168,7 @@
                 @duducat<br/>
                 (for incremental game related stuff)
               </p>
+              <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>
             <Icon icon="bi:discord" />
             <span>galaxy (+ego)<br/>discord server</span>
@@ -155,7 +178,8 @@
         <div class="link-tile" style="--col: 2; --row: 1">
           <a href="https://duducat.atabook.org" rel="me">
             <Tooltip>
-              (note: I don't check this very often)
+              <p>(note: I don't check this very often)</p>
+              <p class="tooltip-action touch-only">(click again to enter)</p>
             </Tooltip>
             <Icon icon="hugeicons:pen-tool-03" />
             <span>sign the guestbook!</span>
@@ -169,7 +193,8 @@
               <div class="link-tile">
                 <a href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
                   <Tooltip>
-                    (&infin; resolution, &infin; frame rate, though with less than ideal support)
+                    <p>(&infin; resolution, &infin; frame rate, though with less than ideal support)</p>
+                    <p class="tooltip-action touch-only">(click again to download)</p>
                   </Tooltip>
                   <Icon icon="iconoir:arrow-down" />
                   <span>.svg</span>
@@ -178,7 +203,8 @@
               <div class="link-tile">
                 <a href="/index/res/buttons/duducat.gif" aria-label="download .gif" download="duducat.gif">
                   <Tooltip>
-                    (88&times;31 pixels, 12.5fps, is more likely to be played correctly by your OS's image viewer)
+                    <p>(88&times;31 pixels, 12.5fps, is more likely to be played correctly by your OS's image viewer)</p>
+                    <p class="tooltip-action touch-only">(click again to download)</p>
                   </Tooltip>
                   <Icon icon="iconoir:arrow-down" />
                   <span>.gif</span>
@@ -195,7 +221,10 @@
       <div class="widget-box live-tiles">
         <div class="link-tile" style="--col: 2; --row: 1">
           <a href="https://en.liberapay.com/ducdat0507" rel="me">
-            <Tooltip>@ducdat0507</Tooltip>
+            <Tooltip>
+              <p>@ducdat0507</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
             <Icon icon="simple-icons:liberapay" />
             <span>liberapay</span>
           </a>
@@ -219,6 +248,7 @@
                     (is the number saying {count.toLocaleString("en-US")}?)
                   </p>
                   <img src={graphURL} alt="" style="margin-left:32px" aria-hidden="true" />
+                  <p class="tooltip-action touch-only">(click again to navigate)</p>
                 </Tooltip>
                 <script id="fc2-counter" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40236645&amp;lang=1&amp;main=1"></script>
               </div>
@@ -238,7 +268,10 @@
         <div style="--col: 1; --row: 1">
           <div class="center-child">
             <a href='http://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" aria-label="the infamous internet button">
-              <Tooltip>the infamous internet button</Tooltip>
+              <Tooltip>
+                <p>the internet button</p>
+                <p class="tooltip-action touch-only">(click again to give an internet)</p>
+              </Tooltip>
               <img src='http://internetometer.com/imagesmall/50959.png' style="width:100%;height:100%;object-fit:cover" alt="the infamous internet button"/>
             </a>
           </div>
@@ -247,7 +280,10 @@
         <div style="--col: 1; --row: 1">
           <div class="center-child" style="image-rendering: pixelated">
             <a href="//clap.fc2.com/post/duducat/?url=https%3A%2F%2Fduducat.moe" class="image-link" target="_blank" aria-label="Web Clap by FC2">
-              <Tooltip>Web Clap by FC2</Tooltip>
+              <Tooltip>
+                <p>Web Clap by FC2</p>
+                <p class="tooltip-action touch-only">(click again to clap)</p>
+              </Tooltip>
               <img src="//clap.fc2.com/images/button/white/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />
               <img src="//clap.fc2.com/images/button/black/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />
               <img src="//clap.fc2.com/images/button/blue/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />

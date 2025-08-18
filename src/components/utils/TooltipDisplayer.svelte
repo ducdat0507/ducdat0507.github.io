@@ -12,7 +12,8 @@
         containerProps = _props;
     }
 
-    export function unsetTooltip() {
+    export function unsetTooltip(_parent: HTMLElement | null) {
+        if (_parent && parent != _parent) return;
         parent = null;
     }
 
@@ -109,6 +110,10 @@
 
         .tooltip :global(h4) {
             font-size: 1.25em;
+        }
+
+        .tooltip :global(.tooltip-action) {
+            opacity: 0.6;
         }
     }
 </style>

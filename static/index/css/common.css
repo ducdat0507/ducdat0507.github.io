@@ -24,3 +24,14 @@ a {
     color: #abf;
     text-decoration: underline dashed;
 }
+
+
+.touch-only {
+    display: none;
+}
+
+@media (hover: none) {
+    .touch-only {
+        display: unset;
+    }
+}

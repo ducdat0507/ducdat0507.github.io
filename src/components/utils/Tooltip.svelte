@@ -41,7 +41,8 @@
 
     function onTooltipUnset() {
         isShowing = false;
-        unsetTooltip();
+        let parent = tooltip.parentNode as HTMLElement | null;
+        unsetTooltip(parent);
     }
 
     function onTooltipSetMouse(ev: PointerEvent) {
@@ -71,14 +72,17 @@
             
             onTooltipSet();
 
+            function bodyMove(ev2: PointerEvent) {
+                if ((ev.clientX - ev2.clientX) ** 2 + (ev.clientY - ev2.clientY) ** 2 > 100) bodyTouch(ev2);
+            }
             function bodyTouch(ev2: PointerEvent) {
                 onTooltipUnset();
                 document.body.removeEventListener("pointerdown", bodyTouch);
-                document.body.removeEventListener("pointermove", bodyTouch);
+                document.body.removeEventListener("pointermove", bodyMove);
                 parent?.removeEventListener("click", cancelTouch);
             }
             document.body.addEventListener("pointerdown", bodyTouch);
-            document.body.addEventListener("pointermove", bodyTouch);
+            document.body.addEventListener("pointermove", bodyMove);
             parent.addEventListener("click", cancelTouch);
         }
         else onTooltipUnset();

@@ -49,6 +49,8 @@
 
       clearInterval(setupInterval);
     }, 30);
+    setTimeout(() => clearInterval(setupInterval), 5000)
+    return () => clearInterval(setupInterval);
   }
 
 </script>

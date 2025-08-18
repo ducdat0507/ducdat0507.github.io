@@ -62,7 +62,7 @@
     }
 </script>
 
-<section class="tooltip" class:is-showing={isShowing}
+<section class="tooltip" role="tooltip" class:is-showing={isShowing}
             bind:this={tooltip} 
             {...containerProps}
         >

@@ -14,7 +14,7 @@
   let graphURL: string = $state("");
   let setupInterval: number = 0;
 
-  const setupCounter: Action = (elm) => {
+  const setupCounter: Action = (elm: Element) => {
     setupInterval = setInterval(() => {
       let link = elm.querySelector("a");
       console.log(...elm.children);
@@ -50,7 +50,12 @@
       clearInterval(setupInterval);
     }, 30);
     setTimeout(() => clearInterval(setupInterval), 5000)
-    return () => clearInterval(setupInterval);
+
+    return {
+      destroy() {
+        clearInterval(setupInterval);
+      }
+    }
   }
 
 </script>
@@ -158,7 +163,7 @@
         </div>
         <div class="link-tile button-snagger" style="--col: 2; --row: 1">
           <div>
-            <img src="/index/res/buttons/duducat.svg" alt='"duducat&amp;s website" button' />
+            <img src="/index/res/buttons/duducat.svg" alt='"duducat&#39;s website" button' />
             <span>snag this button!</span>
             <div class="button-links">
               <div class="link-tile">

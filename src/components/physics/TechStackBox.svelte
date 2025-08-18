@@ -36,7 +36,7 @@
         boxes: [],
         counter: 1,
     });
-    let divHolder: HTMLDivElement;
+    let divHolder: HTMLElement;
 
     onMount(() => {
         world = new World({
@@ -93,9 +93,9 @@ Box
     }
 </script>
 
-<div class="tech-stack" bind:this={divHolder}>
+<ul class="tech-stack" bind:this={divHolder}>
     {#each data.boxes as box, index}
-        <div class="tech-stack-box" 
+        <li class="tech-stack-box" 
             style:transform={(data.counter, `translate(${box.getPosition().x * 2}em, ${-box.getPosition().y * 2}em) rotate(${-box.getAngle()}rad)`)}
             style:--bg-color={items[index].color}
             style:--size={`${items[index].priority}em`}
@@ -107,9 +107,9 @@ Box
             {:else}
                 <Icon style={items[index].iconStyle} icon={items[index].iconName!} color={items[index].iconColor} />
             {/if}
-        </div> 
+        </li> 
     {/each}
-</div>
+</ul>
 
 <style>
     .tech-stack {

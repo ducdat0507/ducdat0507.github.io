@@ -26,6 +26,20 @@
       let id = link.getAttribute("onmouseover")?.match(/_FC2COUNTER(.*)_\d/)![1];
       graphURL = `https://counter1-cdn-ssl.fc2.com/popup.php?id=${id}&main=1&lang=1`;
 
+      // Decimal point
+      let decimalPointIndex = 0;
+      let digits = [...images];
+      digits.reverse(); digits.pop(); digits.shift();
+      for (let img of digits) {
+        decimalPointIndex++;
+        if (decimalPointIndex == 4) {
+          let decimalPoint = new Image();
+          decimalPoint.src = "/index/res/images/counter/decimal.png";
+          img.insertAdjacentElement("afterend", decimalPoint);
+          decimalPointIndex = 1;
+        }
+      }
+
       link.prepend(elm.querySelector("x-tooltip")!);
       link.removeAttribute("onmouseover");
       link.removeAttribute("onmouseout");

@@ -68,30 +68,30 @@
   <div id="socials" data-category-name="socials">
     <section class="">
       <h2>find me on:</h2>
-      <div class="widget-box live-tiles">
-        <div class="link-tile">
+      <ul class="widget-box live-tiles">
+        <li class="link-tile" aria-label="github">
           <a href="https://github.com/ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <Icon icon="cib:github" />
-            <span>github</span>
+            <h3>github</h3>
             <GitHubStat />
           </a>
-        </div>
-        <div class="link-tile">
+        </li>
+        <li class="link-tile" aria-label="bluesky">
           <a href="https://bsky.app/profile/duducat.moe" rel="me">
             <Tooltip>
               <p>@duducat.moe</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <Icon icon="bi:bluesky" />
-            <span>bluesky</span>
+            <h3>bluesky</h3>
             <BlueskyStat />
           </a>
-        </div>
-        <div class="link-tile">
+        </li>
+        <li class="link-tile" aria-label="galaxy.click">
           <a href="https://galaxy.click/@ducdat0507" rel="me">
             <Tooltip>
               <p>@duducat.moe</p>
@@ -100,54 +100,54 @@
             <GalaxyIcon />
             <span>galaxy.click</span>
           </a>
-        </div>
-        <div class="link-tile">
+        </li>
+        <li class="link-tile" aria-label="mastodon">
           <a href="https://mastodon.gamedev.place/@ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507@mastodon.gamedev.place</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <Icon icon="bi:mastodon" />
-            <span>mastodon</span>
+            <h3>mastodon</h3>
           </a>
-        </div>
-        <div class="link-tile" style="--col: 2">
+        </li>
+        <li class="link-tile" style="--col: 2" aria-label="status.cafe">
           <a href="https://status.cafe/users/duducat" rel="me">
             <Tooltip>
               <p>@duducat</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
-            <span>status.cafe</span>
+            <h3>status.cafe</h3>
             <StatusCafeStat />
           </a>
-        </div>
-        <div class="link-tile">
+        </li>
+        <li class="link-tile" aria-label="newgrounds">
           <a href="https://ducdat0507.newgrounds.com" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <NewgroundsTankIcon />
-            <span>newgrounds</span>
+            <h3>newgrounds</h3>
           </a>
-        </div>
-        <div class="link-tile">
+        </li>
+        <li class="link-tile" aria-label="mspfa">
           <a href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <VorkedLarfleezeIcon />
-            <span>mspfa</span>
+            <h3>mspfa</h3>
           </a>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <section>
       <h2>keep in touch:</h2>
-      <div class="widget-box live-tiles">
-        <div class="link-tile" style="--col: 2; --row: 1">
+      <ul class="widget-box live-tiles">
+        <li class="link-tile" style="--col: 2; --row: 1" aria-label="fff40 studios discord server">
           <a href="https://discord.gg/vXJTPFQBHm" rel="me">
             <Tooltip>
               <p>
@@ -157,11 +157,11 @@
               <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>
             <Icon icon="bi:discord" />
-            <span>fff40 studios<br/>discord server</span>
+            <h3>fff40 studios<br/>discord server</h3>
             <DiscordInviteStat invite="vXJTPFQBHm" />
           </a>
-        </div>
-        <div class="link-tile" style="--col: 2; --row: 1">
+        </li>
+        <li class="link-tile" style="--col: 2; --row: 1" aria-label="galaxy (+ego) discord server">
           <a href="https://galaxy.click/discord" rel="me">
             <Tooltip>
               <p>
@@ -171,25 +171,25 @@
               <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>
             <Icon icon="bi:discord" />
-            <span>galaxy (+ego)<br/>discord server</span>
+            <h3>galaxy (+ego)<br/>discord server</h3>
             <DiscordInviteStat invite="6FD2bYMqV9" />
           </a>
-        </div>
-        <div class="link-tile" style="--col: 2; --row: 1">
+        </li>
+        <li class="link-tile" style="--col: 2; --row: 1" aria-label="sign the guestbook">
           <a href="https://duducat.atabook.org" rel="me">
             <Tooltip>
               <p>(note: I don't check this very often)</p>
               <p class="tooltip-action touch-only">(click again to enter)</p>
             </Tooltip>
             <Icon icon="hugeicons:pen-tool-03" />
-            <span>sign the guestbook!</span>
+            <h3>sign the guestbook!</h3>
           </a>
-        </div>
-        <div class="link-tile button-snagger" style="--col: 2; --row: 1">
+        </li>
+        <li class="link-tile button-snagger" style="--col: 2; --row: 1">
           <div>
             <img src="/index/res/buttons/duducat.svg" alt='"duducat&#39;s website" button' />
-            <span>snag this button!</span>
-            <div class="button-links">
+            <h3>snag this button!</h3>
+            <div class="links">
               <div class="link-tile">
                 <a href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
                   <Tooltip>
@@ -212,33 +212,33 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <section>
       <h2>throw me some money for no reason at all:</h2>
-      <div class="widget-box live-tiles">
-        <div class="link-tile" style="--col: 2; --row: 1">
+      <ul class="widget-box live-tiles">
+        <li class="link-tile" style="--col: 2; --row: 1" aria-label="liberapay">
           <a href="https://en.liberapay.com/ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <Icon icon="simple-icons:liberapay" />
-            <span>liberapay</span>
+            <h3>liberapay</h3>
           </a>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
   </div>
 
   <div id="widgets" data-category-name="widgets">
     <section>
       <h2>boxes of numbers going up:</h2>
-      <div class="widget-box live-tiles">
+      <ul class="widget-box live-tiles">
         <!-- FC2 Counter -->
-        <div style="--col: 3; --row: 1">
+        <li style="--col: 3; --row: 1" aria-label="FC2 Counter">
           <div class="x2">
             <div>
               <div use:setupCounter class="fc2-counter">
@@ -254,30 +254,30 @@
               </div>
             </div>
           </div>
-        </div>
+        </li>
         <!-- Increment button -->
-        <div style="--col: 2; --row: 1">
+        <li style="--col: 2; --row: 1" aria-label="increment badge">
           <div class="x2">
             <div>
               <iframe src="//incr.easrng.net/badge?key=duducat" style="background: url(//incr.easrng.net/bg.gif);display:block" 
                 title="increment badge" width="88" height="31" frameborder="0"></iframe>
             </div>
           </div>
-        </div>
+        </li>
         <!-- Internet button -->
-        <div style="--col: 1; --row: 1">
+        <li style="--col: 1; --row: 1" aria-label="the internetometer">
           <div class="center-child">
-            <a href='http://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" aria-label="the infamous internet button">
+            <a href='http://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" aria-label="the internetometer">
               <Tooltip>
-                <p>the internet button</p>
+                <p>the internetometer</p>
                 <p class="tooltip-action touch-only">(click again to give an internet)</p>
               </Tooltip>
-              <img src='http://internetometer.com/imagesmall/50959.png' style="width:100%;height:100%;object-fit:cover" alt="the infamous internet button"/>
+              <img src='http://internetometer.com/imagesmall/50959.png' style="width:100%;height:100%;object-fit:cover" alt="the internetometer"/>
             </a>
           </div>
-        </div>
+        </li>
         <!-- FC2 Clap -->
-        <div style="--col: 1; --row: 1">
+        <li style="--col: 1; --row: 1" aria-label="Web Clap by FC2">
           <div class="center-child" style="image-rendering: pixelated">
             <a href="//clap.fc2.com/post/duducat/?url=https%3A%2F%2Fduducat.moe" class="image-link" target="_blank" aria-label="Web Clap by FC2">
               <Tooltip>
@@ -290,19 +290,19 @@
               <img src="//clap.fc2.com/images/button/pink/duducat?url=https%3A%2F%2Fduducat.moe&lang=en" alt="Web Clap by FC2" style="border:none;" />
             </a>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <section>
       <h2>random internet widgets go:</h2>
-      <div class="widget-box live-tiles">
-        <div style="--col: 2; --row: 2">
+      <ul class="widget-box live-tiles">
+        <li style="--col: 2; --row: 2" aria-label="It's tamaNOTchi! Click to feed!">
           <a href="https://tamanotchi.world/25572c" class="center-child">
             <img src="https://tamanotchi.world/i2/25572" alt="It's tamaNOTchi! Click to feed!">
           </a>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
   </div>
 </div>
@@ -361,13 +361,13 @@
   .button-snagger img {
     margin: 0.5em;
   }
-  .button-snagger > * > span {
+  .button-snagger > * > h3 {
     text-align: start;
     padding-right: 7em;
     display: block;
   }
 
-  .button-links {
+  .links {
     position: absolute;
     inset: auto -.3em -.3em auto;
     min-width: calc(100%);
@@ -376,18 +376,18 @@
     justify-content: end;
     gap: 4px;
   }
-  .button-links > .link-tile {
+  .links > .link-tile {
     flex: 0 0 2.4em;
     aspect-ratio: 1;
   }
-  .button-links > .link-tile span {
+  .links > .link-tile span {
     line-height: 1;
     bottom: .4em;
   }
-  .button-links > .flex-space {
+  .links > .flex-space {
     flex: 1;
   }
-  .button-links .link-tile > a {
+  .links .link-tile > a {
     display: block;
     width: 100%;
     height: 100%;

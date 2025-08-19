@@ -14,16 +14,16 @@
             icon?: string,
             href: string,
         } | null)[],
-        title: Snippet,
+        title: string,
         prototype: boolean,
         description: Snippet,
     } = $props();
 
 </script>
 
-<article class="project-card" class:prototype={prototype} {...cardProps}>
-    <div>
-        <h4 class="title">{@render title()}</h4>
+<li class="project-card" class:prototype={prototype} {...cardProps} aria-label={title}>
+    <article>
+        <h4 class="title">{title}</h4>
         <div class="description">{@render description()}</div>
         <div class="links">
             {#each links as link}
@@ -39,14 +39,14 @@
                 {/if}
             {/each}
         </div>
-    </div>
-</article>
+    </article>
+</li>
 
 <style>
     .project-card {
         position: relative;
     }
-    .project-card > div {
+    .project-card > article {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -55,7 +55,7 @@
         color: white;
         padding: 0.5em;
     }
-    .project-card.prototype > div {
+    .project-card.prototype > article {
         border-style: dashed;
     }
     .project-card :is(h4, :global(p)) {

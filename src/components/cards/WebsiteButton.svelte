@@ -10,26 +10,30 @@
 
 </script>
 
-<a class="website-button" href={website.site}>
-    <span class="website-image" aria-hidden="true">
-        {#if website.button}
-            <img src={website.button.includes("//") ? website.button : `/index/res/buttons/websites/${website.button}`} loading="lazy" alt={website.name} />
-        {:else}
-            <small>no button D:</small>
-        {/if}
-    </span>
-    <span class="website-name">
-        {website.name}
-    </span>
-    <span class="outlink-icon" aria-hidden="true">
-        <Icon icon="lucide:external-link" />
-    </span>
-</a>
+<li class="website-button" aria-label={website.name}>
+    <a href={website.site}>
+        <span class="website-image" aria-hidden="true">
+            {#if website.button}
+                <img src={website.button.includes("//") ? website.button : `/index/res/buttons/websites/${website.button}`} loading="lazy" alt={website.name} />
+            {:else}
+                <small>no button D:</small>
+            {/if}
+        </span>
+        <span class="website-name">
+            {website.name}
+        </span>
+        <span class="outlink-icon" aria-hidden="true">
+            <Icon icon="lucide:external-link" />
+        </span>
+    </a>
+</li>
 
 <style>
     .website-button {
-        position: relative;
         padding: 2px 4px;
+    }
+    .website-button a {
+        position: relative;
         display: flex;
         font-size: .75em;
         color: white;

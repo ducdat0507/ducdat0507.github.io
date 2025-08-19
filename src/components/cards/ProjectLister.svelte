@@ -11,25 +11,22 @@
     {(index += 1), ""}
     <section id={sectionName.replaceAll(" ", "-")} data-category-name={altNames?.[index - 1] ?? sectionName}>
       <h2>{sectionName}</h2>
-      <div class="subsections">
+      <ul class="subsections">
         {#each Object.entries(section) as [categoryName, category]}
-          <section class="subsection">
+          <li class="subsection" aria-label={categoryName}>
             <h3>{categoryName}</h3>
-            {#each category as project}
-              <div class="project-list">
-                <ProjectCard prototype={project.prototype} links={project.links}>
-                  {#snippet title()}
-                    {project.name}
-                  {/snippet}
+            <ul class="project-list">
+              {#each category as project}
+                <ProjectCard prototype={project.prototype} links={project.links} title={project.name}>
                   {#snippet description()}
                     {@html project.description}
                   {/snippet}
                 </ProjectCard>
-              </div>
-            {/each}
-          </section>
+              {/each}
+            </ul>
+          </li>
         {/each}
-      </div>
+      </ul>
     </section>
   {/each}
 
@@ -37,13 +34,20 @@
   h2 {
     margin-block: 1em .5em;
   }
-
+  .subsections {
+    margin: 0;
+    padding: 0;
+  }
   .subsection {
     display: flex;
     flex-direction: column;
     margin: -4px -4px 1em -4px;
   }
-  .subsection > * {
+  .subsection ul {
+    margin: 0;
+    padding: 0;
+  }
+  .subsection ul > :global(*) {
     margin: 0;
   }
   .subsection h3 {

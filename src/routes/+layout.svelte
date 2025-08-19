@@ -100,7 +100,7 @@
     .content-container {
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
+        overflow: hidden auto;
         gap: 1em;
         align-items: stretch;
         justify-content: space-between;

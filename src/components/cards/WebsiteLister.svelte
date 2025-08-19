@@ -10,18 +10,24 @@
   {#each Object.entries(websites) as [categoryName, category]}
     <section class="subsection">
       <h3>{categoryName}</h3>
-      <div class="website-list">
+      <ul class="website-list">
         {#each category as website}
           <WebsiteButton {website} />
         {/each}
-      </div>
+      </ul>
     </section>
   {/each}
 </div>
 
 <style>
-  h2 {
+  h3 {
     margin-block: 1em .5em;
+  }
+
+  .website-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .subsection {

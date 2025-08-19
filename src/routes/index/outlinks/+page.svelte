@@ -15,11 +15,9 @@
   </section>
   <section id="webrings" data-category-name="webrings">
     <h2>webrings</h2>
-    <div class="ring-box live-tiles">
-      <div style="--col: 2; --row: 2">
-        <LeakyRing />
-      </div>
-    </div>
+    <ul class="ring-box live-tiles">
+      <LeakyRing style="--col: 2; --row: 2" />
+    </ul>
   </section>
 </div>
 
@@ -28,7 +26,7 @@
     margin-block: 1em .5em;
   }
 
-  .ring-box > div > :global(*) {
+  .ring-box > :global(li > *) {
     position: relative;
     padding: .3em .4em;
   }

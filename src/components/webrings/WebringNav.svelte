@@ -32,7 +32,7 @@
     }
 </script>
 
-<div class="webring-nav">
+<div class="links webring-nav">
     {#if indexLink}
         <div class="link-tile">
             <a href={indexLink}>

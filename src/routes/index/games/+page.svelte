@@ -13,21 +13,18 @@
 <div class="category-box">
   <section id="featured" data-category-name="featured">
     <h2>featured</h2>
-    <div class="project-list big">
+    <ul class="project-list big">
       {#each [
         games["incremental games"]["flagships (a.k.a. originals)"][0], 
         games["non-incremental games"]["rhythm games"][0]
       ] as project}
-        <ProjectCard prototype={!!project.prototype} links={project.links}>
-          {#snippet title()}
-            {project.name}
-          {/snippet}
+        <ProjectCard prototype={!!project.prototype} links={project.links} title={project.name}>
           {#snippet description()}
             {@html project.description}
           {/snippet}
         </ProjectCard>
       {/each}
-    </div>
+    </ul>
   </section>
   <ProjectLister projects={games} altNames={["incrementals", "non-incrementals"]} />
 </div>

@@ -5,8 +5,10 @@
 
     const {
         backend = "https://brain.melonking.net",
+        ...itemProps
     }: {
         backend?: string,
+        [itemProp: string]: any
     } = $props();
 
     onMount(() => {
@@ -64,13 +66,19 @@
     }
 </script>
 
-<div class="leaky-ring">
-    <div class="leaky-ring-holder" style:--level={fillAmount / fillMax} on:click={doBilge}></div>
-    <h4>Leaky Homepage Ring</h4>
-    <WebringNav 
-        indexLink="https://melonking.net/free/software/flood" 
-        allLinks={allSites} />
-</div>
+<li class="leaky-ring" aria-label="Leaky Homepage Ring" {...itemProps}>
+    <article>
+        <h4>Leaky Homepage Ring</h4>
+        <button class="leaky-ring-holder" 
+                style:--level={fillAmount / fillMax} 
+                aria-label={`Water level: ${fillAmount / fillMax}% - click to bilge`}
+                onclick={doBilge}
+            ></button>
+        <WebringNav 
+            indexLink="https://melonking.net/free/software/flood" 
+            allLinks={allSites} />
+    </article>
+</li>
 
 <style>
     .leaky-ring-holder {

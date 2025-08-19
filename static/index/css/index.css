@@ -5,6 +5,7 @@
     grid-template-columns: repeat(auto-fill, minmax(5.5em, 1fr));
     grid-auto-flow: row dense;
     margin: -4px;
+    padding: 0;
 }
 .live-tiles>* {
     --row: 1;
@@ -29,11 +30,14 @@
 .link-tile > * {
     position: relative;
   }
-.link-tile > * > span:first-of-type {
+.link-tile > * > h3,
+.links > .link-tile > * > span {
     position: absolute;
     left: .4em;
     bottom: .3em;
+    margin: 0;
     font-size: 0.75em;
+    font-weight: normal;
     text-align: start;
     line-height: 1.2;
 }
@@ -111,6 +115,8 @@
     display: flex;
     flex-direction: column;
     margin: -4px;
+    padding: 0;
+    list-style: none;
 }
 .project-list>* {
     padding: 4px;

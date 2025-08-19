@@ -57,7 +57,7 @@
     font-size: 1em;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 50em) {
     .subsections {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -65,7 +65,7 @@
     }
   }
 
-  @media (min-width: 1120px) {
+  @media (min-width: 70em) {
     .subsections {
       grid-template-columns: repeat(3, 1fr);
     }

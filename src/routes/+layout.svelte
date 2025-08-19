@@ -110,13 +110,13 @@
         inset: 0 -1em 0 50%;
     }
 
-    @media (max-width: 1343.99px) {
+    @media (max-width: 83.999em) {
         :global(body) {
             font-size: 0.9em;
         }
     }
 
-    @media (max-width: 799.99px) {
+    @media (max-width: 49.999em) {
         .main-container .content-background { 
             position: fixed;
         }
@@ -180,7 +180,7 @@
     }
 
 
-    @media (min-width: 800px) {
+    @media (min-width: 50em) {
 
         .main-container.home {
             --inset-block: max(0px, calc(50dvh - 20em));
@@ -304,13 +304,13 @@
 
     }
 
-    @media (min-width: 1120px) {
+    @media (min-width: 70em) {
         .main-container:not(.home) .content-background { 
             inset: 0 calc(50dvw - 25em);
         }
     }
 
-    @media (min-width: 1184px) {
+    @media (min-width: 74em) {
         .main-container.home .content-background { 
             inset: 0 -1em 0 50%;
         }

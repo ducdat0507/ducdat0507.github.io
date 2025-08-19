@@ -37,7 +37,7 @@
     margin: 0;
   }
 
-  @media (max-width: 799.99px) {
+  @media (max-width: 49.999em) {
     .category-box :global(h2) {
       overflow: hidden;
       width: 0.0001px;
@@ -46,7 +46,7 @@
     }
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 50em) {
     .category-box {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -63,7 +63,7 @@
     }
   }
 
-  @media (min-width: 1120px) {
+  @media (min-width: 70em) {
     .category-box {
       width: 70em;
       grid-template-columns: repeat(3, 1fr);

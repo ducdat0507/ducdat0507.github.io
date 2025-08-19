@@ -348,7 +348,6 @@ export const nongames: ProjectCollection = {
                 links: [
                     { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/stampbook" },
                     null,
-                    { name: "neocities mirror", href: "https://stampbook.neocities.org/" },
                     { name: "launch", href: "/stampbook" },
                 ]
             },

@@ -98,7 +98,7 @@
               <p class="tooltip-action touch-only">(click again to view profile)</p>
             </Tooltip>
             <GalaxyIcon />
-            <span>galaxy.click</span>
+            <h3>galaxy.click</h3>
           </a>
         </li>
         <li class="link-tile" aria-label="mastodon">

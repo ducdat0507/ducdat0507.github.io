@@ -41,7 +41,7 @@
     text-align: start;
     line-height: 1.2;
 }
-.link-tile > * > span + span {
+:not(.links) > .link-tile > * > span {
     position: absolute;
     right: .6em;
     top: .6em;

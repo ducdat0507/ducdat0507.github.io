@@ -27,7 +27,7 @@
         }
 
         if (lastPage || currentPage != "/") {
-            categories[0].scrollIntoView();
+            categories[0].scrollIntoView({inline: "center"});
         }
 
         lastPage = currentPage;

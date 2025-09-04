@@ -18,7 +18,7 @@
         broken: boolean  
     } = $props()
 
-    $effect(() => {
+    function updateLinks() {
         if (allLinks) {
             let index = allLinks.findIndex(link => link.includes("//" + page.url.hostname));
             if (index == -1) {
@@ -29,7 +29,12 @@
                 updateRandom();
             }
         }
+    }
+
+    $effect(() => {
+        updateLinks();
     })
+    updateLinks();
 
     function updateRandom() {
         randomLink = allLinks![Math.floor(Math.random() * allLinks!.length)];

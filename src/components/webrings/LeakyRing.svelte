@@ -49,7 +49,8 @@
                 }
                 let data = await x.json();
                 fillAmount = data.level;
-                allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain);
+                allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
+                console.log(fillAmount, allSites);
                 broken = false;
             })
             .catch(e => {
@@ -77,7 +78,7 @@
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder" 
                 style:--level={fillAmount / fillMax} 
-                aria-label={`Water level: ${fillAmount / fillMax}% - click to bilge`}
+                aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to bilge`}
                 onclick={doBilge}
             ></button>
         <WebringNav 

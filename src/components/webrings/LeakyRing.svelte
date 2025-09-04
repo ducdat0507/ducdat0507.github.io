@@ -48,7 +48,7 @@
                     throw new Error(await x.text());
                 }
                 let data = await x.json();
-                fillAmount = data.fill;
+                fillAmount = data.level;
                 allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain);
                 broken = false;
             })

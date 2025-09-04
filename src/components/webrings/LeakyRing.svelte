@@ -49,7 +49,9 @@
                 }
                 let data = await x.json();
                 fillAmount = data.level;
-                allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
+                let sites = Object.keys(data.info.members)
+                    .map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
+                allSites = sites;
                 broken = false;
             })
             .catch(e => {

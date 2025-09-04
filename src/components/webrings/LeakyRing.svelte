@@ -31,9 +31,12 @@
     let lastUpdate = 0;
     let broken = $state(false);
 
+    let bilging = false;
+
     function doRequest(bilge: boolean = false, fullInfo: boolean = true) {
         clearTimeout(lastUpdate);
-        lastUpdate = setTimeout(() => {doRequest()}, updateInterval * 1000)
+        lastUpdate = setTimeout(() => {doRequest()}, updateInterval * 1000);
+        if (bilging) return;
         fetch(
             `${backend}/flood?bilge=${bilge}&info=${fullInfo}&path=${page.url.pathname}`,
             {
@@ -53,6 +56,7 @@
                     .map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
                 allSites = sites;
                 broken = false;
+                bilging = false;
             })
             .catch(e => {
                 console.error(e);
@@ -67,6 +71,8 @@
             fillAmount = Math.max(0, fillAmount - bilgeAmount);
             lastBilge = Date.now();
             doRequest(true);
+            bilging = true;
+            setTimeout(() => bilging = false, 5000);
         } else {
 
         }
@@ -77,7 +83,7 @@
     <article class:broken={broken}>
         <h4>Leaky Homepage Ring</h4>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
-        <button class="leaky-ring-holder" 
+        <button class="leaky-ring-holder" class:bilging={bilging}
                 style:--level={fillAmount / fillMax} 
                 aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to bilge`}
                 onclick={doBilge}
@@ -98,6 +104,9 @@
         mask: linear-gradient(white, white) no-repeat bottom / 100% calc(var(--level, 0) * 100%);
         transition: mask 1s ease-out;
         cursor: url(https://melonking.net/images/ui/bucket.png), pointer;
+    }
+    .leaky-ring-holder.bilging {
+        transition: mask 5s linear;
     }
     h4 {
         position: relative;

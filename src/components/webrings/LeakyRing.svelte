@@ -88,6 +88,7 @@
                 aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to bilge`}
                 onclick={doBilge}
             ></button>
+        <div aria-hidden={true}>(click here to bilge)</div>
         <WebringNav 
             indexLink="https://melonking.net/free/software/flood" 
             allLinks={allSites}
@@ -107,6 +108,18 @@
     }
     .leaky-ring-holder.bilging {
         transition: mask 5s linear;
+    }
+    .leaky-ring-holder + div {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        place-content: center;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .3s;
+    }
+    .leaky-ring-holder:hover + div {
+        opacity: 1;
     }
     h4 {
         position: relative;

@@ -18,16 +18,18 @@
         broken: boolean  
     } = $props()
 
-    if (allLinks) {
-        let index = allLinks.findIndex(link => link.includes("//" + page.url.hostname));
-        if (index == -1) {
-            // TODO add not in site logic
-        } else {
-            prevLink = allLinks[(index + allLinks.length - 1) % allLinks.length]
-            nextLink = allLinks[(index + 1) % allLinks.length]
-            updateRandom();
+    $effect(() => {
+        if (allLinks) {
+            let index = allLinks.findIndex(link => link.includes("//" + page.url.hostname));
+            if (index == -1) {
+                // TODO add not in site logic
+            } else {
+                prevLink = allLinks[(index + allLinks.length - 1) % allLinks.length]
+                nextLink = allLinks[(index + 1) % allLinks.length]
+                updateRandom();
+            }
         }
-    }
+    })
 
     function updateRandom() {
         randomLink = allLinks![Math.floor(Math.random() * allLinks!.length)];

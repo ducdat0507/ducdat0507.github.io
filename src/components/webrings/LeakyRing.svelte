@@ -94,7 +94,7 @@
         background: url(/index/res/images/tiling-bg.svg) repeat, linear-gradient(#5df, #59f);
         mask: linear-gradient(white, white) no-repeat bottom / 100% calc(var(--level, 0) * 100%);
         transition: mask 1s ease-out;
-        cursor: url(https://melonking.net/images/ui/bucket.png);
+        cursor: url(https://melonking.net/images/ui/bucket.png), pointer;
     }
     h4 {
         position: relative;

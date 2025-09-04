@@ -20,7 +20,7 @@
 
     if (allLinks) {
         let index = allLinks.findIndex(link => link.includes("//" + page.url.hostname));
-        console.log(page.url.hostname, index);
+        console.log(page.url.hostname, allLinks, index);
         if (index == -1) {
             // TODO add not in site logic
         } else {

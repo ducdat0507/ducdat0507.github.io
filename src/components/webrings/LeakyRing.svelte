@@ -18,7 +18,7 @@
         }
     })
 
-    // Constants found in https://melonking.net/scripts/flood.js
+    // Constants from https://melonking.net/scripts/flood.js
     const fillMax: number = 100;
     const bilgeAmount: number = 10;
     const bilgeCooldown: number = 10;
@@ -29,6 +29,7 @@
 
     let lastBilge = 0;
     let lastUpdate = 0;
+    let broken = $state(false);
 
     function doRequest(bilge: boolean = false, fullInfo: boolean = true) {
         clearTimeout(lastUpdate);
@@ -49,8 +50,12 @@
                 let data = await x.json();
                 fillAmount = data.fill;
                 allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain);
+                broken = false;
             })
-            .catch(console.error);
+            .catch(e => {
+                console.error(e);
+                broken = true;
+            });
     }
 
     function doBilge() {
@@ -67,8 +72,9 @@
 </script>
 
 <li class="leaky-ring" aria-label="Leaky Homepage Ring" {...itemProps}>
-    <article>
+    <article class:broken={broken}>
         <h4>Leaky Homepage Ring</h4>
+        {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder" 
                 style:--level={fillAmount / fillMax} 
                 aria-label={`Water level: ${fillAmount / fillMax}% - click to bilge`}
@@ -76,7 +82,8 @@
             ></button>
         <WebringNav 
             indexLink="https://melonking.net/free/software/flood" 
-            allLinks={allSites} />
+            allLinks={allSites}
+            {broken} />
     </article>
 </li>
 

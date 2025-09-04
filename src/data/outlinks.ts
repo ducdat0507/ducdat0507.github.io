@@ -22,7 +22,7 @@ export const websites: WebsiteCollection = {
             {
                 site: "https://demonin.com/",
                 name: "Demonin",
-                // button: "none",
+                button: "!demonin.png",
             },
             {
                 site: "https://jbc.lol/",
@@ -32,7 +32,7 @@ export const websites: WebsiteCollection = {
             {
                 site: "https://thepaperpilot.org/",
                 name: "The Paper Pilot",
-                // button: "none",
+                button: "!thepaperpilot.png",
             },
             {
                 site: "https://yhvr.me/",

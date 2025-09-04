@@ -13,6 +13,7 @@
   let count: number = $state(0);
   let graphURL: string = $state("");
   let setupInterval: number = 0;
+  let hasSetup = false;
 
   const setupCounter: Action = (elm: Element) => {
     setupInterval = setInterval(() => {
@@ -47,9 +48,13 @@
       link.ariaLabel = `FC2 Counter - ${count.toLocaleString("en-US")} visitors`
       elm.querySelector("nobr")!.ariaHidden = "true";
 
+      hasSetup = true;
       clearInterval(setupInterval);
     }, 30);
-    setTimeout(() => clearInterval(setupInterval), 5000)
+    setTimeout(() => {
+      if (!hasSetup) elm.parentElement?.parentElement?.classList.add("broken");
+      clearInterval(setupInterval)
+    }, 5000)
 
     return {
       destroy() {

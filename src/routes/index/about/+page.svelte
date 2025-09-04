@@ -91,7 +91,7 @@
     <section class="box big about-me-main">
       <h1>about me</h1>
       <p>
-        I'm <TextSplitter text="ducdat0507" />, but due to some events I now go by <TextSplitter text="duducat" /> instead. 
+        I'm <TextSplitter text="duducat" />, but you can see me go by my old display name <TextSplitter text="ducdat0507" />. 
       </p>
       <p>
         I make random things on the interwebz. 
@@ -164,7 +164,14 @@
   }
 
   .category-box :global(splitted-text span) {
+    display: inline-block;
     animation: rainbow-text 2s calc(-0.05s * var(--index)) linear infinite;
+  }
+  .category-box :global(splitted-text:hover span) {
+    animation: 
+      rainbow-text 2s calc(-0.05s * var(--index)) linear infinite,
+      wavy-text 0.5s calc(-0.1s * var(--index)) ease-in-out alternate infinite,
+      wavy-start 0.3s cubic-bezier(0, 10, 0, 1);
   }
 
   @keyframes rainbow-text {
@@ -186,6 +193,20 @@
       color: hsl(315deg, 100%, 75%);
     } to {
       color: hsl(360deg, 100%, 75%);
+    }
+  }
+
+  @keyframes wavy-text {
+    from {
+      transform: translateY(-.25em);
+    } to {
+      transform: translateY(.25em);
+    }
+  }
+
+  @keyframes wavy-start {
+    from {
+      transform: translateY(0) scaleY(0.1) scaleX(1.2);
     }
   }
 </style>

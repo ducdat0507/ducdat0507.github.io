@@ -8,12 +8,14 @@
         randomLink,
         allLinks,
         indexLink,
+        broken = false,
     }: {
         prevLink?: string,
         nextLink?: string,
         randomLink?: string,
         allLinks?: string[],
-        indexLink?: string,    
+        indexLink?: string,  
+        broken: boolean  
     } = $props()
 
     if (allLinks) {
@@ -33,6 +35,11 @@
 </script>
 
 <div class="links webring-nav">
+    {#if broken}
+        <div class="notice">
+            webring is down or site is pending approval
+        </div>
+    {/if}
     {#if indexLink}
         <div class="link-tile">
             <a href={indexLink}>
@@ -76,6 +83,20 @@
         display: flex;
         flex-flow: row;
         gap: 4px;
+    }
+    .webring-nav > .notice {
+        position: absolute;
+        inset: auto auto 4em auto;
+        padding: .5em;
+        margin-inline: 0.2em 1em;
+        text-align: center;
+        line-height: 1.3;
+        font-style: italic;
+        border: 2px solid white;
+        background: black;
+        color: white;
+        z-index: 1;
+        font-size: 0.75em;
     }
     .webring-nav > .link-tile {
         flex: 0 0 2.4em;

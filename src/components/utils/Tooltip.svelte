@@ -9,12 +9,15 @@
         children: Snippet
     } = $props();
 
-    let tooltip: HTMLElement;
+    let tooltip: HTMLElement | null = $state(null);
+    let parent: HTMLElement | null = $state(null);
+
+    let hasParent = $derived(parent != null);
 
     let isShowing = false;
 
     onMount(() => {
-        let parent = tooltip.parentNode as HTMLElement | null;
+        if (!parent) parent = tooltip!.parentNode as HTMLElement | null;
         if (!parent) return;
 
         parent.addEventListener("pointerenter", onTooltipSetMouse);
@@ -24,6 +27,8 @@
         parent.addEventListener("blur", onTooltipUnset);
 
         return () => {
+            if (!parent) return;
+
             parent.removeEventListener("pointerenter", onTooltipSetMouse);
             parent.removeEventListener("pointerleave", onTooltipUnsetMouse);
             parent.removeEventListener("pointerdown", onTooltipSetTouch);
@@ -34,14 +39,12 @@
 
     function onTooltipSet() {
         isShowing = true;
-        let parent = tooltip.parentNode as HTMLElement | null;
         if (!parent) return;
         setTooltip(parent, children, containerProps);
     }
 
     function onTooltipUnset() {
         isShowing = false;
-        let parent = tooltip.parentNode as HTMLElement | null;
         unsetTooltip(parent);
     }
 
@@ -63,7 +66,6 @@
 
     function onTooltipSetTouch(ev: PointerEvent) {
         if (ev.pointerType == "touch") {
-            let parent = tooltip.parentNode as HTMLElement | null;
             if (!parent) return;
 
             if (isShowing) return;
@@ -89,4 +91,6 @@
     }
 </script>
 
-<x-tooltip bind:this={tooltip}></x-tooltip>
+{#if !hasParent}
+    <x-tooltip bind:this={tooltip}></x-tooltip>
+{/if}

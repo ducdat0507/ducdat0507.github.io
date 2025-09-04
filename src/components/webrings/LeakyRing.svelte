@@ -25,7 +25,7 @@
     const updateInterval: number = 10;
 
     let fillAmount: number = $state(0);
-    let allSites: string[] = $state([]);
+    let allSites: string[] = $state.raw([]);
 
     let lastBilge = 0;
     let lastUpdate = 0;

@@ -50,7 +50,6 @@
                 let data = await x.json();
                 fillAmount = data.level;
                 allSites = Object.keys(data.info.members).map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
-                console.log(fillAmount, allSites);
                 broken = false;
             })
             .catch(e => {

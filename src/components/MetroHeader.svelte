@@ -9,6 +9,8 @@
     let currentPage = $derived(page.url.pathname);
     let lastPage = "";
 
+    let mainContainer: HTMLElement | null = null;
+
     let navBar: HTMLElement, mobileTest: MediaQueryList;
 
     $effect(() => {
@@ -36,18 +38,21 @@
     onMount(() => {
         navBar = document.querySelector(".nav-bar") as HTMLElement;
         mobileTest = window.matchMedia("(max-width: 49.999em)");
-        document.querySelector(".main-container")?.addEventListener("scroll", onScroll)
+        mainContainer = document.querySelector(".main-container");
+        mainContainer?.addEventListener("scroll", updateScroll);
+        document.body.addEventListener("resize", updateScroll);
         setTimeout(() => {
-            metroHeader.scrollBy({left: 0.01});
+            updateScroll();
         }, 0)
         return () => {
-            document.querySelector(".main-container")?.removeEventListener("scroll", onScroll)
+            mainContainer?.removeEventListener("scroll", updateScroll);
+            document.body.removeEventListener("resize", updateScroll);
         }
     })
 
-    function onScroll(ev: Event) {
+    function updateScroll() {
         if (!mobileTest.matches) return;
-        let progress = (ev.target as HTMLElement).scrollLeft / navBar.offsetWidth;
+        let progress = (mainContainer?.scrollLeft ?? 0) / navBar.offsetWidth;
 
         updateHeader(progress);
     }

@@ -22,6 +22,7 @@
     <div class="nav-bar"> 
         <span class="flexible-space" aria-hidden="true"></span>
         <header>
+            <div class="mobile-nav-help" aria-hidden="true">(scroll horizontally to navigate!)</div>
             <CommonNav/>
         </header>
         <span class="flexible-space" aria-hidden="true"></span>
@@ -133,12 +134,19 @@
         .main-container::-webkit-scrollbar {
             display: none;
         }
+        .main-container .mobile-nav-help {
+            position: absolute;
+            inset: 2em max(3em, calc(100dvw - 32em)) auto auto;
+            border: 2px solid white;
+            padding: .6em 1em;
+            background: black;
+        }
         .main-container .nav-bar {
             display: flex;
             flex-flow: column;
             justify-content: safe end;
             flex: 0 0 min(30em, calc(100dvw - 3em));
-            padding-block: 2em;
+            padding-block: 7em 2em;
             padding-inline: 1em;
             z-index: 1;
             scroll-snap-align: start;
@@ -181,6 +189,9 @@
 
 
     @media (min-width: 50em) {
+        .main-container .mobile-nav-help {
+            display: none;
+        }
 
         .main-container.home {
             --inset-block: max(0px, calc(50dvh - 20em));

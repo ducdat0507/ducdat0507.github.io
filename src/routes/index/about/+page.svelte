@@ -89,7 +89,7 @@
 <div class="category-box">
   <div id="about-me" data-category-name="about me">
     <section class="box big about-me-main">
-      <h1>about me</h1>
+      <h2 class="hide-if-mobile">about me</h2>
       <p>
         I'm <TextSplitter text="duducat" />, but you can see me go by my old display name <TextSplitter text="ducdat0507" />. 
       </p>
@@ -99,14 +99,25 @@
       </p>
     </section>
     <section class="box about-me-tech">
-      <h2>tech haystack</h2>
+      <h3>tech haystack</h3>
       <TechStackBox items={techStack}/>
     </section>
     <section class="box about-me-tech">
-      <h2>creative stack</h2>
+      <h3>creative stack</h3>
       <p>TBA</p>
     </section>
   </div>
+  <!-- <div id="about-site" data-category-name="about my site">
+    <section class="box big about-site-main">
+      <h2 class="hide-if-mobile">about my site</h2>
+      <p>
+        This website hosts some of my stuff, you can check them out with the menu on the left!
+      </p>
+      <p>
+        This iteration of the index page is built with <a href="https://svelte.dev/">SvelteKit</a>!
+      </p>
+    </section>
+  </div> -->
 </div>
 
 <style>
@@ -122,9 +133,14 @@
   }
 
   @media (max-width: 49.999em) {
-
-    #about-me > :not(:first-child) {
+    .hide-if-mobile {
+      display: none;
+    }
+    :is(#about-me, #about-site) > :not(:first-child) {
       margin-top: 1em;
+    }
+    :is(.about-me-main, .about-site-main) > :nth-child(2) {
+      margin-top: 0;
     }
   }
 
@@ -137,14 +153,25 @@
       padding-bottom: 5em;
     }
 
-    #about-me {
+    #about-me, #about-site {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1em;
     }
 
-    .about-me-main {
+    .about-me-main, .about-site-main {
       grid-column: span 2;
+    }
+
+    #about-site {
+      margin-top: 3em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+    h3 {
+      font-size: 1.5em;
     }
   }
 
@@ -154,11 +181,11 @@
       width: 70em;
     }
 
-    #about-me {
+    #about-me, #about-site {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .about-me-main {
+    .about-me-main, .about-site-main {
       grid-column: span 3;
     }
   }
@@ -205,7 +232,7 @@
   }
 
   @keyframes wavy-start {
-    from {
+    10% {
       transform: translateY(0) scaleY(0.1) scaleX(1.2);
     }
   }

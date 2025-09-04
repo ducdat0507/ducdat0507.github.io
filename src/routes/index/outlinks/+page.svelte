@@ -13,8 +13,8 @@
     <h2>personal sites</h2>
     <WebsiteLister websites={websites["personal"]} />
   </section>
-  <section id="webrings" data-category-name="webrings">
-    <h2>webrings</h2>
+  <section id="webrings" data-category-name="rings & directories">
+    <h2>webrings & directories</h2>
     <ul class="ring-box live-tiles">
       <LeakyRing style="--col: 2; --row: 2" />
     </ul>

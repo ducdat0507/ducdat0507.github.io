@@ -90,6 +90,7 @@
 <style>
     .leaky-ring-holder {
         position: absolute;
+        border: none;
         inset: 0;
         background: url(/index/res/images/tiling-bg.svg) repeat, linear-gradient(#5df, #59f);
         mask: linear-gradient(white, white) no-repeat bottom / 100% calc(var(--level, 0) * 100%);

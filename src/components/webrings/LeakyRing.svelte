@@ -113,10 +113,13 @@
         position: absolute;
         inset: 0;
         display: flex;
-        place-content: center;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 1em;
         pointer-events: none;
         opacity: 0;
         transition: opacity .3s;
+        font-size: 0.75em;
     }
     .leaky-ring-holder:hover + div {
         opacity: 1;

@@ -31,7 +31,7 @@
     let lastUpdate = 0;
     let broken = $state(false);
 
-    let bilging = false;
+    let bilging = $state(false);
 
     function doRequest(bilge: boolean = false, fullInfo: boolean = true) {
         clearTimeout(lastUpdate);

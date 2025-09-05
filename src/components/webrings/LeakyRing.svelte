@@ -82,6 +82,7 @@
 <li class="leaky-ring" aria-label="Leaky Homepage Ring" {...itemProps}>
     <article class:broken={broken}>
         <h4>Leaky Homepage Ring</h4>
+        <p>(now's actually a webring)</p>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder" class:bilging={bilging}
                 style:--level={fillAmount / fillMax} 
@@ -100,6 +101,7 @@
     .leaky-ring-holder {
         position: absolute;
         border-width: 0px;
+        margin: 0;
         inset: 0;
         background: url(/index/res/images/tiling-bg.svg) repeat, linear-gradient(#5df, #59f);
         mask: linear-gradient(white, white) no-repeat bottom / 100% calc(var(--level, 0) * 100%);
@@ -124,8 +126,12 @@
     .leaky-ring-holder:hover + div {
         opacity: 1;
     }
-    h4 {
+    h4, p {
         position: relative;
         z-index: 1;
+    }
+    p {
+        margin: 0;
+        font-size: .75em;
     }
 </style>

@@ -105,7 +105,7 @@
         inset: 0;
         background: url(/index/res/images/tiling-bg.svg) repeat, linear-gradient(#5df, #59f);
         mask: linear-gradient(white, white) no-repeat bottom / 100% calc(var(--level, 0) * 100%);
-        transition: mask 1s ease-out;
+        transition: mask 2s cubic-bezier(0.075, 0.82, 0.165, 1);
         cursor: url(https://melonking.net/images/ui/bucket.png), pointer;
     }
     .leaky-ring-holder.bilging {

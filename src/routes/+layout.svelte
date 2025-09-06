@@ -29,22 +29,24 @@
         </div>
     </div>
     <div class="nav-bar" id="nav-bar" bind:this={navBar}> 
-        <span class="flexible-space" aria-hidden="true"></span>
-        <header>
-            <CommonNav/>
-        </header>
-        <span class="flexible-space" aria-hidden="true"></span>
-        <footer>
-            <p>
-                website &copy; 2021-{new Date().getFullYear()} duducat/ducdat0507<br/>
-                sometimes rights are reserved
-            </p>
-            <p class="buttons">
-                <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL">
-                    <img src="/index/res/buttons/smil.svg" alt="&quot;Enhanced with SMIL! :D&quot; button" />
-                </a>
-            </p>
-        </footer>
+        <div>
+            <span class="flexible-space" aria-hidden="true"></span>
+            <header>
+                <CommonNav/>
+            </header>
+            <span class="flexible-space" aria-hidden="true"></span>
+            <footer>
+                <p>
+                    website &copy; 2021-{new Date().getFullYear()} duducat/ducdat0507<br/>
+                    sometimes rights are reserved
+                </p>
+                <p class="buttons">
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL">
+                        <img src="/index/res/buttons/smil.svg" alt="&quot;Enhanced with SMIL! :D&quot; button" />
+                    </a>
+                </p>
+            </footer>
+        </div>
     </div>
     <div class="content-container">
         <main>
@@ -145,14 +147,20 @@
         .main-container .nav-bar {
             display: flex;
             flex-flow: column;
-            justify-content: safe end;
+            justify-content: end;
             flex: 0 0 min(30em, calc(100dvw - 3em));
-            padding-block: 7em 6em;
-            padding-inline: 1em;
             z-index: 1;
             scroll-snap-align: start;
             scroll-snap-stop: always;
+        }
+        .main-container .nav-bar > div {
+            display: flex;
+            flex-flow: column;
+            max-height: 100%;
+            overflow-y: auto;
             scrollbar-width: none;
+            padding-block: 7em 6em;
+            padding-inline: 1em;
         }
         .content-container {
             flex: 0 1;
@@ -232,7 +240,6 @@
             z-index: 100000;
             display: flex;
             flex-direction: column;
-            padding: 0.5em;
             background: black;
             border-right: 2px solid white;
             width: calc(4em + 2px);
@@ -242,18 +249,28 @@
             transition-timing-function: var(--ease-out-expo);
             animation: .8s nav-bar-in var(--ease-out-expo);
         }
+        .main-container:not(.home) .nav-bar > div {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
         .main-container:not(.home) .flexible-space {
             flex: 1;
         }
         .main-container:not(.home) .nav-bar :global(nav) {
             position: absolute;
             inset: 0em;
-            padding: 0.5em;
             display: flex;
             flex-flow: column;
             align-items: start;
-            justify-content: safe center;
+            justify-content: center;
+        }
+        .main-container:not(.home) .nav-bar :global(nav > ul) {
+            max-height: 100%;
+            padding-block: 6em;
+            padding-inline: 0.5em;
             overflow: hidden auto;
+            scrollbar-width: none;
         }
         .main-container:not(.home) .nav-bar :global(nav a) {
             display: flex;
@@ -290,10 +307,13 @@
         .main-container:not(.home) .nav-bar footer {
             font-size: small;
             opacity: 0;
-            width: 19rem;
+            width: 20rem;
+            padding: 1em;
             white-space: wrap;
             transition: all .3s;
             transition-timing-function: var(--ease-out-expo);
+            background: black;
+            z-index: 1;
         }
         .main-container:not(.home) .nav-bar:hover {
             width: 20rem;

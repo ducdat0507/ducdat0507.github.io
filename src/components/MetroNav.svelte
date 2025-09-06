@@ -7,7 +7,7 @@
     let metroHeader: HTMLDivElement;
     let metroHeaderItems: HTMLDivElement;
     let mobileNavItems: HTMLSpanElement;
-    let mobileNavBarItem: HTMLButtonElement;
+    let mobileNavBarItem: HTMLAnchorElement;
 
     let currentPage = $derived(page.url.pathname);
     let lastPage = "";

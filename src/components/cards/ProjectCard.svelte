@@ -29,7 +29,7 @@
             {#each links as link}
                 {#if link}
                     <div class="link-tile">
-                        <a href={link.href}>
+                        <a class="pop-out-btn" href={link.href}>
                             <Icon icon={link.icon || "iconoir:play"} />
                             <span>{link.name}</span>
                         </a>
@@ -50,7 +50,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        border: 2px solid white;
+        border: 2px solid #abf;
         background: black;
         color: white;
         padding: 0.5em;
@@ -68,7 +68,7 @@
         display: flex;
         flex-flow: row wrap;
         gap: .5em;
-        margin: .3em -.8em -.8em .3em;
+        margin: .3em -.8em -.8em 0;
     }
     .project-card .links > .link-tile {
         flex: 0 0 4.8em;

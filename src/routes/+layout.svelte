@@ -1,6 +1,7 @@
 
-<script>
+<script lang="ts">
   import { page } from '$app/state';
+  import Icon from '@iconify/svelte';
   import CommonNav from '../components/CommonNav.svelte';
   import MetroHeader from '../components/MetroHeader.svelte';
   import TooltipDisplayer from '../components/utils/TooltipDisplayer.svelte';
@@ -9,20 +10,36 @@
         children
     } = $props();
 
+    let mainContainer: HTMLDivElement;
+    let navBar: HTMLDivElement;
+
     let isHome = $derived(page.url.pathname == "/");
+
+    function scroll(direction: number) {
+        let scrollMulti = navBar.clientWidth;
+        mainContainer.scrollTo({left: mainContainer.scrollLeft + direction * scrollMulti, behavior: "smooth"});
+    }
 </script>
 
 <div class="background"></div>
-<div class="main-container" class:home={isHome}>
+<div class="main-container" class:home={isHome} bind:this={mainContainer}>
     <div class="content-background-holder">
         <div class="content-background">
             
         </div>
     </div>
-    <div class="nav-bar"> 
+    <div class="mobile-nav">
+        <div class="mobile-nav-help" aria-hidden="true">
+            <span>(scroll horizontally to navigate!)</span>
+        </div>
+        <div class="mobile-buttons" aria-hidden="true">
+            <button class="pop-out-btn" onclick={() => scroll(-1)}><Icon icon="tabler:arrow-left" /></button>
+            <button class="pop-out-btn" onclick={() => scroll(1)}><Icon icon="tabler:arrow-right" /></button>
+        </div>
+    </div>
+    <div class="nav-bar" bind:this={navBar}> 
         <span class="flexible-space" aria-hidden="true"></span>
         <header>
-            <div class="mobile-nav-help" aria-hidden="true">(scroll horizontally to navigate!)</div>
             <CommonNav/>
         </header>
         <span class="flexible-space" aria-hidden="true"></span>
@@ -134,12 +151,34 @@
         .main-container::-webkit-scrollbar {
             display: none;
         }
+        .main-container .mobile-buttons {
+            position: fixed;
+            inset: 2em calc(2em + 2px) auto auto;
+            z-index: 10;
+        }
+        .main-container .mobile-buttons button {
+            background: black;
+            color: white;
+            border: 2px solid white;
+            margin: 0;
+            padding: .6em;
+        }
+        .main-container .mobile-buttons :global(svg) {
+            display: block;
+            font-size: 1.625em;
+            min-height: 1em;
+            min-width: 1em;
+        }
         .main-container .mobile-nav-help {
             position: absolute;
-            inset: 2em max(3em, calc(100dvw - 32em)) auto auto;
+            inset: 2em max(calc(8em + 4px), calc(100dvw - 30em)) auto auto;
             border: 2px solid white;
             padding: .6em 1em;
             background: black;
+            z-index: 20;
+        }
+        .main-container .mobile-nav-help > span {
+            font-size: 0.75em;
         }
         .main-container .nav-bar {
             display: flex;
@@ -189,7 +228,7 @@
 
 
     @media (min-width: 50em) {
-        .main-container .mobile-nav-help {
+        .main-container .mobile-nav-help, .main-container .mobile-buttons {
             display: none;
         }
 
@@ -326,6 +365,16 @@
             inset: 0 -1em 0 50%;
         }
     }
+
+    @media (pointer: coarse) and (hover: none) {
+        .main-container .mobile-nav-help {
+            inset: 2em max(3em, calc(100dvw - 30em)) auto auto;
+        }
+        .main-container .mobile-buttons {
+            display: none;
+        }
+    }
+
 
     @keyframes nav-bar-in {
         from {

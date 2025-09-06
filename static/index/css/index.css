@@ -20,10 +20,13 @@
     display: block;
     width: 100%;
     height: 100%;
-    border: 2px solid white;
+    border: 2px solid #abf;
     background: black;
     color: white;
     text-decoration: none;
+}
+.live-tiles>*> .pop-out-btn:first-child {
+    border-color: white;
 }
 .live-tiles > *  > :first-child.broken {
     background-image: linear-gradient(135deg, #f007 33.33%, transparent 33.33%, transparent 50%, #f007 50%, #f007 83.33%, transparent 83.33%, transparent 100%);

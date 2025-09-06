@@ -49,7 +49,7 @@
     {/if}
     {#if indexLink}
         <div class="link-tile">
-            <a href={indexLink}>
+            <a class="pop-out-btn" href={indexLink}>
                 <Icon icon="simple-line-icons:directions" />
                 <span>indx</span>
             </a>
@@ -58,7 +58,7 @@
     <span class="flex-space" aria-hidden={true}></span>
     {#if prevLink}
         <div class="link-tile">
-            <a href={prevLink}>
+            <a class="pop-out-btn" href={prevLink}>
                 <Icon icon="iconoir:arrow-left" />
                 <span>prev</span>
             </a>
@@ -66,7 +66,7 @@
     {/if}
     {#if randomLink}
         <div class="link-tile">
-            <a href={randomLink}>
+            <a class="pop-out-btn" href={randomLink}>
                 <Icon icon="iconoir:dice-five" />
                 <span>rand</span>
             </a>
@@ -74,7 +74,7 @@
     {/if}
     {#if nextLink}
         <div class="link-tile">
-            <a href={nextLink}>
+            <a class="pop-out-btn" href={nextLink}>
                 <Icon icon="iconoir:arrow-right" />
                 <span>next</span>
             </a>

@@ -75,7 +75,7 @@
       <h2>find me on:</h2>
       <ul class="widget-box live-tiles">
         <li class="link-tile" aria-label="github">
-          <a href="https://github.com/ducdat0507" rel="me">
+          <a class="pop-out-btn" href="https://github.com/ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -86,7 +86,7 @@
           </a>
         </li>
         <li class="link-tile" aria-label="bluesky">
-          <a href="https://bsky.app/profile/duducat.moe" rel="me">
+          <a class="pop-out-btn" href="https://bsky.app/profile/duducat.moe" rel="me">
             <Tooltip>
               <p>@duducat.moe</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -97,7 +97,7 @@
           </a>
         </li>
         <li class="link-tile" aria-label="galaxy.click">
-          <a href="https://galaxy.click/@ducdat0507" rel="me">
+          <a class="pop-out-btn" href="https://galaxy.click/@ducdat0507" rel="me">
             <Tooltip>
               <p>@duducat.moe</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -107,7 +107,7 @@
           </a>
         </li>
         <li class="link-tile" aria-label="mastodon">
-          <a href="https://mastodon.gamedev.place/@ducdat0507" rel="me">
+          <a class="pop-out-btn" href="https://mastodon.gamedev.place/@ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507@mastodon.gamedev.place</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -117,7 +117,7 @@
           </a>
         </li>
         <li class="link-tile" style="--col: 2" aria-label="status.cafe">
-          <a href="https://status.cafe/users/duducat" rel="me">
+          <a class="pop-out-btn" href="https://status.cafe/users/duducat" rel="me">
             <Tooltip>
               <p>@duducat</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -127,7 +127,7 @@
           </a>
         </li>
         <li class="link-tile" aria-label="newgrounds">
-          <a href="https://ducdat0507.newgrounds.com" rel="me">
+          <a class="pop-out-btn" href="https://ducdat0507.newgrounds.com" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -137,7 +137,7 @@
           </a>
         </li>
         <li class="link-tile" aria-label="mspfa">
-          <a href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
+          <a class="pop-out-btn" href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -153,7 +153,7 @@
       <h2>keep in touch:</h2>
       <ul class="widget-box live-tiles">
         <li class="link-tile" style="--col: 2; --row: 1" aria-label="fff40 studios discord server">
-          <a href="https://discord.gg/vXJTPFQBHm" rel="me">
+          <a class="pop-out-btn" href="https://discord.gg/vXJTPFQBHm" rel="me">
             <Tooltip>
               <p>
                 @duducat<br/>
@@ -167,7 +167,7 @@
           </a>
         </li>
         <li class="link-tile" style="--col: 2; --row: 1" aria-label="galaxy (+ego) discord server">
-          <a href="https://galaxy.click/discord" rel="me">
+          <a class="pop-out-btn" href="https://galaxy.click/discord" rel="me">
             <Tooltip>
               <p>
                 @duducat<br/>
@@ -181,7 +181,7 @@
           </a>
         </li>
         <li class="link-tile" style="--col: 2; --row: 1" aria-label="sign the guestbook">
-          <a href="https://duducat.atabook.org" rel="me">
+          <a class="pop-out-btn" href="https://duducat.atabook.org" rel="me">
             <Tooltip>
               <p>(note: I don't check this very often)</p>
               <p class="tooltip-action touch-only">(click again to enter)</p>
@@ -196,7 +196,7 @@
             <h3>snag this button!</h3>
             <div class="links">
               <div class="link-tile">
-                <a href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
+                <a class="pop-out-btn" href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
                   <Tooltip>
                     <p>(&infin; resolution, &infin; frame rate, though with less than ideal support)</p>
                     <p class="tooltip-action touch-only">(click again to download)</p>
@@ -206,7 +206,7 @@
                 </a>
               </div>
               <div class="link-tile">
-                <a href="/index/res/buttons/duducat.gif" aria-label="download .gif" download="duducat.gif">
+                <a class="pop-out-btn" href="/index/res/buttons/duducat.gif" aria-label="download .gif" download="duducat.gif">
                   <Tooltip>
                     <p>(88&times;31 pixels, 12.5fps, is more likely to be played correctly by your OS's image viewer)</p>
                     <p class="tooltip-action touch-only">(click again to download)</p>
@@ -225,7 +225,7 @@
       <h2>throw me some money for no reason at all:</h2>
       <ul class="widget-box live-tiles">
         <li class="link-tile" style="--col: 2; --row: 1" aria-label="liberapay">
-          <a href="https://en.liberapay.com/ducdat0507" rel="me">
+          <a class="pop-out-btn" href="https://en.liberapay.com/ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>

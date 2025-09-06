@@ -83,7 +83,7 @@
 </script>
 
 <svelte:head>
-  <title>about duducat</title>
+  <title>about duducat - duducat's website!</title>
 </svelte:head>
 
 <div class="category-box">

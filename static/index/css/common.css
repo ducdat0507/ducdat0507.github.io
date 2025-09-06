@@ -25,6 +25,41 @@ a {
     text-decoration: underline dashed;
 }
 
+.pop-out-btn {
+    --outset: 2px;
+    --inset: 0px;
+    --inset-border: 2px;
+    transform: translate(calc(var(--outset) - var(--inset)), calc(var(--outset) - var(--inset)));
+    transition: transform .1s, clip-path .1s, inset .1s;
+}
+.pop-out-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: calc(var(--outset) * -1 - var(--inset-border));
+    right: calc(var(--inset-border) * -1);
+    top: calc(var(--outset) * -1 - var(--inset-border));
+    bottom: calc(var(--inset-border) * -1);
+    z-index: -1;
+    background: #abf;
+    clip-path: polygon(nonzero,
+        0% 0%, 
+        0% calc(100% - var(--outset)), 
+        var(--outset) 100%, 
+        var(--outset) var(--outset),
+        100% var(--outset),
+        calc(100% - var(--outset)) 0%
+    );
+    transition: inherit;
+}
+.pop-out-btn:hover {
+    --outset: 3px;
+}
+.pop-out-btn:active {
+    --outset: 1px;
+    transition: none;
+}
+
 
 .touch-only {
     display: none;

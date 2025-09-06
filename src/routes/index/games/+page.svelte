@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>duducat's games</title>
+  <title>duducat's games - duducat's website!</title>
 </svelte:head>
 
 <div class="category-box">

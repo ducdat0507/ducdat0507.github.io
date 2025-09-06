@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  <title>duducat's outlink collection</title>
+  <title>duducat's outlink collection - duducat's website!</title>
 </svelte:head>
 
 <div class="category-box">

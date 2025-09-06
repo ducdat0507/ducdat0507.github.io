@@ -1,10 +1,13 @@
 <script lang="ts">
   import { page } from "$app/state";
+  import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
 
 
     let metroHeader: HTMLDivElement;
     let metroHeaderItems: HTMLDivElement;
+    let mobileNavItems: HTMLSpanElement;
+    let mobileNavBarItem: HTMLButtonElement;
 
     let currentPage = $derived(page.url.pathname);
     let lastPage = "";
@@ -16,16 +19,25 @@
     $effect(() => {
         currentPage;
 
-        metroHeaderItems.innerHTML = "";
+        metroHeaderItems.innerHTML = mobileNavItems.innerHTML = "";
 
         let categories = document.querySelectorAll(".category-box > *");
         if (!categories[0]) return;
 
-        for (let elm of categories) {
+        for (const elm of categories) {
             let link = document.createElement("a");
             link.innerText = elm.getAttribute("data-category-name") ?? "";
             link.href = "#" + elm.id;
             metroHeaderItems.appendChild(link);
+
+            let btn = document.createElement("a");
+            btn.classList.add("pop-out-btn")
+            btn.href = "#" + elm.id;
+            btn.onclick = (e) => {
+                e.preventDefault();
+                elm.scrollIntoView({inline: "center", behavior: "smooth"});
+            }
+            mobileNavItems.appendChild(btn);
         }
 
         if (lastPage || currentPage != "/") {
@@ -73,13 +85,29 @@
         // Update highlight
         let index = 0;
         for (let item of items) {
-            item.style.setProperty("--highlight", Math.min(Math.max(1 - Math.abs(index + 1 - progress), 0), 1) + "");
+            let highlightValue = Math.min(Math.max(1 - Math.abs(index + 1 - progress), 0), 1) + "";
+            item.style.setProperty("--highlight", highlightValue);
+            (mobileNavItems.childNodes[index] as HTMLElement).style.setProperty("--highlight", highlightValue);
             index++;
         }
+        mobileNavBarItem.style.setProperty("--highlight", Math.max(1 - progress, 0) + "");
+    }
+
+    function scrollToNavBar(e: Event) {
+        e.preventDefault();
+        navBar.scrollIntoView({inline: "center", behavior: "smooth"});
     }
 </script>
 
 
+<div class="mobile-nav" aria-hidden="true">
+    <a class="pop-out-btn" href="#nav-bar" bind:this={mobileNavBarItem} onclick={scrollToNavBar}>
+        <Icon icon="tabler:menu-2" />
+    </a>
+    <span class="mobile-nav-items" bind:this={mobileNavItems}>
+
+    </span>
+</div>
 <div class="metro-header" aria-hidden="true" bind:this={metroHeader}>
     <div class="metro-header-items" bind:this={metroHeaderItems}>
 
@@ -108,8 +136,40 @@
         opacity: calc(0.3 + 0.7 * var(--highlight, 0));
         white-space: nowrap;
     }
+
+    .mobile-nav {
+        position: fixed;
+        inset: auto 2em 2em 2em;
+        display: flex;
+        justify-content: space-between;
+        z-index: 100;
+        gap: 6px;
+    }
+    .mobile-nav-items {
+        display: flex;
+        justify-content: end;
+        gap: 6px;
+    }
+    .mobile-nav :global(a) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
+        color: white;
+        background: black;
+        width: 2.5em;
+        height: 2.5em;
+    }
+    .mobile-nav :global(a)::after {
+        content: "";
+        position: absolute;
+        inset: calc(100% * calc(1 - var(--highlight, 0))) 0 0 0;
+        background: white;
+        mix-blend-mode: difference;
+    }
+
     @media (min-width: 50em) {
-        .metro-header {
+        .metro-header, .mobile-nav {
             display: none;
         }
     }

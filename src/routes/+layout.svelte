@@ -3,7 +3,7 @@
   import { page } from '$app/state';
   import Icon from '@iconify/svelte';
   import CommonNav from '../components/CommonNav.svelte';
-  import MetroHeader from '../components/MetroHeader.svelte';
+  import MetroHeader from '../components/MetroNav.svelte';
   import TooltipDisplayer from '../components/utils/TooltipDisplayer.svelte';
 
     let { 
@@ -28,16 +28,7 @@
             
         </div>
     </div>
-    <div class="mobile-nav">
-        <div class="mobile-nav-help" aria-hidden="true">
-            <span>(scroll horizontally to navigate!)</span>
-        </div>
-        <div class="mobile-buttons" aria-hidden="true">
-            <button class="pop-out-btn" onclick={() => scroll(-1)}><Icon icon="tabler:arrow-left" /></button>
-            <button class="pop-out-btn" onclick={() => scroll(1)}><Icon icon="tabler:arrow-right" /></button>
-        </div>
-    </div>
-    <div class="nav-bar" bind:this={navBar}> 
+    <div class="nav-bar" id="nav-bar" bind:this={navBar}> 
         <span class="flexible-space" aria-hidden="true"></span>
         <header>
             <CommonNav/>
@@ -151,41 +142,12 @@
         .main-container::-webkit-scrollbar {
             display: none;
         }
-        .main-container .mobile-buttons {
-            position: fixed;
-            inset: 2em calc(2em + 2px) auto auto;
-            z-index: 10;
-        }
-        .main-container .mobile-buttons button {
-            background: black;
-            color: white;
-            border: 2px solid white;
-            margin: 0;
-            padding: .6em;
-        }
-        .main-container .mobile-buttons :global(svg) {
-            display: block;
-            font-size: 1.625em;
-            min-height: 1em;
-            min-width: 1em;
-        }
-        .main-container .mobile-nav-help {
-            position: absolute;
-            inset: 2em max(calc(8em + 4px), calc(100dvw - 30em)) auto auto;
-            border: 2px solid white;
-            padding: .6em 1em;
-            background: black;
-            z-index: 20;
-        }
-        .main-container .mobile-nav-help > span {
-            font-size: 0.75em;
-        }
         .main-container .nav-bar {
             display: flex;
             flex-flow: column;
             justify-content: safe end;
             flex: 0 0 min(30em, calc(100dvw - 3em));
-            padding-block: 7em 2em;
+            padding-block: 7em 6em;
             padding-inline: 1em;
             z-index: 1;
             scroll-snap-align: start;
@@ -213,7 +175,7 @@
             flex: 0 0 min(30em, calc(100dvw - 3em));
             height: 100%;
             padding: 1em;
-            padding-block: 10em 2em;
+            padding-block: 10em 6em;
             padding-inline: 1em;
             overflow-y: auto;
             scroll-snap-align: start;
@@ -228,9 +190,6 @@
 
 
     @media (min-width: 50em) {
-        .main-container .mobile-nav-help, .main-container .mobile-buttons {
-            display: none;
-        }
 
         .main-container.home {
             --inset-block: max(0px, calc(50dvh - 20em));
@@ -363,15 +322,6 @@
     @media (min-width: 74em) {
         .main-container.home .content-background { 
             inset: 0 -1em 0 50%;
-        }
-    }
-
-    @media (pointer: coarse) and (hover: none) {
-        .main-container .mobile-nav-help {
-            inset: 2em max(3em, calc(100dvw - 30em)) auto auto;
-        }
-        .main-container .mobile-buttons {
-            display: none;
         }
     }
 

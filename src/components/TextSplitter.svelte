@@ -18,3 +18,9 @@
         </s-word>{((charIndex += word.length) || true) && ""}
     {/each}
 </splitted-text>
+
+<style>
+    s-word {
+        white-space: nowrap;
+    }
+</style>

@@ -6,29 +6,30 @@
   let index = 0;
 
 </script>
-  {(index = 0), ""}
-  {#each Object.entries(projects) as [sectionName, section]}
-    {(index += 1), ""}
-    <section id={sectionName.replaceAll(" ", "-")} data-category-name={altNames?.[index - 1] ?? sectionName}>
-      <h2>{sectionName}</h2>
-      <ul class="subsections">
-        {#each Object.entries(section) as [categoryName, category]}
-          <li class="subsection" aria-label={categoryName}>
-            <h3>{categoryName}</h3>
-            <ul class="project-list">
-              {#each category as project}
-                <ProjectCard prototype={project.prototype} links={project.links} title={project.name}>
-                  {#snippet description()}
-                    {@html project.description}
-                  {/snippet}
-                </ProjectCard>
-              {/each}
-            </ul>
-          </li>
-        {/each}
-      </ul>
-    </section>
-  {/each}
+
+{(index = 0), ""}
+{#each Object.entries(projects) as [sectionName, section]}
+  {(index += 1), ""}
+  <section id={sectionName.replaceAll(" ", "-")} data-category-name={altNames?.[index - 1] ?? sectionName}>
+    <h2>{sectionName}</h2>
+    <ul class="subsections">
+      {#each Object.entries(section) as [categoryName, category]}
+        <li class="subsection" aria-label={categoryName}>
+          <h3>{categoryName}</h3>
+          <ul class="project-list">
+            {#each category as project}
+              <ProjectCard prototype={project.prototype} links={project.links} title={project.name}>
+                {#snippet description()}
+                  {@html project.description}
+                {/snippet}
+              </ProjectCard>
+            {/each}
+          </ul>
+        </li>
+      {/each}
+    </ul>
+  </section>
+{/each}
 
 <style>
   h2 {

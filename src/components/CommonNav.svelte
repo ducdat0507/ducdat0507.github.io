@@ -64,11 +64,13 @@
     }
 
     nav :global(a) {
+        display: block;
         color: white;
         text-decoration: none;
         font-size: 2.75em;
         font-weight: 300;
-        line-height: 0.75;
+        line-height: 0.9;
+        margin-block: 0.1em;
     }
     nav :global(svg) {
         margin-inline-end: -0.1em;

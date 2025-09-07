@@ -277,6 +277,7 @@
             flex-direction: row;
             font-size: 1.5em;
             line-height: 1.2;
+            margin-block: 0;
             height: 2em;
             width: 2em;
             align-items: center;

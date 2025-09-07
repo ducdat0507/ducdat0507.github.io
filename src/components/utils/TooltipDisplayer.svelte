@@ -1,54 +1,98 @@
 <script module lang="ts">
     import { onMount, type Snippet } from "svelte";
+  import { cubicOut, expoOut } from "svelte/easing";
+  import { fade } from "svelte/transition";
 
+    type TooltipData = {
+        id: string,
+        content: Snippet | null,
+        parent: HTMLElement | null,
+        containerProps: any,
+        style: {
+            top?: string,
+            left?: string,
+            "transform-origin"?: string
+        }
+    }
 
-    let content: Snippet | null = $state(null);
-    let parent: HTMLElement | null = $state(null);
-    let containerProps: any = $state(null);
+    let tooltipData: TooltipData[] = $state([]);
 
     export function setTooltip(_parent: HTMLElement, _content: Snippet, _props: any) {
-        parent = _parent;
-        content = _content;
-        containerProps = _props;
+        tooltipData.push({
+            id: Math.random() + "",
+            parent: _parent,
+            content: _content,
+            containerProps: _props,
+            style: {},
+        })
     }
 
     export function unsetTooltip(_parent: HTMLElement | null) {
-        if (_parent && parent != _parent) return;
-        parent = null;
+        let index = tooltipData.findIndex(x => x.parent == _parent);
+        if (index < 0) return;
+        tooltipData.splice(index, 1);
     }
 
+    function objToStyle(obj: Record<string, string>) {
+        let style = "";
+        for (let prop in obj) style += `${prop}:${obj[prop]};`
+        return style;
+    }
+
+
+    function easeIn(node: HTMLElement, { from, to }: { from: DOMRect; to: DOMRect }, params: any) {
+		return {
+			delay: 0,
+			duration: 200,
+			easing: expoOut,
+			css: (t: number, u: number) => `transform: scale(${0.8 + t * 0.2}); opacity: ${t}`
+		};
+	}
+    function easeOut(node: HTMLElement, { from, to }: { from: DOMRect; to: DOMRect }, params: any) {
+		return {
+			delay: 0,
+			duration: 100,
+			easing: cubicOut,
+			css: (t: number, u: number) => `transform: scale(${0.8 + t * 0.2}); opacity: ${t}`
+		};
+	}
 </script>
 
 <script lang="ts">
 
-    let tooltip: HTMLElement;
+    let tooltips: HTMLElement[] = $state([]);
 
-    let isShowing = $state(false);
     $effect(() => {
-        isShowing = !!parent;
-        requestUpdatePosition();
+        requestUpdatePositionAll();
     })
 
-    let timeout: number = -1;
-
-    function requestUpdatePosition() {
-        updatePosition();
-        // f (timeout > 0) clearTimeout(0);
-        // timeout = setTimeout(() => updatePosition(), 0);
+    function requestUpdatePositionAll() {
+        for (let i = 0; i < tooltipData.length; i++) updatePosition(i);
     }
 
-    function updatePosition() {
-        if (!parent) return;
+    function requestUpdatePosition(index: number) {
+        updatePosition(index);
+    }
+
+    function updatePosition(index: number) {
+
+        let tooltip = tooltips[index];
+        let parent = tooltipData[index].parent;
+        if (!tooltip || !parent) return;
 
         let tooltipRect = tooltip.getBoundingClientRect();
         let parentRect = parent.getBoundingClientRect();
 
         let left = parentRect.left + (parentRect.width - tooltipRect.width) / 2;
         let top = parentRect.top + (parentRect.height - tooltipRect.height) / 2;
+        let alignment = "bottom";
 
         // TODO add more alignment options
         top -= (parentRect.height + tooltipRect.height) / 2;
-        if (top < 0) top = parentRect.top + parentRect.height;
+        if (top < 0) {
+            alignment = "top";
+            top = parentRect.top + parentRect.height;
+        }
         
         // Keep tooltip inside viewport
         left = Math.min(Math.max(left, 0), window.innerWidth - tooltipRect.width);
@@ -58,22 +102,25 @@
         left -= document.body.scrollLeft;
         top -= document.body.scrollTop;
 
-        tooltip.style.left = left + "px";
-        tooltip.style.top = top + "px";
+        tooltipData[index].style.left = left + "px";
+        tooltipData[index].style.top = top + "px";
+        tooltipData[index].style["transform-origin"] = alignment;
     }
 </script>
 
-<section class="tooltip" role="tooltip" class:is-showing={isShowing}
-            bind:this={tooltip} 
-            {...containerProps}
-        >
-    <div class="tooltip-box">
-        {#if content}
-            {@render content()}
-            {requestUpdatePosition(), ""}
-        {/if}
-    </div>
-</section>
+{#each tooltipData as tooltip, i (tooltip.id)}
+    <section class="tooltip" role="tooltip"
+                bind:this={tooltips[i]} 
+                style={objToStyle(tooltip.style)}
+                {...tooltip.containerProps}
+            >
+        <div class="tooltip-box" in:easeIn out:easeOut>
+            {#if tooltip.content}
+                {@render tooltip.content()}
+            {/if}
+        </div>
+    </section>
+{/each}
 
 <style>
     :global {
@@ -82,7 +129,6 @@
             position: fixed;
             max-width: min(calc(100dvw - 2em), 20em);
             pointer-events: none;
-            opacity: 0;
             transition: opacity .15s .05s;
         }
         .tooltip-box {
@@ -99,9 +145,6 @@
             text-decoration: none;
             text-align: center;
             align-items: center;
-        }
-        .tooltip.is-showing {
-            opacity: 1;
         }
 
         .tooltip :global(:is(h1, h2, h3, h4, h5, h6, p)) {

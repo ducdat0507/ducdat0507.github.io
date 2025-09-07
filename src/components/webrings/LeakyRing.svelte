@@ -64,7 +64,6 @@
                     .map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
                 allSites = sites;
                 broken = false;
-                bilging = false;
             })
             .catch(e => {
                 console.error(e);

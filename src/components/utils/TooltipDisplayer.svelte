@@ -17,7 +17,15 @@
 
     let tooltipData: TooltipData[] = $state([]);
 
+    const maxTooltips = 1;
+
     export function setTooltip(_parent: HTMLElement, _content: Snippet, _props: any) {
+
+        if (tooltipData.length > 0) {
+            if (tooltipData.at(-1)?.parent == _parent) return;
+            if (tooltipData.length >= maxTooltips) tooltipData.shift();
+        }
+
         tooltipData.push({
             id: Math.random() + "",
             parent: _parent,

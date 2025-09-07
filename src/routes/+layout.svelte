@@ -198,13 +198,12 @@
         }
 
         .main-container .nav-bar :global(nav li.nav-item) {
-            margin: -.25em -.5em;
-            padding: .25em .5em;
+            --outset: 0px;
         }
 
         .main-container .nav-bar :global(nav li.active a:before) {
             position: absolute;
-            left: -0.6em;
+            left: -0.75em;
             content: "";
             height: 1em;
             display: inline-block;
@@ -252,9 +251,9 @@
             inset: 0 -1em 0 60%;
         }
         .main-container.home .nav-bar :global(nav li.nav-item) {
-            margin: -.25em -.5em -.5em -.5em;
-            padding: .25em .5em;
+            --outset: 0px;
         }
+
 
         .main-container:not(.home) .nav-bar {
             position: fixed;
@@ -321,6 +320,7 @@
             border-radius: 0;
             transition: width .3s;
             transition-timing-function: var(--ease-out-expo);
+            background: black;
         }
         .main-container:not(.home) .nav-bar :global(nav li.active a) {
             color: black;

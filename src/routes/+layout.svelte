@@ -152,6 +152,7 @@
             z-index: 1;
             scroll-snap-align: start;
             scroll-snap-stop: always;
+            overflow: visible;
         }
         .main-container .nav-bar > div {
             display: flex;
@@ -160,7 +161,8 @@
             overflow-y: auto;
             scrollbar-width: none;
             padding-block: 7em 6em;
-            padding-inline: 1em;
+            padding-inline: 3em 1em;
+            margin-inline-start: -2em;
         }
         .content-container {
             flex: 0 1;
@@ -194,6 +196,23 @@
             content: "";
             padding-right: max(2em, calc(100dvw - 31em));
         }
+
+        .main-container .nav-bar :global(nav li.nav-item) {
+            margin: -.25em -.5em;
+            padding: .25em .5em;
+        }
+
+        .main-container .nav-bar :global(nav li.active a:before) {
+            position: absolute;
+            left: -0.6em;
+            content: "";
+            height: 1em;
+            display: inline-block;
+            aspect-ratio: 1 / 2;
+            background: white;
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            pointer-events: none;
+        }
     }
 
 
@@ -213,6 +232,7 @@
         .main-container.home .nav-bar {
             position: absolute;
             padding: 1em;
+            padding-right: 25em;
             bottom: 0;
             width: 100%;
             max-height: 100%;
@@ -231,6 +251,10 @@
         .main-container.home .content-background { 
             inset: 0 -1em 0 60%;
         }
+        .main-container.home .nav-bar :global(nav li.nav-item) {
+            margin: -.25em -.5em -.5em -.5em;
+            padding: .25em .5em;
+        }
 
         .main-container:not(.home) .nav-bar {
             position: fixed;
@@ -244,10 +268,10 @@
             border-right: 2px solid white;
             width: calc(4em + 2px);
             white-space: nowrap;
-            overflow: hidden;
             transition: all .3s;
             transition-timing-function: var(--ease-out-expo);
             animation: .8s nav-bar-in var(--ease-out-expo);
+            overflow: visible;
         }
         .main-container:not(.home) .nav-bar > div {
             display: flex;
@@ -267,10 +291,21 @@
         }
         .main-container:not(.home) .nav-bar :global(nav > ul) {
             max-height: 100%;
+            width: calc(100% + 2em);
             padding-block: 6em;
-            padding-inline: 0.5em;
+            padding-inline: 0.5em 2.5em;
+            margin-inline-end: -2em;
             overflow: hidden auto;
             scrollbar-width: none;
+        }
+        .main-container:not(.home) .nav-bar :global(nav li.nav-item) {
+            position: relative;
+            display: flex;
+            gap: 0;
+        }
+        .main-container:not(.home) .nav-bar :global(nav li.active) {
+            width: calc(100% + 3em);
+            filter: drop-shadow(2px 2px black);
         }
         .main-container:not(.home) .nav-bar :global(nav a) {
             display: flex;
@@ -283,19 +318,30 @@
             align-items: center;
             justify-content: start;
             overflow: hidden;
-            border-radius: 0.5em;
-            transition: all .3s;
+            border-radius: 0;
+            transition: width .3s;
             transition-timing-function: var(--ease-out-expo);
         }
         .main-container:not(.home) .nav-bar :global(nav li.active a) {
-            background: #fff2;
+            color: black;
+            background: white;
+            cursor: default;
+        }
+        .main-container:not(.home) .nav-bar :global(nav li.active::after) {
+            content: "";
+            display: inline-block;
+            background: white;
+            height: 3em;
+            align-self: stretch;
+            aspect-ratio: 1 / 2;
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            z-index: -1;
         }
         .main-container:not(.home) .nav-bar :global(nav a svg) {
             flex: 0 0 1em;
             font-size: 1.2em;
             vertical-align: -0.2em !important;
             margin-inline: 0.35em 0.36em;
-            transition: all .3s;
             transition-timing-function: var(--ease-out-expo);
         }
         .main-container:not(.home) .nav-bar :global(nav h2) {
@@ -308,13 +354,17 @@
         .main-container:not(.home) .nav-bar footer {
             font-size: small;
             opacity: 0;
-            width: 20rem;
+            width: 100%;
             padding: 1em;
             white-space: wrap;
             transition: all .3s;
             transition-timing-function: var(--ease-out-expo);
             background: black;
+            overflow: hidden;
             z-index: 1;
+        }
+        .main-container:not(.home) .nav-bar footer > p {
+            width: 25em;
         }
         .main-container:not(.home) .nav-bar:hover {
             width: 20rem;
@@ -341,6 +391,9 @@
     }
 
     @media (min-width: 74em) {
+        .main-container.home .nav-bar {
+            padding-right: 48.5em;
+        }
         .main-container.home .content-background { 
             inset: 0 -1em 0 50%;
         }
@@ -349,9 +402,9 @@
 
     @keyframes nav-bar-in {
         from {
-            transform: translateX(-100%);
+            transform: translateX(-150%);
         } 40% {
-            transform: translateX(-100%);
+            transform: translateX(-150%);
         } to {
             transform: translateX(0);
         }

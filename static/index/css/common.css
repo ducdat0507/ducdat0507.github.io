@@ -54,6 +54,7 @@ a {
 }
 .pop-out-btn:hover {
     --outset: 3px;
+    z-index: 1;
 }
 .pop-out-btn:active {
     --outset: 1px;

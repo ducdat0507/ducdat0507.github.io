@@ -45,7 +45,7 @@
 			delay: 0,
 			duration: 200,
 			easing: expoOut,
-			css: (t: number, u: number) => `transform: scale(${0.8 + t * 0.2}); opacity: ${t}`
+			css: (t: number, u: number) => `transform: scale(${t <= 0 ? 1 : 0.8 + t * 0.2}); opacity: ${t}`
 		};
 	}
     function easeOut(node: HTMLElement, { from, to }: { from: DOMRect; to: DOMRect }, params: any) {
@@ -110,11 +110,12 @@
 
 {#each tooltipData as tooltip, i (tooltip.id)}
     <section class="tooltip" role="tooltip"
+                in:easeIn out:easeOut
                 bind:this={tooltips[i]} 
                 style={objToStyle(tooltip.style)}
                 {...tooltip.containerProps}
             >
-        <div class="tooltip-box" in:easeIn out:easeOut>
+        <div class="tooltip-box">
             {#if tooltip.content}
                 {@render tooltip.content()}
             {/if}

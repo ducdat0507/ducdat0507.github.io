@@ -24,6 +24,7 @@
         let categories = document.querySelectorAll(".category-box > *");
         if (!categories[0]) return;
 
+        let index = 0;
         for (const elm of categories) {
             let link = document.createElement("a");
             link.innerText = elm.getAttribute("data-category-name") ?? "";
@@ -31,6 +32,7 @@
             metroHeaderItems.appendChild(link);
 
             let btn = document.createElement("a");
+            btn.innerText = (index + 1).toLocaleString("en-US");
             btn.classList.add("pop-out-btn")
             btn.href = "#" + elm.id;
             btn.onclick = (e) => {
@@ -38,6 +40,8 @@
                 elm.scrollIntoView({inline: "center", behavior: "smooth"});
             }
             mobileNavItems.appendChild(btn);
+
+            index++;
         }
 
         if (lastPage || currentPage != "/") {
@@ -90,7 +94,7 @@
             (mobileNavItems.childNodes[index] as HTMLElement).style.setProperty("--highlight", highlightValue);
             index++;
         }
-        mobileNavBarItem.style.setProperty("--highlight", Math.max(1 - progress, 0) + "");
+        mobileNavBarItem.style.setProperty("--highlight", Math.max(1 - Math.abs(progress), 0) + "");
     }
 
     function scrollToNavBar(e: Event) {
@@ -155,6 +159,7 @@
         align-items: center;
         justify-content: center;
         border: 2px solid white;
+        text-decoration: none;
         color: white;
         background: black;
         width: 2.5em;

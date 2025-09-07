@@ -59,9 +59,6 @@
         margin-top: 0.5em;
         color: #fffa;
     }
-    nav li {
-        margin-top: 0.25em;
-    }
 
     nav :global(a) {
         display: block;

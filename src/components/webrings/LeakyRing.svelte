@@ -116,11 +116,13 @@
                 aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to bilge`}
                 onclick={doBilge}
             ></button>
-        <div class:important={fillAmount / fillMax >= 0.5} aria-hidden={true}>
+        <div class:active={cooldownTimeout || bilging || fillAmount / fillMax >= 0.5} aria-hidden={true}>
             {#if cooldownTimeout} 
                 (I'm on cooldown, please wait a moment)
             {:else if bilging}
                 (trying my best...)
+            {:else if fillAmount / fillMax >= 0.5}
+                (it's getting damp in here, can someone here click here to bilge?)
             {:else}
                 (click here to bilge)
             {/if}
@@ -164,7 +166,7 @@
         font-size: 0.75em;
     }
     .leaky-ring-holder:hover + div, 
-    .leaky-ring-holder + div.important {
+    .leaky-ring-holder + div.active {
         opacity: 1;
     }
     h4, p {

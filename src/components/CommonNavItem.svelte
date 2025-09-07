@@ -36,6 +36,7 @@
     }
     li.active:is(:hover, :active)::before {
         background: transparent;
+        transition: none;
     }
 
     a {

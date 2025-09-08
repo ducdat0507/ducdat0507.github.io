@@ -438,6 +438,19 @@ export const nongames: ProjectCollection = {
     "miscellaneous": {
         "small stuff": [
             {
+                name: "A+1→A",
+                description: `
+                    <p>
+                        Carpel tunnel generator
+                    </p>
+                `,
+                links: [
+                    { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/a1a" },
+                    null,
+                    { name: "launch", href: "/a1a" },
+                ]
+            },
+            {
                 name: "Web music player",
                 description: `
                     <p>
@@ -445,6 +458,7 @@ export const nongames: ProjectCollection = {
                     </p>
                 `,
                 links: [
+                    { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/stuff/tree/master/music-player" },
                     null,
                     { name: "launch", href: "/stuff/music-player" },
                 ]

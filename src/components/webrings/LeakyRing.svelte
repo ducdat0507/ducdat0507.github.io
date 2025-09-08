@@ -40,11 +40,13 @@
         clearTimeout(lastUpdate);
         lastUpdate = setTimeout(() => {doRequest()}, updateInterval * 1000);
         if (bilging) return;
+        
         // if (page.url.hostname == "localhost") {
         //     fillAmount = 100;
         //     allSites = [];
         //     return;
         // }
+
         fetch(
             `${backend}/flood?bilge=${bilge}&info=${fullInfo}&path=${page.url.pathname}`,
             {
@@ -136,15 +138,11 @@
                 <feTurbulence baseFrequency="0.005" numOctaves="2" stitchTiles="stitch">
                     
                 </feTurbulence>
-                <feTile>
-                    <animate attributeName="dx" values="-60%;60%;-60%" dur="10s" repeatCount="indefinite"/>
-                    <animate attributeName="dy" values="60%;-60%;60%" dur="10s" repeatCount="indefinite"/>
-                </feTile>
                 <feColorMatrix type="hueRotate" result="displacement-map">
                     <animate attributeName="values" values="0;360" dur="2s" repeatCount="indefinite"/>
                 </feColorMatrix>
                 <feDisplacementMap in="SourceGraphic" in2="map" scale="16" xChannelSelector="R" yChannelSelector="G">
-                    <animate attributeName="scale" values="24;16;24" dur="10s" repeatCount="indefinite"/>
+                    <animate attributeName="scale" values="8;16;8" dur="10s" repeatCount="indefinite"/>
                 </feDisplacementMap>
             </filter>
         </defs>

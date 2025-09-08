@@ -180,6 +180,20 @@ export const games: ProjectCollection = {
                     { name: "play", href: "/incremental" },
                 ]
             },
+            {
+                name: "A+1→A",
+                prototype: true,
+                description: `
+                    <p>
+                        Carpel tunnel generator
+                    </p>
+                `,
+                links: [
+                    { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/a1a" },
+                    null,
+                    { name: "launch", href: "/a1a" },
+                ]
+            },
         ],
         "not mine but I was involved": [
             {
@@ -437,19 +451,6 @@ export const nongames: ProjectCollection = {
     },
     "miscellaneous": {
         "small stuff": [
-            {
-                name: "A+1→A",
-                description: `
-                    <p>
-                        Carpel tunnel generator
-                    </p>
-                `,
-                links: [
-                    { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/a1a" },
-                    null,
-                    { name: "launch", href: "/a1a" },
-                ]
-            },
             {
                 name: "Web music player",
                 description: `

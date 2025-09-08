@@ -28,16 +28,34 @@
   @media (min-width: 50em) {
     .category-box {
       display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 1em;
       margin-top: 2em;
       width: 50em;
       padding-inline: 5em;
       padding-bottom: 5em;
+    }
+
+    .category-box > :global(:nth-child(1)) {
+      grid-column: span 2;
+    }
+    
+    .category-box > :global(:nth-child(n+2)) {
+      grid-column: span 1;
+    }
+    .category-box > :global(:nth-child(n+2) > ul) {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (min-width: 70em) {
     .category-box {
       width: 70em;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-box > :global(:nth-child(1)) {
+      grid-column: span 3;
     }
   }
 </style>

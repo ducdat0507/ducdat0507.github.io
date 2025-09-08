@@ -435,4 +435,20 @@ export const nongames: ProjectCollection = {
             },
         ],
     },
+    "miscellaneous": {
+        "small stuff": [
+            {
+                name: "Web music player",
+                description: `
+                    <p>
+                        A music player on the web. Most personal websites I visited seems to have at least one of these so why not?
+                    </p>
+                `,
+                links: [
+                    null,
+                    { name: "launch", href: "/stuff/music-player" },
+                ]
+            },
+        ],
+    },
 }

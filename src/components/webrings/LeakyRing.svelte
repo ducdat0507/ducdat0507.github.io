@@ -182,6 +182,9 @@
         transition: background 2s cubic-bezier(0.075, 0.82, 0.165, 1);
         filter: url(#leaky-ring-water);
     }
+    .leaky-ring .broken .leaky-ring-holder {
+        display: none;
+    }
     .leaky-ring.bilging .leaky-ring-holder::before {
         transition: background 5s linear;
     }

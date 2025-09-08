@@ -5,6 +5,7 @@
   import CommonNav from '../components/CommonNav.svelte';
   import MetroHeader from '../components/MetroNav.svelte';
   import TooltipDisplayer from '../components/utils/TooltipDisplayer.svelte';
+  import PopupDisplayer, { hasPopup } from '../components/utils/PopupDisplayer.svelte';
 
     let { 
         children
@@ -22,6 +23,7 @@
 </script>
 
 <div class="background"></div>
+
 <div class="main-container" class:home={isHome} bind:this={mainContainer}>
     <div class="content-background-holder">
         <div class="content-background">
@@ -54,8 +56,9 @@
         </main>
     </div>
     <MetroHeader />
-    <TooltipDisplayer />
 </div>
+<PopupDisplayer />
+<TooltipDisplayer />
 
 <style>
     .background {  

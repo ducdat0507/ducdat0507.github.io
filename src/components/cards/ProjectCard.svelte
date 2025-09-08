@@ -1,6 +1,7 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
     import type { Snippet } from "svelte";
+  import { setPopup } from "../utils/PopupDisplayer.svelte";
 
     let {
         links,
@@ -19,12 +20,21 @@
         description: Snippet,
     } = $props();
 
+    function showPopup(e: Event) {
+        e.preventDefault();
+        setPopup(title, description, [
+            { name: "close", icon: "iconoir:arrow-left" },
+            ...links,
+        ]);
+    }
+
 </script>
 
 <li class="project-card" class:prototype={prototype} {...cardProps} aria-label={title}>
     <article>
-        <h4 class="title">{title}</h4>
-        <div class="description">{@render description()}</div>
+        <h4 class="title">
+            <span role="link" tabindex={0} onclick={showPopup} onkeydown={(e) => e.key == "Enter" && showPopup(e)}>{title}</span>
+        </h4>
         <div class="links">
             {#each links as link}
                 {#if link}
@@ -35,7 +45,7 @@
                         </a>
                     </div>
                 {:else}
-                    <span class="flex-space" aria-hidden="true" />
+                    <span class="flex-space" aria-hidden="true"></span>
                 {/if}
             {/each}
         </div>
@@ -61,8 +71,8 @@
     .project-card :is(h4, :global(p)) {
         margin: 0;
     }
-    .project-card .description {
-        font-size: 0;
+    .project-card .title > span {
+        cursor: help;
     }
     .project-card .links {
         display: flex;

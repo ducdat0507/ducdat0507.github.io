@@ -24,6 +24,9 @@ export const games: ProjectCollection = {
                     <p>
                         The definitive idle games where you have 1,000,000,000,000 free card packs to draw. That's 1 followed by 12 zeros!
                     </p>
+                    <p>
+                        It's fairly mobile-friendly and should be completable in about 2~3 days of active idling.
+                    </p>
                 `,
                 links: [
                     { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/gacha" },
@@ -54,7 +57,10 @@ export const games: ProjectCollection = {
                         Defeat enemies and grow your towers, incremental game style!
                     </p>
                     <p>
-                        Made for Demonin's big number incremental game jam and somehow got first place?
+                        Made for <a href="//demonin.com">Demonin's</a> big number incremental game jam and somehow got first place?
+                    </p>
+                    <p>
+                        Now that I looked at it again, the game might be better off having earlier automation...
                     </p>
                 `,
                 links: [
@@ -71,6 +77,10 @@ export const games: ProjectCollection = {
                     <p>
                         A prestige-tree like game about other prestige-tree like games and the community that makes prestige-tree like games.
                     </p>
+                    <p>
+                        For people who're just getting started on playing these prestige-tree like games, apparently the game is one of the recommended
+                        prestige-tree like game to be played first.
+                    </p>
                 `,
                 links: [
                     { name: "source", icon:"iconoir:git", href: "https://github.com/ducdat0507/communitree" },
@@ -82,10 +92,15 @@ export const games: ProjectCollection = {
                 name: "The Prestreestuck",
                 description: `
                     <p>
-                        A prestige-tree like game loosely based on the hit web-comic Homestuck.
+                        A prestige-tree like game loosely based on the hit web-comic <a href="https://homestuck.com">Homestuck</a>.
                     </p>
                     <p>
                         ...Not really my proudest creation.
+                    </p>
+                    <p>
+                        On that note, did you know the person who created the framework for making incremental games like this 
+                        also maintain <a href="https://mspfa.com/?s=16414&p=1">a fairly popular Homestuck AU fan-fiction</a>?
+                        Homestucks really do be everywhere...
                     </p>
                 `,
                 links: [
@@ -116,6 +131,9 @@ export const games: ProjectCollection = {
                     <p>
                         An incremental game on Scratch, a coding platform for children.
                     </p>
+                    <p>
+                        This game is themed on rolling dices and exploit the exploding mechanic and compounding rewards to reach large numbers.
+                    </p>
                 `,
                 links: [
                     null,
@@ -145,6 +163,9 @@ export const games: ProjectCollection = {
                     <p>
                         A short incremental game made with Idle Game Maker, the idle game engine made by the same people who've made Cookie Clicker.
                     </p>
+                    <p>
+                        This game is about making universes.
+                    </p>
                 `,
                 links: [
                     { name: "source", icon: "iconoir:git", href: "/toys/Sparklifer.txt" },
@@ -158,6 +179,9 @@ export const games: ProjectCollection = {
                 description: `
                     <p>
                         A proof of concept incremental game on MS-Paint Fan Adventures, the website where you share and read web-comics on the MS-Paint Adventure format.
+                    </p>
+                    <p>
+                        Doesn't really have a ton of content though, it's just a showcase on how it could be done.
                     </p>
                 `,
                 links: [
@@ -185,7 +209,8 @@ export const games: ProjectCollection = {
                 prototype: true,
                 description: `
                     <p>
-                        Carpel tunnel generator
+                        A carpel tunnel generator, here you click a button repeatedly to increment a counter by 1. The counter is not upgradable, though
+                        you gain rewards upon reaching click count milestones.
                     </p>
                 `,
                 links: [
@@ -200,13 +225,16 @@ export const games: ProjectCollection = {
                 name: "Advent Incremental",
                 description: `
                     <p>
-                        A incremental game which also acts as an advent calendar—content are unlocked throughout the days of December leading to Christmas Eve.
+                        A incremental game which also acts as an advent calendar—content are unlocked throughout the days of December
+                        leading to Christmas Eve.
                     </p>
                     <p>
-                        Made by The Paper Pilot which also made the engine for the game. I helped with some of the dates' content and a bit of styling.
+                        Made by <a href="//thepaperpilot.org/">The Paper Pilot</a> which also made the engine for the game. I helped with some of the dates' content
+                        and a bit of styling.
                     </p>
                     <p>
-                        If you want to play the game while it's not December, there's an option on the game to ignore the month or disable the date-gate altogether.
+                        If you want to play the game while it's not December, there's an option on the game to ignore the month
+                        or disable the date-gate altogether.
                     </p>
                 `,
                 links: [
@@ -218,7 +246,8 @@ export const games: ProjectCollection = {
                 name: `The Camellia Tree: duducat's Extremely Novel and (Almost) Completely Overhauled "I wanna be the Kamiller" Rewrite/Modification`,
                 description: `
                     <p>
-                        A TPT-like game loosely based on the hit EDM composer かめりあ.
+                        A TPT-like game loosely based on the hit EDM composer 
+                        <a href="https://www.youtube.com/channel/UCV4ggxLd_Vz-I-ePGSKfFog">かめりあ</a>.
                     </p>
                     <p>
                         The original author of the game, ArcanaEden, wanted me to help implement a mechanic in their game, and I came up with a whole game rewrite instead.
@@ -353,7 +382,7 @@ export const nongames: ProjectCollection = {
                 prototype: true,
                 description: `
                     <p>
-                        A proof-of-concept website that makes it easy to collect 88x31 buttons on the internet (only 88x31 buttons are supported at the moment.)
+                        A proof-of-concept website where you collect 88x31 buttons found on indie personal websites, just like stamps (only 88x31 buttons are supported at the moment.)
                     </p>
                     <p>
                         Originally hosted on Neocities, but with their latest update breaking things I've decided to also upload it to my GitHub Pages site.
@@ -386,7 +415,7 @@ export const nongames: ProjectCollection = {
                         A website for discovering and playing incremental games, with features reminiscent of old game portals like Kongregate such as a forum and live chat rooms.
                     </p>
                     <p>
-                        Owned by yhvr, with my help on basically the entire interface design.
+                        Owned by <a href="//yhvr.me">yhvr</a>, with my help on basically the entire interface design.
                     </p>
                 `,
                 links: [
@@ -403,7 +432,12 @@ export const nongames: ProjectCollection = {
                 name: "totally real robux generator chat",
                 description: `
                     <p>
-                        The documentation of TMT made into a website.
+                        I added a (totally real, not fake) robux generator chat widget into my site so you don't have to go to an actual sketchy robux
+                        generator website just to enjoy chatting with (totally real) people who are really trying to get some quick bux. You can also 
+                        customize it so the chat's about games other than Roblox.
+                    </p>
+                    <p>
+                        Inspired by <a href="https://www.reddit.com/r/assholedesign/comments/q76va3/i_came_across_an_obvious_scam_free_robux/">this Reddit post</a>.
                     </p>
                 `,
                 links: [
@@ -422,7 +456,7 @@ export const nongames: ProjectCollection = {
                         A JS library for handling loot drops/gacha pulls/other random events of arbitrary counts.
                     </p>
                     <p>
-                        Do you ever find yourself having to simulate doing a random event one trillion times? Then this library is for you!
+                        Do you ever find yourself having to simulate doing a random event <a href="/gacha">one trillion times</a>? Then this library is for you!
                     </p>
                 `,
                 links: [

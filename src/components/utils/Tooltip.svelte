@@ -38,12 +38,14 @@
     })
 
     function onTooltipSet() {
+        if (isShowing) return;
         isShowing = true;
         if (!parent) return;
         setTooltip(parent, children, containerProps);
     }
 
     function onTooltipUnset() {
+        if (!isShowing) return;
         isShowing = false;
         unsetTooltip(parent);
     }
@@ -87,7 +89,9 @@
             document.body.addEventListener("pointermove", bodyMove);
             parent.addEventListener("click", cancelTouch);
         }
-        else onTooltipUnset();
+        else {
+            onTooltipUnset();
+        }
     }
 </script>
 

@@ -24,6 +24,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^3.0.8",
 		"dompurify": "^3.2.6",
-		"planck": "^1.4.2"
+		"planck": "^1.4.2",
+		"svelte-focus-trap": "^1.2.0"
 	}
 }

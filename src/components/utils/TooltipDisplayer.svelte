@@ -132,40 +132,38 @@
 {/each}
 
 <style>
-    :global {
-        .tooltip {
-            z-index: 1000000;
-            position: fixed;
-            max-width: min(calc(100dvw - 2em), 20em);
-            pointer-events: none;
-            transition: opacity .15s .05s;
-        }
-        .tooltip-box {
-            display: flex;
-            flex-flow: column;
-            gap: 0.3em;
-            padding: 0.5em 0.75em;
-            margin: 0.5em;
-            font-size: 0.75em;
-            color: white;
-            background: black;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px black;
-            text-decoration: none;
-            text-align: center;
-            align-items: center;
-        }
+    .tooltip {
+        z-index: 1000000;
+        position: fixed;
+        max-width: min(calc(100dvw - 2em), 20em);
+        pointer-events: none;
+        transition: opacity .15s .05s;
+    }
+    .tooltip-box {
+        display: flex;
+        flex-flow: column;
+        gap: 0.3em;
+        padding: 0.5em 0.75em;
+        margin: 0.5em;
+        font-size: 0.75em;
+        color: white;
+        background: black;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px black;
+        text-decoration: none;
+        text-align: center;
+        align-items: center;
+    }
 
-        .tooltip :global(:is(h1, h2, h3, h4, h5, h6, p)) {
-            margin: 0;
-        }
+    .tooltip :global(:is(h1, h2, h3, h4, h5, h6, p)) {
+        margin: 0;
+    }
 
-        .tooltip :global(h4) {
-            font-size: 1.25em;
-        }
+    .tooltip :global(h4) {
+        font-size: 1.25em;
+    }
 
-        .tooltip :global(.tooltip-action) {
-            opacity: 0.6;
-        }
+    .tooltip :global(.tooltip-action) {
+        opacity: 0.6;
     }
 </style>

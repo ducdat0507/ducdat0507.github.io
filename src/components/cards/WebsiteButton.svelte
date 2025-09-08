@@ -11,7 +11,7 @@
 </script>
 
 <li class="website-button" aria-label={website.name}>
-    <a class="pop-out-btn" href={website.site}>
+    <a class="pop-out-btn" href={website.site} onclick={website.onNav}>
         <div class="website-items">
             <span class="website-image" aria-hidden="true">
                 {#if website.button}

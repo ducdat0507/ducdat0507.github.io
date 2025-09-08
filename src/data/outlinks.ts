@@ -1,7 +1,12 @@
+import { createRawSnippet } from "svelte"
+import { setPopup } from "../components/utils/PopupDisplayer.svelte"
+import { render } from "svelte/server"
+
 export type WebsiteDefinition = {
     name: string,
     site: string,
     button?: string,
+    onNav?: (event: Event) => void,
 }
 
 export type WebsiteCollection = {
@@ -50,6 +55,23 @@ export const websites: WebsiteCollection = {
                 site: "https://melonking.net/",
                 name: "Melonking",
                 button: "https://melonking.net/images/badges/MELON-BADGE.GIF",
+                onNav(e: Event) {
+                    let now = new Date();
+                    now.setHours(now.getHours() - 1);
+                    if (now.getDay() == 1) {
+                        e.preventDefault();
+                        setPopup("heads up", `
+                            <span>
+                                <p><i>melonking.net</i> closes on Mondays (GMT+1).</p>
+                                <p>Do you still wish to proceed?</p>
+                            </span>
+                        `, [
+                            { name: "nevermind", icon: "iconoir:arrow-left" },
+                            null,
+                            { name: "continue", icon: "iconoir:arrow-right", href: "https://melonking.net/" },
+                        ])
+                    }
+                }
             },
             {
                 site: "https://rabbitnet.neocities.org/",

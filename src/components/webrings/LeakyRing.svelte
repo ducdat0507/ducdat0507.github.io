@@ -121,8 +121,6 @@
                 (I'm on cooldown, please wait a moment)
             {:else if bilging}
                 (trying my best...)
-            {:else if fillAmount / fillMax >= 0.5}
-                (it's getting damp in here, can someone here click here to bilge?)
             {:else}
                 (click here to bilge)
             {/if}
@@ -160,6 +158,7 @@
         align-items: center;
         text-align: center;
         padding-bottom: 1em;
+        padding-inline: 1em;
         pointer-events: none;
         opacity: 0;
         transition: opacity .3s;

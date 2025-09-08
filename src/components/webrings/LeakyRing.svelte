@@ -41,7 +41,7 @@
         lastUpdate = setTimeout(() => {doRequest()}, updateInterval * 1000);
         if (bilging) return;
         // if (page.url.hostname == "localhost") {
-        //     fillAmount = 60;
+        //     fillAmount = 100;
         //     allSites = [];
         //     return;
         // }
@@ -113,7 +113,7 @@
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder"
                 style:--level={fillAmount / fillMax} 
-                aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to bilge`}
+                aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to flush some water`}
                 onclick={doBilge}
             ></button>
         <div class:active={cooldownTimeout || bilging || fillAmount / fillMax >= 0.5} aria-hidden={true}>
@@ -122,7 +122,7 @@
             {:else if bilging}
                 (trying my best...)
             {:else}
-                (click here to bilge)
+                (click here to flush some water)
             {/if}
         </div>
         <WebringNav 
@@ -130,6 +130,25 @@
             allLinks={allSites}
             {broken} />
     </article>
+    <svg>
+        <defs>
+            <filter id="leaky-ring-water">
+                <feTurbulence baseFrequency="0.005" numOctaves="2" stitchTiles="stitch">
+                    
+                </feTurbulence>
+                <feTile>
+                    <animate attributeName="dx" values="-60%;60%;-60%" dur="10s" repeatCount="indefinite"/>
+                    <animate attributeName="dy" values="60%;-60%;60%" dur="10s" repeatCount="indefinite"/>
+                </feTile>
+                <feColorMatrix type="hueRotate" result="displacement-map">
+                    <animate attributeName="values" values="0;360" dur="2s" repeatCount="indefinite"/>
+                </feColorMatrix>
+                <feDisplacementMap in="SourceGraphic" in2="map" scale="16" xChannelSelector="R" yChannelSelector="G">
+                    <animate attributeName="scale" values="24;16;24" dur="10s" repeatCount="indefinite"/>
+                </feDisplacementMap>
+            </filter>
+        </defs>
+    </svg>
 </li>
 
 <style>
@@ -141,14 +160,30 @@
         position: absolute;
         border-width: 0px;
         margin: 0;
+        padding: 0;
         inset: 0;
-        background: url(/index/res/images/tiling-bg.svg) repeat, linear-gradient(#5df, #59f);
-        mask: linear-gradient(white, white) no-repeat bottom / 100% calc(var(--level, 0) * 100%);
-        transition: mask 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        background: transparent;
+        overflow: hidden;
         cursor: url(https://melonking.net/images/ui/bucket.png), pointer;
     }
-    .leaky-ring.bilging .leaky-ring-holder {
-        transition: mask 5s linear;
+    .leaky-ring-holder::before {
+        content: "";
+        display: block;
+        inset: -1em -1em -1em -1em;
+        width: calc(100% + 2em);
+        height: calc(100% + 2em);
+        margin: -1em;
+        background: 
+            linear-gradient(black, black) top left / 100% calc(100% - var(--level, 0) * 100%) no-repeat,
+            url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 20px)) / 200px 20px repeat-x, 
+            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 30px)) / 300px 30px repeat-x, 
+            url(/index/res/images/tiling-bg.svg) repeat, 
+            linear-gradient(#5df, #59f);
+        transition: background 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        filter: url(#leaky-ring-water);
+    }
+    .leaky-ring.bilging .leaky-ring-holder::before {
+        transition: background 5s linear;
     }
     .leaky-ring-holder + div {
         position: absolute;

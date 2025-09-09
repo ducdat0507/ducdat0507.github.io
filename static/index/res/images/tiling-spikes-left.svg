@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="50" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="100" viewBox="0 0 50 100">
     <g>
         <path d="M 50 0 L 0 50 L 50 100 L 0 150 L 50 200 Z" fill="black"/>
         <animateTransform attributeName="transform" type="translate" from="0 0" to="0 -100" begin="0s" dur="1s" repeatCount="indefinite"/>

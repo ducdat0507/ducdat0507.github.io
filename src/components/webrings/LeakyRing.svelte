@@ -173,8 +173,8 @@
         margin: -1em;
         background: 
             linear-gradient(black, black) top left / 100% calc(100% - var(--level, 0) * 100%) no-repeat,
-            url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 19px)) / 200px 20px repeat-x, 
-            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 29px)) / 300px 30px repeat-x, 
+            url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 19.9px)) / 200px 20px repeat-x, 
+            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 29.9px)) / 300px 30px repeat-x, 
             url(/index/res/images/tiling-bg.svg) repeat, 
             linear-gradient(#5df, #59f);
         transition: background 2s cubic-bezier(0.075, 0.82, 0.165, 1);

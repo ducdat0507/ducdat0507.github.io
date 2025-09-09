@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
-    import { Body, Box, Edge, Vec2, World } from "planck";
+    import { Body, Box, Edge, MouseJoint, Vec2, World } from "planck";
     import { onMount } from "svelte";
   import Tooltip from "../utils/Tooltip.svelte";
 
@@ -91,16 +91,60 @@ Box
         clearInterval(interval);
         data.boxes = []
     }
+
+    function registerItemDrag(e: PointerEvent, box: Body) {
+        let target = e.target as HTMLElement;
+        target.setPointerCapture(e.pointerId);
+
+        console.log("dragging", target, box);
+
+        function getTarget(ev: PointerEvent) {
+            let fontSize = parseFloat(window.getComputedStyle(target).fontSize);
+            let boundingBox = divHolder.getBoundingClientRect();
+            return new Vec2(
+                (ev.clientX - boundingBox.left - boundingBox.width / 2) / fontSize / 2,
+                -(ev.clientY - boundingBox.bottom) / fontSize / 2
+            )
+        }
+
+        let joint: MouseJoint | null = null;
+        world.queueUpdate((world) => {
+            joint = new MouseJoint({
+                maxForce: 1000,
+                target: getTarget(e),
+                bodyA: world.createBody(),
+                bodyB: box,
+            });
+            world.createJoint(joint);
+        });
+
+        function onBoxPointerMove(ev: PointerEvent) {
+            joint?.setTarget(getTarget(ev));
+        }
+
+        function onBoxPointerUp(ev: PointerEvent) {
+            world.queueUpdate((world) => {
+                if (joint) world.destroyJoint(joint);
+            });
+            target.removeEventListener("pointermove", onBoxPointerMove);
+            target.removeEventListener("pointerup", onBoxPointerUp);
+        }
+        
+        target.addEventListener("pointermove", onBoxPointerMove);
+        target.addEventListener("pointerup", onBoxPointerUp);
+    }
 </script>
 
 <ul class="tech-stack" bind:this={divHolder}>
     {#each data.boxes as box, index}
         <li class="tech-stack-box" 
-            style:transform={(data.counter, `translate(${box.getPosition().x * 2}em, ${-box.getPosition().y * 2}em) rotate(${-box.getAngle()}rad)`)}
-            style:--bg-color={items[index].color}
-            style:--size={`${items[index].priority}em`}
-            style={items[index].boxStyle}
-            aria-label={items[index].name}>
+                style:transform={(data.counter, `translate(${box.getPosition().x * 2}em, ${-box.getPosition().y * 2}em) rotate(${-box.getAngle()}rad)`)}
+                style:--bg-color={items[index].color}
+                style:--size={`${items[index].priority}em`}
+                style={items[index].boxStyle}
+                aria-label={items[index].name}
+                onpointerdown={(e) => registerItemDrag(e, box)}
+            >
             <Tooltip>{items[index].name}</Tooltip>
             {#if items[index].iconURL}
                 <img src={items[index].iconURL} alt="" aria-hidden={true} />

@@ -22,7 +22,7 @@ export const games: ProjectCollection = {
                 name: "One Trillion Free Draws",
                 description: `
                     <p>
-                        The definitive idle games where you have 1,000,000,000,000 free card packs to draw. That's 1 followed by 12 zeros!
+                        The definitive idle game where you have 1,000,000,000,000 free card packs to draw. That's 1 followed by 12 zeros!
                     </p>
                     <p>
                         It's fairly mobile-friendly and should be completable in about 2~3 days of active idling.

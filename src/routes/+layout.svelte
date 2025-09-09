@@ -89,7 +89,7 @@
         background:
             url(/index/res/images/tiling-spikes-left.svg) repeat-y top left / 1em 2em, 
             url(/index/res/images/tiling-spikes-right.svg) repeat-y top right / 1em 2em, 
-            linear-gradient(#000, #000) no-repeat center / calc(100% - 2em) 100%;
+            linear-gradient(#000, #000) no-repeat center / calc(100% - 1.96em) 100%;
 
         transition: inset 0.3s;
         transition-timing-function: var(--ease-out-expo);

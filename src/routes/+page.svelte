@@ -272,12 +272,12 @@
         <!-- Internet button -->
         <li style="--col: 1; --row: 1" aria-label="the internetometer">
           <div class="center-child">
-            <a href='http://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" aria-label="the internetometer">
+            <a href='https://internetometer.com/give/50959' style="width:90%;height:90%" class="image-link" target="_blank" aria-label="the internetometer">
               <Tooltip>
                 <p>the internetometer</p>
                 <p class="tooltip-action touch-only">(click again to give an internet)</p>
               </Tooltip>
-              <img src='http://internetometer.com/imagesmall/50959.png' style="width:100%;height:100%;object-fit:cover" alt="the internetometer"/>
+              <img src='https://internetometer.com/imagesmall/50959.png' style="width:100%;height:100%;object-fit:cover" alt="the internetometer"/>
             </a>
           </div>
         </li>

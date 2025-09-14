@@ -442,7 +442,19 @@ export const nongames: ProjectCollection = {
                 `,
                 links: [
                     null,
-                    { name: "launch", href: "/toys/realgenchat.html" },
+                    { name: "launch", href: "/stuff/real-gen-chat/" },
+                ]
+            },
+            {
+                name: "Bingo",
+                description: `
+                    <p>
+                        Some of my bingo boards.
+                    </p>
+                `,
+                links: [
+                    null,
+                    { name: "launch", href: "/stuff/bingo/" },
                 ]
             },
         ],

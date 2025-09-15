@@ -446,10 +446,10 @@ export const nongames: ProjectCollection = {
                 ]
             },
             {
-                name: "Bingo",
+                name: "duducat's bingo boards",
                 description: `
                     <p>
-                        Some of my bingo boards.
+                        Some of my bingo board ideas.
                     </p>
                 `,
                 links: [

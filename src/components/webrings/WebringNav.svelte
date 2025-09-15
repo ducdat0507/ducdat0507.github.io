@@ -15,7 +15,7 @@
         randomLink?: string,
         allLinks?: string[],
         indexLink?: string,  
-        broken: boolean  
+        broken?: boolean  
     } = $props()
 
     function updateLinks() {

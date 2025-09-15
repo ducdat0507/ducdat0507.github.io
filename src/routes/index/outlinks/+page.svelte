@@ -1,6 +1,7 @@
 <script lang="ts">
   import WebsiteLister from "../../../components/cards/WebsiteLister.svelte";
   import LeakyRing from "../../../components/webrings/LeakyRing.svelte";
+  import GradientRing from "../../../components/webrings/GradientRing.svelte";
   import { websites } from "../../../data/outlinks";
 </script>
 
@@ -17,6 +18,7 @@
     <h2>webrings & directories</h2>
     <ul class="ring-box live-tiles">
       <LeakyRing style="--col: 2; --row: 2" />
+      <GradientRing style="--col: 2; --row: 1" />
     </ul>
   </section>
 </div>

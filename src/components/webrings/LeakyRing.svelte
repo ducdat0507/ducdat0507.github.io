@@ -136,7 +136,7 @@
             allLinks={allSites}
             {broken} />
     </article>
-    <svg style="display: none">
+    <svg style="position: fixed; left: 10000vw; top: 10000vh">
         <defs>
             <filter id="leaky-ring-water">
                 <feTurbulence baseFrequency="0.005" numOctaves="2" stitchTiles="stitch">

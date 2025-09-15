@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Tooltip from "../utils/Tooltip.svelte";
   import WebringNav from "./WebringNav.svelte";
 
     const {
@@ -14,7 +15,7 @@
     >
     <article>
         <h4>gradientring</h4>
-        <p>(this is a gradient)</p>
+        <Tooltip>(apparently this background is gradient enough to qualify)</Tooltip>
         <WebringNav 
             indexLink="https://gradientring.nekoweb.org/" 
             prevLink="https://gradientring.nekoweb.org/s/duducat/prev"

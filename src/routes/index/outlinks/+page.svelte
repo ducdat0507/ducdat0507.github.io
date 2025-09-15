@@ -4,6 +4,7 @@
   import GradientRing from "../../../components/webrings/GradientRing.svelte";
   import { websites } from "../../../data/outlinks";
   import WebringNav from "../../../components/webrings/WebringNav.svelte";
+  import Tooltip from "../../../components/utils/Tooltip.svelte";
 </script>
 
 <svelte:head>
@@ -19,15 +20,15 @@
     <h2>webrings & directories</h2>
     <ul class="ring-box live-tiles">
       <LeakyRing style="--col: 2; --row: 2" />
-      <GradientRing style="--col: 3; --row: 1" />
-      <li style="--col: 3; --row: 1" aria-label="Hotline Webring">
+      <GradientRing style="--col: 2; --row: 1" />
+      <li style="--col: 2; --row: 1" aria-label="Hotline Webring">
         <article>
           <h4>Hotline Webring</h4>
-          <p>(the joining process is automatic)</p>
-            <WebringNav 
-              indexLink="https://hotlinewebring.club/" 
-              prevLink="https://hotlinewebring.club/¤/previous"
-              nextLink="https://hotlinewebring.club/¤/next" />
+          <Tooltip>(I only needed to navigate to a link to join)</Tooltip>
+          <WebringNav 
+            indexLink="https://hotlinewebring.club/" 
+            prevLink="https://hotlinewebring.club/¤/previous"
+            nextLink="https://hotlinewebring.club/¤/next" />
         </article>
       </li>
     </ul>
@@ -74,7 +75,7 @@
     }
 
     #webrings {
-      grid-column: 2;
+      grid-column: span 2;
       grid-row: span 10;
     }
   }
@@ -90,7 +91,7 @@
     }
 
     #webrings {
-      grid-column: 3;
+      grid-column: span 3;
     }
   }
 </style>

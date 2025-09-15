@@ -62,7 +62,7 @@ export const websites: WebsiteCollection = {
                         e.preventDefault();
                         setPopup("heads up", `
                             <span>
-                                <p><i>melonking.net</i> closes on Mondays (GMT+1).</p>
+                                <p><i>melonking.net</i> periodically closes on Mondays (GMT+1).</p>
                                 <p>Do you still wish to proceed?</p>
                             </span>
                         `, [

@@ -2,6 +2,7 @@
   import { page } from "$app/state";
   import { onMount } from "svelte";
   import WebringNav from "./WebringNav.svelte";
+  import Tooltip from "../utils/Tooltip.svelte";
 
     const {
         backend = "https://brain.melonking.net",
@@ -111,7 +112,10 @@
     >
     <article class:broken={broken}>
         <h4>Leaky Homepage Ring</h4>
-        <p>(now's actually a webring)</p>
+        <Tooltip>
+            (now's actually a webring!)<br/>
+            (...and doesn't take the entire screen for no reason)
+        </Tooltip>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder"
                 style:--level={fillAmount / fillMax} 
@@ -193,7 +197,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-bottom: 1em;
+        padding-bottom: 2em;
         padding-inline: 1em;
         pointer-events: none;
         opacity: 0;
@@ -204,13 +208,9 @@
     .leaky-ring-holder + div.active {
         opacity: 1;
     }
-    h4, p {
+    h4 {
         position: relative;
         z-index: 1;
-    }
-    p {
-        margin: 0;
-        font-size: .75em;
     }
 
     @keyframes leaky-ring-shaking {

@@ -3,6 +3,7 @@
   import LeakyRing from "../../../components/webrings/LeakyRing.svelte";
   import GradientRing from "../../../components/webrings/GradientRing.svelte";
   import { websites } from "../../../data/outlinks";
+  import WebringNav from "../../../components/webrings/WebringNav.svelte";
 </script>
 
 <svelte:head>
@@ -18,7 +19,17 @@
     <h2>webrings & directories</h2>
     <ul class="ring-box live-tiles">
       <LeakyRing style="--col: 2; --row: 2" />
-      <GradientRing style="--col: 2; --row: 1" />
+      <GradientRing style="--col: 3; --row: 1" />
+      <li style="--col: 3; --row: 1" aria-label="Hotline Webring">
+        <article>
+          <h4>Hotline Webring</h4>
+          <p>(the joining process is automatic)</p>
+            <WebringNav 
+              indexLink="https://hotlinewebring.club/" 
+              prevLink="https://hotlinewebring.club/¤/previous"
+              nextLink="https://hotlinewebring.club/¤/next" />
+        </article>
+      </li>
     </ul>
   </section>
 </div>
@@ -35,6 +46,11 @@
   .ring-box :global(h4) {
     font-size: 1em;
     margin: 0;
+  }
+  
+  #webrings li p {
+    margin: 0;
+    font-size: .75em;
   }
 
   @media (max-width: 49.999em) {

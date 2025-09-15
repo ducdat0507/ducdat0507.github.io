@@ -102,7 +102,7 @@
         border: 2px solid white;
         background: black;
         color: white;
-        z-index: 1;
+        z-index: 10;
         font-size: 0.75em;
     }
     .webring-nav > .link-tile {

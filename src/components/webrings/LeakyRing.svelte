@@ -197,7 +197,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-bottom: 2em;
+        padding-bottom: 1.5em;
         padding-inline: 1em;
         pointer-events: none;
         opacity: 0;

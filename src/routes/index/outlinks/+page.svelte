@@ -61,6 +61,14 @@
       height: 0.0001px;
       margin: 0 0 -0.0001px 0;
     }
+
+    .ring-box {
+      grid-template-columns: 1fr;
+    }
+    .ring-box > :global(li) {
+      height: 9em;
+      aspect-ratio: unset;
+    }
   }
 
   @media (min-width: 50em) {

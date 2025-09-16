@@ -15,7 +15,7 @@
     >
     <article>
         <h4>gradientring</h4>
-        <Tooltip>(apparently this background is gradient enough to qualify)</Tooltip>
+        <p>(apparently this background is gradient enough to qualify)</p>
         <WebringNav 
             indexLink="https://gradientring.nekoweb.org/" 
             prevLink="https://gradientring.nekoweb.org/s/duducat/prev"

@@ -19,12 +19,12 @@
   <section id="webrings" data-category-name="rings & directories">
     <h2>webrings & directories</h2>
     <ul class="ring-box live-tiles">
-      <LeakyRing style="--col: 2; --row: 2" />
-      <GradientRing style="--col: 2; --row: 1" />
-      <li style="--col: 2; --row: 1" aria-label="Hotline Webring">
+      <LeakyRing />
+      <GradientRing />
+      <li aria-label="Hotline Webring">
         <article>
           <h4>Hotline Webring</h4>
-          <Tooltip>(I only needed to navigate to a link to join)</Tooltip>
+          <p>(I only needed to navigate to a link to join)</p>
           <WebringNav 
             indexLink="https://hotlinewebring.club/" 
             prevLink="https://hotlinewebring.club/¤/previous"
@@ -77,6 +77,14 @@
     #webrings {
       grid-column: span 2;
       grid-row: span 10;
+    }
+
+    .ring-box {
+      grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+    }
+    .ring-box > :global(li) {
+      --row: 1;
+      --col: 1;
     }
   }
 

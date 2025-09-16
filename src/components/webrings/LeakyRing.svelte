@@ -112,10 +112,10 @@
     >
     <article class:broken={broken}>
         <h4>Leaky Homepage Ring</h4>
-        <Tooltip>
+        <p>
             (now's actually a webring!)<br/>
             (...and doesn't take the entire screen for no reason)
-        </Tooltip>
+        </p>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder"
                 style:--level={fillAmount / fillMax} 
@@ -146,7 +146,7 @@
                     <animate attributeName="values" values="0;360" dur="2s" repeatCount="indefinite"/>
                 </feColorMatrix>
                 <feDisplacementMap in="SourceGraphic" in2="map" scale="16" xChannelSelector="R" yChannelSelector="G">
-                    <animate attributeName="scale" values="8;16;8" dur="10s" repeatCount="indefinite"/>
+                    <animate attributeName="scale" values="16;24;16" dur="10s" repeatCount="indefinite"/>
                 </feDisplacementMap>
             </filter>
         </defs>
@@ -208,9 +208,13 @@
     .leaky-ring-holder + div.active {
         opacity: 1;
     }
-    h4 {
+    h4, p {
         position: relative;
         z-index: 1;
+    }
+    p {
+        margin: 0;
+        font-size: .75em;
     }
 
     @keyframes leaky-ring-shaking {

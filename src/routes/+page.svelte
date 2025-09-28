@@ -171,7 +171,8 @@
             <Tooltip>
               <p>
                 @duducat<br/>
-                (for incremental game related stuff)
+                (for incremental game related stuff)<br/>
+                (note: not my server)
               </p>
               <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>

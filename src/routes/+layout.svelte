@@ -152,6 +152,7 @@
             flex-flow: column;
             justify-content: end;
             flex: 0 0 min(30em, calc(100dvw - 3em));
+            width: min(30em, calc(100dvw - 3em));
             z-index: 1;
             scroll-snap-align: start;
             scroll-snap-stop: always;
@@ -186,6 +187,7 @@
         }
         main :global(.category-box > *) {
             flex: 0 0 min(30em, calc(100dvw - 3em));
+            width: min(30em, calc(100dvw - 3em));
             height: 100%;
             padding: 1em;
             padding-block: 10em 6em;

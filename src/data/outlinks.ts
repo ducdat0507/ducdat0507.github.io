@@ -37,7 +37,7 @@ export const websites: WebsiteCollection = {
             {
                 site: "https://thepaperpilot.org/",
                 name: "The Paper Pilot",
-                button: "!thepaperpilot.png",
+                button: "thepaperpilot.png",
             },
             {
                 site: "https://yhvr.me/",

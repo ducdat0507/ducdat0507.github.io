@@ -1,7 +1,8 @@
 <script lang="ts">
     let { 
-        text
-    }: {
+        text,
+        ...props
+    }: HTMLElement & {
         text: string
     } = $props();
 
@@ -9,7 +10,7 @@
 </script>
 
 {((charIndex = 0) || true) && ""}
-<splitted-text aria-label={text}>
+<splitted-text aria-label={text} {...props}>
     {#each text.split(" ") as word}
         {" "}<s-word aria-hidden="true">
             {#each word as char, index}

@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import WebringNav from "./WebringNav.svelte";
   import Tooltip from "../utils/Tooltip.svelte";
+  import TextSplitter from "../TextSplitter.svelte";
 
     const {
         backend = "https://brain.melonking.net",
@@ -42,11 +43,11 @@
         lastUpdate = setTimeout(() => {doRequest()}, updateInterval * 1000);
         if (bilging) return;
 
-        // if (page.url.hostname == "localhost") {
-        //     fillAmount = 100;
-        //     allSites = [];
-        //     return;
-        // }
+        if (page.url.hostname == "localhost") {
+            fillAmount = 70;
+            allSites = [];
+            return;
+        }
 
         fetch(
             `${backend}/flood?bilge=${bilge}&info=${fullInfo}&path=${page.url.pathname}`,
@@ -130,7 +131,7 @@
             {:else if bilging}
                 (trying my best...)
             {:else}
-                (click here to flush some water)
+                <TextSplitter class="wave" text="(click here to flush some water)" />
             {/if}
         </div>
         <WebringNav 
@@ -219,6 +220,11 @@
         font-size: .75em;
     }
 
+    article :global(splitted-text.wave span) {
+        display: inline-block;
+        animation: wavy-text 0.5s calc(-0.05s * var(--index)) ease-in-out alternate infinite;
+    }
+
     @keyframes leaky-ring-shaking {
         from {
             transform: translateX(-1px);
@@ -226,4 +232,13 @@
             transform: translateX(1px);
         }
     }
+
+    @keyframes wavy-text {
+        from {
+        transform: translateY(-.125em);
+        } to {
+        transform: translateY(.125em);
+        }
+    }
+
 </style>

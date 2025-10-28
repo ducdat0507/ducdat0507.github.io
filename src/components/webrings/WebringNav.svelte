@@ -51,7 +51,7 @@
         <div class="link-tile">
             <a class="pop-out-btn" href={indexLink}>
                 <Icon icon="simple-line-icons:directions" />
-                <span>indx</span>
+                <span>index</span>
             </a>
         </div>
     {/if}
@@ -60,7 +60,7 @@
         <div class="link-tile">
             <a class="pop-out-btn" href={prevLink}>
                 <Icon icon="iconoir:arrow-left" />
-                <span>prev</span>
+                <span>previous</span>
             </a>
         </div>
     {/if}
@@ -68,7 +68,7 @@
         <div class="link-tile">
             <a class="pop-out-btn" href={randomLink}>
                 <Icon icon="iconoir:dice-five" />
-                <span>rand</span>
+                <span>random</span>
             </a>
         </div>
     {/if}
@@ -107,8 +107,8 @@
         font-size: 0.75em;
     }
     .webring-nav > .link-tile {
-        flex: 0 0 2.4em;
-        aspect-ratio: 1;
+        flex: 0 0 3.84em;
+        aspect-ratio: 1.6;
     }
     .webring-nav > .link-tile span {
         line-height: 1;

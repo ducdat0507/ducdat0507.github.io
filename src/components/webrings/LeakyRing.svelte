@@ -110,12 +110,14 @@
         bind:this={leakyRing}
         {...itemProps}
     >
-    <Tooltip>
-        (now's actually a webring!)<br/>
-        (...and doesn't take the entire screen for no reason)
-    </Tooltip>
     <article class:broken={broken}>
-        <h4>Leaky Homepage Ring</h4>
+        <h4>
+            Leaky Homepage Ring
+            <Tooltip>
+                (now's actually a webring!)<br/>
+                (...and doesn't take the entire screen for no reason)
+            </Tooltip>
+        </h4>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder"
                 style:--level={fillAmount / fillMax} 

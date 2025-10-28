@@ -22,11 +22,13 @@
       <LeakyRing />
       <GradientRing />
       <li aria-label="Hotline Webring">
-        <Tooltip>
-          (I only needed to navigate to a link to join)
-        </Tooltip>
         <article>
-          <h4>Hotline Webring</h4>
+          <h4>
+            Hotline Webring
+            <Tooltip>
+              (I only needed to navigate to a link to join)
+            </Tooltip>
+          </h4>
           <WebringNav 
             indexLink="https://hotlinewebring.club/" 
             prevLink="https://hotlinewebring.club/¤/previous"

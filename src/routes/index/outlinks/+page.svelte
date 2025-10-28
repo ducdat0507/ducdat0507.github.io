@@ -54,7 +54,8 @@
   }
   .ring-box :global(h4) {
     font-size: 1em;
-    margin: 0;
+    margin: -0.3em;
+    padding: 0.3em;
   }
   
   #webrings li p {

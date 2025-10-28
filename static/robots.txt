@@ -1,3 +1,2 @@
 User-Agent: *
-Disallow: /.well-known/
 Disallow: /toys/

@@ -22,9 +22,11 @@
       <LeakyRing />
       <GradientRing />
       <li aria-label="Hotline Webring">
+        <Tooltip>
+          (I only needed to navigate to a link to join)
+        </Tooltip>
         <article>
           <h4>Hotline Webring</h4>
-          <p>(I only needed to navigate to a link to join)</p>
           <WebringNav 
             indexLink="https://hotlinewebring.club/" 
             prevLink="https://hotlinewebring.club/¤/previous"
@@ -40,6 +42,10 @@
     margin-block: 1em .5em;
   }
 
+  .ring-box > :global(li) {
+    height: 7em;
+    aspect-ratio: unset;
+  }
   .ring-box > :global(li > *) {
     position: relative;
     padding: .3em .4em;
@@ -65,10 +71,6 @@
     .ring-box {
       grid-template-columns: 1fr;
     }
-    .ring-box > :global(li) {
-      height: 9em;
-      aspect-ratio: unset;
-    }
   }
 
   @media (min-width: 50em) {
@@ -83,16 +85,12 @@
     }
 
     #webrings {
-      grid-column: span 2;
+      grid-column: span 1;
       grid-row: span 10;
     }
 
     .ring-box {
-      grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
-    }
-    .ring-box > :global(li) {
-      --row: 1;
-      --col: 1;
+      grid-template-columns: 1fr;
     }
   }
 
@@ -104,6 +102,10 @@
 
     .category-box > :not(#webrings) {
       grid-column: span 2;
+    }
+
+    .ring-box {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     #webrings {

@@ -44,7 +44,7 @@
 <div class="links webring-nav">
     {#if broken}
         <div class="notice">
-            webring is down or site is pending approval
+            ⚠️&nbsp;webring is down or site is pending approval&nbsp;⚠️
         </div>
     {/if}
     {#if indexLink}
@@ -94,6 +94,7 @@
     .webring-nav > .notice {
         position: absolute;
         inset: auto auto 4em auto;
+        width: calc(100% - 1.2em);
         padding: .5em;
         margin-inline: 0.2em 1em;
         text-align: center;

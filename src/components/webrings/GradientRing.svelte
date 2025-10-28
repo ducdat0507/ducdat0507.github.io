@@ -13,9 +13,11 @@
         aria-label="gradientring" 
         {...itemProps}
     >
+    <Tooltip>
+        (apparently this background is gradient enough to qualify)
+    </Tooltip>
     <article>
         <h4>gradientring</h4>
-        <p>(apparently this background is gradient enough to qualify)</p>
         <WebringNav 
             indexLink="https://gradientring.nekoweb.org/" 
             prevLink="https://gradientring.nekoweb.org/s/duducat/prev"

@@ -110,12 +110,12 @@
         bind:this={leakyRing}
         {...itemProps}
     >
+    <Tooltip>
+        (now's actually a webring!)<br/>
+        (...and doesn't take the entire screen for no reason)
+    </Tooltip>
     <article class:broken={broken}>
         <h4>Leaky Homepage Ring</h4>
-        <p>
-            (now's actually a webring!)<br/>
-            (...and doesn't take the entire screen for no reason)
-        </p>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder"
                 style:--level={fillAmount / fillMax} 
@@ -177,8 +177,8 @@
         margin: -1em;
         background: 
             linear-gradient(black, black) top left / 100% calc(100% - var(--level, 0) * 100%) no-repeat,
-            url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 19.9px)) / 200px 20px repeat-x, 
-            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 29.9px)) / 300px 30px repeat-x, 
+            url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 19.9px)) / 100px 10px repeat-x, 
+            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 29.9px)) / 150px 15px repeat-x, 
             url(/index/res/images/tiling-bg.svg) repeat, 
             linear-gradient(#5df, #59f);
         transition: background 2s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -197,7 +197,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-bottom: 1.5em;
+        padding-bottom: 0.6em;
         padding-inline: 1em;
         pointer-events: none;
         opacity: 0;

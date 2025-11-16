@@ -31,3 +31,9 @@
         {@html DOMPurify.sanitize(lastStatus.content)}
     </div>
 {/if}
+
+<style>
+    .status-cafe-face {
+        filter: grayscale(1);
+    }
+</style>

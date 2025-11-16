@@ -9,11 +9,17 @@
   import StatusCafeStat from "../components/stat/StatusCafeStat.svelte";
   import Tooltip from "../components/utils/Tooltip.svelte";
   import type { Action } from "svelte/action";
+  import { setPopup } from "../components/utils/PopupDisplayer.svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
   let setupInterval: number = 0;
   let hasSetup = false;
+
+  let showInactiveSocials = $state(false);
+  let isTwitterX = $state(false);
+  let isTwitterXTimeout = 0;
+  let isTwitterXAudio = new Audio("/index/res/sounds/x.mp3");
 
   const setupCounter: Action = (elm: Element) => {
     setupInterval = setInterval(() => {
@@ -63,6 +69,39 @@
     }
   }
 
+  function toggleInactiveSocials() {
+    showInactiveSocials = !showInactiveSocials;
+  }
+
+  function handleMelonlandForum(e: Event) {
+    let now = new Date();
+    now.setHours(now.getHours() - 1);
+    if (now.getDay() == 1) {
+      e.preventDefault();
+      setPopup("heads up", `
+        <span>
+          <p><i>Melonland Forum</i> periodically closes on Mondays (GMT+1).</p>
+          <p>Do you still wish to proceed?</p>
+        </span>
+      `, [
+        { name: "nevermind", icon: "iconoir:arrow-left" },
+        null,
+        { name: "continue", icon: "iconoir:arrow-right", href: "https://forum.melonland.net/index.php?action=profile;u=2958" },
+      ])
+    }
+  }
+
+  function handleTwitterX(e: Event) {
+    e.preventDefault();
+    if (isTwitterXTimeout) clearTimeout(isTwitterXTimeout);
+    isTwitterX = true;
+    isTwitterXAudio.currentTime = 0;
+    isTwitterXAudio.play();
+    isTwitterXTimeout = setTimeout(() => {
+      isTwitterX = false;
+    }, 1000)
+  }
+
 </script>
 
 <svelte:head>
@@ -73,7 +112,7 @@
   <div id="socials" data-category-name="socials">
     <section class="">
       <h2>find me on:</h2>
-      <ul class="widget-box live-tiles">
+      <ul class="widget-box live-tiles" style="grid-auto-flow: row">
         <li class="link-tile" aria-label="github">
           <a class="pop-out-btn" href="https://github.com/ducdat0507" rel="me">
             <Tooltip>
@@ -126,25 +165,57 @@
             <StatusCafeStat />
           </a>
         </li>
-        <li class="link-tile" aria-label="newgrounds">
-          <a class="pop-out-btn" href="https://ducdat0507.newgrounds.com" rel="me">
-            <Tooltip>
-              <p>@ducdat0507</p>
-              <p class="tooltip-action touch-only">(click again to view profile)</p>
-            </Tooltip>
-            <NewgroundsTankIcon />
-            <h3>newgrounds</h3>
-          </a>
+        <li class="link-tile" class:active={showInactiveSocials} aria-label={showInactiveSocials ? "hide inactive links" : "show inactive links"}>
+          <button class="pop-out-btn" onclick={() => toggleInactiveSocials()}>
+            <Icon icon={showInactiveSocials ? "tabler:chevron-down" : "tabler:chevron-left"} />
+            <h3>other links...</h3>
+          </button>
         </li>
-        <li class="link-tile" aria-label="mspfa">
-          <a class="pop-out-btn" href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
-            <Tooltip>
-              <p>@ducdat0507</p>
-              <p class="tooltip-action touch-only">(click again to view profile)</p>
-            </Tooltip>
-            <VorkedLarfleezeIcon />
-            <h3>mspfa</h3>
-          </a>
+        <li class="inactive-links live-tiles-folder" class:active={showInactiveSocials} aria-label="inactive links">
+          <ul class="widget-box live-tiles" style="width: 100%" >
+            <li class="link-tile" aria-label="newgrounds">
+              <a class="pop-out-btn" href="https://ducdat0507.newgrounds.com" rel="me">
+                <Tooltip>
+                  <p>@ducdat0507</p>
+                  <p class="tooltip-action touch-only">(click again to view profile)</p>
+                </Tooltip>
+                <NewgroundsTankIcon />
+                <h3>newgrounds</h3>
+              </a>
+            </li>
+            <li class="link-tile" aria-label="mspfa">
+              <a class="pop-out-btn" href="https://mspfa.com/user/?u=109574176547777339810" rel="me">
+                <Tooltip>
+                  <p>@ducdat0507</p>
+                  <p class="tooltip-action touch-only">(click again to view profile)</p>
+                </Tooltip>
+                <VorkedLarfleezeIcon />
+                <h3>mspfa</h3>
+              </a>
+            </li>
+            <li class="link-tile" aria-label="melonland forum">
+              <a class="pop-out-btn" href="https://forum.melonland.net/index.php?action=profile;u=2958" rel="me"
+                onclick={handleMelonlandForum}>
+                <Tooltip>
+                  <p>@duducat</p>
+                  <p class="tooltip-action touch-only">(click again to view profile)</p>
+                </Tooltip>
+                <img class="icon" alt="" src="/index/res/icons/melonland-forum.png" />
+                <h3>melonland forum</h3>
+              </a>
+            </li>
+            <li class="link-tile" class:twitter-x={isTwitterX} aria-label="melonland forum">
+              <a class="pop-out-btn" href="https://twitter.com/ducdat0507" rel="me noindex nofollow"
+                onclick={handleTwitterX}>
+                <Tooltip>
+                  <p>@ducdat0507</p>
+                  <p class="tooltip-action touch-only">(click again to view profile)</p>
+                </Tooltip>
+                <Icon icon={isTwitterX ? "bi:twitter-x" : "bi:twitter"} />
+                <h3>{isTwitterX ? "❌".repeat(100) : "twitter"}</h3>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </section>
@@ -328,10 +399,12 @@
     position: relative;
     padding-bottom: 1em;
   }
+  .live-tiles-folder > .widget-box {
+    padding-block: 0px;
+  }
   .x2 {
-    display: inline-block;
     max-width: 100%;
-    display: flex;
+    display: flex !important;
     flex-flow: row;
     align-items: center;
     justify-content: center;
@@ -353,7 +426,7 @@
   }
 
   .center-child {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
   }
@@ -419,6 +492,39 @@
     }
     .category-box > * {
       flex: 0 0 22em;
+    }
+  }
+
+  .link-tile.active > :first-child { 
+    background: white;
+    color: black;
+  }
+  .inactive-links {
+    display: none;
+  }
+  .inactive-links.active {
+    display: block;
+  }
+
+  .twitter-x {
+    animation: twitter-x-shaking 0.1s linear infinite;
+  }
+  .twitter-x > :first-child {
+    background: red;
+    color: black;
+  }
+
+  @keyframes twitter-x-shaking {
+    from {
+      transform: translate(-0.1em, -0.1em) rotate(1deg);
+    } 25% {
+      transform: translate(0.1em, 0.1em) rotate(-1deg);
+    } 50% {
+      transform: translate(-0.1em, 0.1em) rotate(0deg);
+    } 75% {
+      transform: translate(0.1em, -0.1em) rotate(2deg);
+    } to {
+      transform: translate(-0.1em, -0.1em) rotate(-2deg);
     }
   }
 </style>

@@ -25,6 +25,10 @@ a {
     text-decoration: underline dashed;
 }
 
+button, input, textarea {
+    font: inherit;
+}
+
 .pop-out-btn {
     --outset: 2px;
     --inset: 0px;

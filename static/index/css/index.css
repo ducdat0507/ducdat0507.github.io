@@ -4,10 +4,16 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(5.5em, 1fr));
     grid-auto-flow: row dense;
+    list-style: none;
     margin: -4px;
     padding: 0;
 }
-.live-tiles>* {
+.live-tiles > .live-tiles-folder {
+    grid-column: 1 / -1;
+    padding: 4px;
+    width: calc(100% + 8px);
+}
+.live-tiles > :not(.live-tiles-folder) {
     --row: 1;
     --col: 1;
     display: block;
@@ -16,7 +22,7 @@
     aspect-ratio: calc(var(--col) / var(--row));
     padding: 4px;
 }
-.live-tiles>*> :first-child {
+.live-tiles > :not(.live-tiles-folder) > :first-child {
     display: block;
     width: 100%;
     height: 100%;
@@ -25,10 +31,10 @@
     color: white;
     text-decoration: none;
 }
-.live-tiles>*> .pop-out-btn:first-child {
+.live-tiles > :not(.live-tiles-folder) > .pop-out-btn:first-child {
     border-color: white;
 }
-.live-tiles > *  > :first-child.broken {
+.live-tiles > :not(.live-tiles-folder) > :first-child.broken {
     background-image: linear-gradient(135deg, #f007 33.33%, transparent 33.33%, transparent 50%, #f007 50%, #f007 83.33%, transparent 83.33%, transparent 100%);
     animation: broken-stripes 5s linear infinite;
     background-size: 2rem 2rem;
@@ -116,15 +122,17 @@
     border-radius: 50%;
     vertical-align: .55rem;
 }
-.link-tile > * > svg {
+.link-tile > * > :is(svg, .icon) {
     position: absolute;
     right: 0;
     top: 0;
     height: 80%;
     width: auto;
     opacity: 0.3;
+    image-rendering: crisp-edges;
+    filter: grayscale(1);
 }
-.link-tile > :hover > svg {
+.link-tile > :hover > :is(svg, .icon) {
     opacity: 0.4;
 }
 

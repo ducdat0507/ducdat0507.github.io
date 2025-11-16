@@ -449,7 +449,11 @@ export const nongames: ProjectCollection = {
                 name: "duducat's bingo boards",
                 description: `
                     <p>
-                        Some of my bingo board ideas.
+                        Some of my bingo board ideas, made into interactive internet bingo games.
+                    </p>
+                    <p>
+                        For extra spice, each bingo has an optional questionnaire with the answer 
+                        to be used as the seed to generate the board (so two person referencing the same thing gets the same board.)
                     </p>
                 `,
                 links: [
@@ -480,17 +484,45 @@ export const nongames: ProjectCollection = {
         ],
         "widgets": [
             {
-                name: "Custom Discord embeds",
+                name: "Custom Discord embed widgets",
                 description: `
                     <p>
                         Make your own stylable Discord invite widgets!
                     </p>
                     <p>
-                        Choose the default ones or bring your own CSS file!
+                        Choose the default style (there's only one at the moment) or bring your own CSS file!
                     </p>
                 `,
                 links: [
-                    { name: "source / how to", icon:"iconoir:git", href: "https://github.com/ducdat0507/custom-discord-embeds" },
+                    { name: "source / how to", icon:"iconoir:git", href: "https://github.com/ducdat0507/custom-discord-widget" },
+                ]
+            },
+            {
+                name: "hit counters from hell",
+                description: `
+                    <p>
+                        Recreation of those XOOMCounter/NBCi Counter/Pagecount hit counters seen on websites from 
+                        the early 2000s. If you're making a nostalgia-themed personal website it <i>might</i> be useful
+                        as a decorative element on your pages.
+                    </p>
+                    <p>
+                        Pick from a list of predefined themes or 
+                        <a href="https://duducat.nekoweb.org/stuff/xoom-counter/xoom-themes/xoom/index.json">
+                            bring your own ones if you can read the theme JSON format.</a>
+                        You can also change the links and the banner ad to whatever you choose to put on it, or hide the banner altogether if you think it takes 
+                        too much space.
+                    </p>
+                    <p>
+                        (Note: hit counter service not included, if your site aren't hosted on Neocities or Nekoweb you'll need to manually supply the count.)
+                    </p>
+                    <div style="text-align: center; margin-top: 1em; position: relative; height: 40px;">
+                        <iframe src="https://duducat.nekoweb.org/xoom.html"
+                            style="display: inline-block; border: none; position: absolute; inset: 0; width: 100%; height: 100%"></iframe>
+                    </div> 
+                `,
+                links: [
+                    null,
+                    { name: "get", icon:"iconoir:arrow-down", href: "https://duducat.nekoweb.org/stuff/xoom-counter/" },
                 ]
             },
         ],

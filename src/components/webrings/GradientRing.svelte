@@ -28,8 +28,8 @@
 </li>
 
 <style>
-    .gradient-ring article {
-        background: conic-gradient(#016 25%, #004 25% 50%, #016 50% 75%, #004 75%) top left / 1em 1em repeat;
+    .gradient-ring > article {
+        background: conic-gradient(#016 25%, #004 25% 50%, #016 50% 75%, #004 75%) top left / 1em 1em repeat !important;
     }
     p {
         margin: 0;

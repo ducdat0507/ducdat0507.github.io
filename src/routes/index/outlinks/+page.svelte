@@ -5,6 +5,7 @@
   import { websites } from "../../../data/outlinks";
   import WebringNav from "../../../components/webrings/WebringNav.svelte";
   import Tooltip from "../../../components/utils/Tooltip.svelte";
+  import HotlineWebring from "../../../components/webrings/HotlineWebring.svelte";
 </script>
 
 <svelte:head>
@@ -21,20 +22,7 @@
     <ul class="ring-box live-tiles">
       <LeakyRing />
       <GradientRing />
-      <li aria-label="Hotline Webring">
-        <article>
-          <h4>
-            Hotline Webring
-            <Tooltip>
-              (I only needed to navigate to a link to join)
-            </Tooltip>
-          </h4>
-          <WebringNav 
-            indexLink="https://hotlinewebring.club/" 
-            prevLink="https://hotlinewebring.club/¤/previous"
-            nextLink="https://hotlinewebring.club/¤/next" />
-        </article>
-      </li>
+      <HotlineWebring />
     </ul>
   </section>
 </div>

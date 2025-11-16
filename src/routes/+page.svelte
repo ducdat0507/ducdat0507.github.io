@@ -10,6 +10,7 @@
   import Tooltip from "../components/utils/Tooltip.svelte";
   import type { Action } from "svelte/action";
   import { setPopup } from "../components/utils/PopupDisplayer.svelte";
+  import { onMount } from "svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
@@ -19,7 +20,7 @@
   let showInactiveSocials = $state(false);
   let isTwitterX = $state(false);
   let isTwitterXTimeout = 0;
-  let isTwitterXAudio = new Audio("/index/res/sounds/x.mp3");
+  let isTwitterXAudio: Audio | null = null;
 
   const setupCounter: Action = (elm: Element) => {
     setupInterval = setInterval(() => {
@@ -95,13 +96,18 @@
     e.preventDefault();
     if (isTwitterXTimeout) clearTimeout(isTwitterXTimeout);
     isTwitterX = true;
-    isTwitterXAudio.currentTime = 0;
-    isTwitterXAudio.play();
+    if (isTwitterXAudio) {
+      isTwitterXAudio.currentTime = 0;
+      isTwitterXAudio.play();
+    }
     isTwitterXTimeout = setTimeout(() => {
       isTwitterX = false;
     }, 1000)
   }
 
+  onMount(() => {
+    isTwitterXAudio = new Audio("/index/res/sounds/x.mp3");
+  })
 </script>
 
 <svelte:head>

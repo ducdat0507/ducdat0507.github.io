@@ -217,6 +217,13 @@
             clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
             pointer-events: none;
         }
+
+        .main-container.home .nav-bar :global(nav li a:hover span) {
+            background: linear-gradient(90deg, #f55, #dd0, #1e1, #0dd, #88f, #e1e, #f55);
+            background-size: 5em 0.07em;
+            background-repeat: repeat-x;
+            animation: nav-item-hover 1s linear infinite;
+        }
     }
 
 
@@ -224,7 +231,7 @@
 
         .main-container.home {
             --inset-block: max(0px, calc(50dvh - 20em));
-            --inset-inline: max(0px, calc(50vw - 40em));
+            --inset-inline: max(0px, calc(50vw - 42em));
             inset-block: var(--inset-block);
             height: calc(100dvh - var(--inset-block) * 2);
             inset-inline: var(--inset-inline);
@@ -257,6 +264,12 @@
         }
         .main-container.home .nav-bar :global(nav li.nav-item) {
             --outset: 0px;
+        }
+        .main-container.home .nav-bar :global(nav li a:hover span) {
+            background: linear-gradient(90deg, #f55, #dd0, #1e1, #0dd, #88f, #e1e, #f55);
+            background-size: 5em 0.07em;
+            background-repeat: repeat-x;
+            animation: nav-item-hover 1s linear infinite;
         }
 
 
@@ -412,6 +425,14 @@
             transform: translateX(-150%);
         } to {
             transform: translateX(0);
+        }
+    }
+
+    @keyframes nav-item-hover {
+        from {
+            background-position: 0 calc(100% - 0.14em);
+        } to {
+            background-position: 5em calc(100% - 0.14em);
         }
     }
 </style>

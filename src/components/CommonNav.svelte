@@ -12,7 +12,7 @@
             </CommonNavItem>
         {/if}
         <li>
-            <h2>portfolio</h2>
+            <h2>introduction</h2>
             <ul>
                 <CommonNavItem href="/index/about/" icon="fluent:hand-wave-24-regular">
                     about me

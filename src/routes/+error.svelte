@@ -8,7 +8,7 @@
 </svelte:head>
 
 <div class="category-box">
-  <div id="error" data-category-name="uhhhh">
+  <div id="error" data-category-name="uhhhh" data-icon="tabler:file-alert">
     <section class="box big">
       <h1>uhhhh</h1>
       <p>{page.status}: {page.error?.message}</p>

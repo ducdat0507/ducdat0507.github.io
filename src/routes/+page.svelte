@@ -115,7 +115,7 @@
 </svelte:head>
 
 <div class="category-box">
-  <div id="socials" data-category-name="socials">
+  <div id="socials" data-category-name="socials" data-icon="lucide:globe">
     <section class="">
       <h2>find me on:</h2>
       <ul class="widget-box live-tiles" style="grid-auto-flow: row">
@@ -316,7 +316,7 @@
     </section>
   </div>
 
-  <div id="widgets" data-category-name="widgets">
+  <div id="widgets" data-category-name="widgets" data-icon="octicon:apps-16">
     <section>
       <h2>boxes of numbers going up:</h2>
       <ul class="widget-box live-tiles">

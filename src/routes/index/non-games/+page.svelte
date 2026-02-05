@@ -11,7 +11,10 @@
 </svelte:head>
 
 <div class="category-box">
-  <ProjectLister projects={nongames} altNames={["apps & sites", "fun stuff", "web resources"]} />
+  <ProjectLister projects={nongames} 
+    altNames={["apps & sites", "fun stuff", "web resources", "miscellaneous"]}
+    altIcons={["tabler:browser", "tabler:dice-5", "ri:book-line", "material-symbols:box-outline-sharp"]}
+    />
 </div>
 
 <style>

@@ -87,7 +87,7 @@
 </svelte:head>
 
 <div class="category-box">
-  <div id="about-me" data-category-name="about me">
+  <div id="about-me" data-category-name="about me" data-icon="tabler:user">
     <section class="box big about-me-main">
       <h2 class="hide-if-mobile">about me</h2>
       <p>

@@ -13,11 +13,11 @@
 </svelte:head>
 
 <div class="category-box">
-  <section id="personal-sites" data-category-name="personal sites">
+  <section id="personal-sites" data-category-name="personal sites" data-icon="tabler:git-commit">
     <h2>personal sites</h2>
     <WebsiteLister websites={websites["personal"]} />
   </section>
-  <section id="webrings" data-category-name="rings & directories">
+  <section id="webrings" data-category-name="rings & directories" data-icon="tabler:network">
     <h2>webrings & directories</h2>
     <ul class="ring-box live-tiles">
       <LeakyRing />

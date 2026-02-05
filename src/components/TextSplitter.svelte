@@ -2,7 +2,7 @@
     let { 
         text,
         ...props
-    }: HTMLElement & {
+    }: Partial<HTMLElement> & {
         text: string
     } = $props();
 

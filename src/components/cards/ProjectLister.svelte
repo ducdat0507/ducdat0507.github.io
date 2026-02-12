@@ -1,7 +1,7 @@
 <script>
   import ProjectCard from "./ProjectCard.svelte";
 
-  let { projects, altNames = null } = $props();
+  let { projects, altNames = null, altIcons = null } = $props();
 
   let index = 0;
 
@@ -10,7 +10,7 @@
 {(index = 0), ""}
 {#each Object.entries(projects) as [sectionName, section]}
   {(index += 1), ""}
-  <section id={sectionName.replaceAll(" ", "-")} data-category-name={altNames?.[index - 1] ?? sectionName}>
+  <section id={sectionName.replaceAll(" ", "-")} data-category-name={altNames?.[index - 1] ?? sectionName} data-icon={altIcons?.[index - 1]}>
     <h2>{sectionName}</h2>
     <ul class="subsections">
       {#each Object.entries(section) as [categoryName, category]}

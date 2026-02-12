@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div class="category-box">
-  <section id="featured" data-category-name="featured">
+  <section id="featured" data-category-name="featured" data-icon="tabler:star">
     <h2>featured</h2>
     <ul class="project-list big">
       {#each [
@@ -26,7 +26,9 @@
       {/each}
     </ul>
   </section>
-  <ProjectLister projects={games} altNames={["incrementals", "non-incrementals"]} />
+  <ProjectLister projects={games} 
+    altNames={["incrementals", "non-incrementals"]}
+    altIcons={["tabler:exposure-plus-1", "tabler:exposure-0"]} />
 </div>
 
 <style>

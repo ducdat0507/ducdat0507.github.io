@@ -1,12 +1,18 @@
 <script lang="ts">
   import { page } from "$app/state";
   import Icon from "@iconify/svelte";
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
 
+    type MobileNavButton = {
+        element: Element,
+        icon?: string,
+        href?: string,
+        highlight: number,
+    }
 
     let metroHeader: HTMLDivElement;
     let metroHeaderItems: HTMLDivElement;
-    let mobileNavItems: HTMLSpanElement;
+    let mobileNavItems: MobileNavButton[] = $state([]);
     let mobileNavBarItem: HTMLAnchorElement;
 
     let currentPage = $derived(page.url.pathname);
@@ -18,37 +24,36 @@
 
     $effect(() => {
         currentPage;
+        untrack(() => {
+            metroHeaderItems.innerHTML = "";
+            mobileNavItems = []
 
-        metroHeaderItems.innerHTML = mobileNavItems.innerHTML = "";
+            let categories = document.querySelectorAll(".category-box > *");
+            if (!categories[0]) return;
 
-        let categories = document.querySelectorAll(".category-box > *");
-        if (!categories[0]) return;
+            let index = 0;
+            for (const elm of categories) {
+                let link = document.createElement("a");
+                link.innerText = elm.getAttribute("data-category-name") ?? "";
+                link.href = "#" + elm.id;
+                metroHeaderItems.appendChild(link);
 
-        let index = 0;
-        for (const elm of categories) {
-            let link = document.createElement("a");
-            link.innerText = elm.getAttribute("data-category-name") ?? "";
-            link.href = "#" + elm.id;
-            metroHeaderItems.appendChild(link);
+                mobileNavItems.push({
+                    element: elm,
+                    icon: elm.getAttribute("data-icon") ?? undefined,
+                    href: "#" + elm.id,
+                    highlight: 0,
+                });
 
-            let btn = document.createElement("a");
-            btn.innerText = (index + 1).toLocaleString("en-US");
-            btn.classList.add("pop-out-btn")
-            btn.href = "#" + elm.id;
-            btn.onclick = (e) => {
-                e.preventDefault();
-                elm.scrollIntoView({inline: "center", behavior: "smooth"});
+                index++;
             }
-            mobileNavItems.appendChild(btn);
 
-            index++;
-        }
+            if (lastPage || currentPage != "/") {
+                categories[0].scrollIntoView({inline: "center"});
+            }
 
-        if (lastPage || currentPage != "/") {
-            categories[0].scrollIntoView({inline: "center"});
-        }
-
-        lastPage = currentPage;
+            lastPage = currentPage;
+        })
     })
 
     onMount(() => {
@@ -88,18 +93,24 @@
 
         // Update highlight
         let index = 0;
-        for (let item of items) {
-            let highlightValue = Math.min(Math.max(1 - Math.abs(index + 1 - progress), 0), 1) + "";
-            item.style.setProperty("--highlight", highlightValue);
-            (mobileNavItems.childNodes[index] as HTMLElement).style.setProperty("--highlight", highlightValue);
+        for (let item of items) {            
+            let highlightValue = Math.min(Math.max(1 - Math.abs(index + 1 - progress), 0), 1);
+            item.style.setProperty("--highlight", highlightValue + "");
+            highlightValue = Math.min(Math.max(index - progress + 2, 0), 2);
+            mobileNavItems[index].highlight = highlightValue;
             index++;
         }
-        mobileNavBarItem.style.setProperty("--highlight", Math.max(1 - Math.abs(progress), 0) + "");
+        mobileNavBarItem.style.setProperty("--highlight", Math.max(1 - progress, 0) + "");
     }
 
     function scrollToNavBar(e: Event) {
         e.preventDefault();
         navBar.scrollIntoView({inline: "center", behavior: "smooth"});
+    }
+
+    function scrollToElement(e: Event, elm: Element) {
+        e.preventDefault();
+        elm.scrollIntoView({inline: "center", behavior: "smooth"});
     }
 </script>
 
@@ -108,8 +119,16 @@
     <a class="pop-out-btn" href="#nav-bar" bind:this={mobileNavBarItem} onclick={scrollToNavBar}>
         <Icon icon="tabler:menu-2" />
     </a>
-    <span class="mobile-nav-items" bind:this={mobileNavItems}>
-
+    <span class="mobile-nav-items">
+        {#each mobileNavItems as item, i}
+            <a class="pop-out-btn" href={item.href} onclick={(e) => scrollToElement(e, item.element!)} style:--highlight={item.highlight}>
+                {#if item.icon}
+                    <Icon icon={item.icon} />
+                {:else}
+                    {i + 1}
+                {/if}
+            </a>
+        {/each}
     </span>
 </div>
 <div class="metro-header" aria-hidden="true" bind:this={metroHeader}>
@@ -143,8 +162,9 @@
 
     .mobile-nav {
         position: fixed;
-        inset: auto 2em 2em 2em;
+        inset: auto 0 0 0;
         display: flex;
+        padding: 0 4vw 4vw 4vw;
         justify-content: space-between;
         z-index: 100;
         gap: 6px;
@@ -162,15 +182,19 @@
         text-decoration: none;
         color: white;
         background: black;
-        width: 2.5em;
-        height: 2.5em;
+        width: 3em;
+        height: 3em;
     }
     .mobile-nav :global(a)::after {
         content: "";
         position: absolute;
-        inset: calc(100% * calc(1 - var(--highlight, 0))) 0 0 0;
-        background: white;
+        inset: 0 0 0 0;
+        background: linear-gradient(white, white) 0 calc(calc(3em - 4px) * calc(1 - var(--highlight, 0))) / 100% 100% no-repeat;
         mix-blend-mode: difference;
+    }
+    .mobile-nav :global(a > svg) {
+        width: 1.6em;
+        height: 1.6em;
     }
 
     @media (min-width: 50em) {

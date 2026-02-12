@@ -312,6 +312,16 @@
             <h3>liberapay</h3>
           </a>
         </li>
+        <li class="link-tile" style="--col: 2; --row: 1" aria-label="liberapay">
+          <a class="pop-out-btn" href="https://ko-fi.com/duducat" rel="me">
+            <Tooltip>
+              <p>@duducat</p>
+              <p class="tooltip-action touch-only">(click again to view profile)</p>
+            </Tooltip>
+            <Icon icon="simple-icons:kofi" />
+            <h3>ko-fi</h3>
+          </a>
+        </li>
       </ul>
     </section>
   </div>

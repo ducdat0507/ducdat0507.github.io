@@ -35,6 +35,11 @@ export const websites: WebsiteCollection = {
                 button: "jbc.png",
             },
             {
+                site: "https://spax.zone/",
+                name: "Spax",
+                button: "spaxdotzone.gif",
+            },
+            {
                 site: "https://thepaperpilot.org/",
                 name: "The Paper Pilot",
                 button: "thepaperpilot.png",

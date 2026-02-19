@@ -40,6 +40,11 @@ export const websites: WebsiteCollection = {
                 button: "thepaperpilot.png",
             },
             {
+                site: "https://purring.fyi/",
+                name: "wackbyte",
+                button: "wackbyte.png",
+            },
+            {
                 site: "https://yhvr.me/",
                 name: "yhvr",
                 button: "yhvr.gif",

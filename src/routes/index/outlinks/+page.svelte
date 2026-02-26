@@ -33,12 +33,21 @@
   }
 
   .ring-box > :global(li) {
-    height: 7em;
+    height: 8em;
     aspect-ratio: unset;
   }
   .ring-box > :global(li > *) {
     position: relative;
     padding: .3em .4em;
+  }
+  .ring-box :global(.ring-title) {
+    position: absolute;
+    inset: 0 0 2em 0;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
   }
   .ring-box :global(h4) {
     font-size: 1em;
@@ -61,6 +70,10 @@
 
     .ring-box {
       grid-template-columns: 1fr;
+    }
+
+    .ring-box > :global(li) {
+      height: 7em;
     }
   }
 

@@ -14,12 +14,11 @@
         {...itemProps}
     >
     <article>
-        <h4>
-            gradientring
-            <Tooltip>
-                (apparently this background is gradient enough to qualify)
-            </Tooltip>
-        </h4>
+        <div class="ring-title">
+            <h4>
+                gradientring
+            </h4>
+        </div>
         <WebringNav 
             indexLink="https://gradientring.nekoweb.org/" 
             prevLink="https://gradientring.nekoweb.org/s/duducat/prev"

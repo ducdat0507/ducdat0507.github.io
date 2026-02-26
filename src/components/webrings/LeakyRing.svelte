@@ -30,6 +30,7 @@
 
     let fillAmount: number = $state(0);
     let allSites: string[] = $state.raw([]);
+    let busy: boolean = $state(true)
 
     let lastBilge = 0;
     let lastUpdate = 0;
@@ -44,8 +45,9 @@
         if (bilging) return;
 
         if (page.url.hostname == "localhost") {
-            fillAmount = 70;
+            fillAmount = 40;
             allSites = [];
+            busy = false;
             return;
         }
 
@@ -68,10 +70,12 @@
                     .map(domain => data.info.members[domain].proto + "//" + domain + data.info.members[domain].path);
                 allSites = sites;
                 broken = false;
+                busy = false;
             })
             .catch(e => {
                 console.error(e);
                 broken = true;
+                busy = false;
             });
     }
 
@@ -112,28 +116,28 @@
         {...itemProps}
     >
     <article class:broken={broken}>
-        <h4>
-            Leaky Homepage Ring
-            <Tooltip>
-                (now's actually a webring!)<br/>
-                (...and doesn't take the entire screen for no reason)
-            </Tooltip>
-        </h4>
+        <div class="ring-title">
+            <h4>
+                Leaky Homepage Ring
+            </h4>
+            <div class:active={busy || cooldownTimeout || bilging || fillAmount / fillMax >= 0.5} aria-hidden={true}>
+                {#if busy} 
+                    (loading...)
+                {:else if cooldownTimeout} 
+                    (I'm on cooldown, please wait a moment)
+                {:else if bilging}
+                    (trying my best...)
+                {:else}
+                    <TextSplitter class="wave" text="(click here to flush some water)" />
+                {/if}
+            </div>
+        </div>
         {@html '<!-- <script src="https://melonking.net/scripts/flood.js"></script> -->'}
         <button class="leaky-ring-holder"
                 style:--level={fillAmount / fillMax} 
                 aria-label={`Water level: ${fillAmount / fillMax * 100}% - click to flush some water`}
                 onclick={doBilge}
             ></button>
-        <div class:active={cooldownTimeout || bilging || fillAmount / fillMax >= 0.5} aria-hidden={true}>
-            {#if cooldownTimeout} 
-                (I'm on cooldown, please wait a moment)
-            {:else if bilging}
-                (trying my best...)
-            {:else}
-                <TextSplitter class="wave" text="(click here to flush some water)" />
-            {/if}
-        </div>
         <WebringNav 
             indexLink="https://melonking.net/free/software/flood" 
             allLinks={allSites}
@@ -157,6 +161,11 @@
 </li>
 
 <style>
+    .leaky-ring > * {
+        background: #f1eee0 !important;
+        color: black !important;
+    }
+
     .leaky-ring.bilging {
         animation: leaky-ring-shaking 0.05s linear alternate infinite;
     }
@@ -183,8 +192,9 @@
             url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 9.9px)) / 100px 10px repeat-x, 
             url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 14.9px)) / 150px 15px repeat-x, 
             url(/index/res/images/tiling-bg.svg) repeat, 
-            linear-gradient(#5df, #59f);
+            linear-gradient(#fd5, #f95);
         transition: background 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        mix-blend-mode: exclusion;
         filter: url(#leaky-ring-water);
     }
     .leaky-ring .broken .leaky-ring-holder {
@@ -193,22 +203,18 @@
     .leaky-ring.bilging .leaky-ring-holder::before {
         transition: background 5s linear;
     }
-    .leaky-ring-holder + div {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding-bottom: 0.6em;
-        padding-inline: 1em;
+    .ring-title {
         pointer-events: none;
+    }
+    .ring-title > div {
+        height: 0;
         opacity: 0;
-        transition: opacity .3s;
+        transition: opacity .3s, height .3s;
         font-size: 0.75em;
     }
-    .leaky-ring-holder:hover + div, 
-    .leaky-ring-holder + div.active {
+    .leaky-ring:hover .ring-title > div, 
+    .ring-title > div.active {
+        height: 1.2em;
         opacity: 1;
     }
     h4, p {

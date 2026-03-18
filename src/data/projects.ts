@@ -1,5 +1,6 @@
 export type ProjectDefinition = {
     name: string,
+    banner?: string,
     description: string,
     prototype?: boolean,
     links: ({
@@ -20,6 +21,7 @@ export const games: ProjectCollection = {
         "flagships (a.k.a. originals)": [
             {
                 name: "One Trillion Free Draws",
+                banner: "/index/res/banners/games/1tfd.png",
                 description: `
                     <p>
                         The definitive idle game where you have 1,000,000,000,000 free card packs to draw. That's 1 followed by 12 zeros!
@@ -36,6 +38,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "Infinite Button Simulator",
+                banner: "/index/res/banners/games/infinite-bsim.png",
                 description: `
                     <p>
                         It's one of those button games on Roblox, but the buttons repeat to infinity and the game's on a website rather than Roblox.
@@ -52,6 +55,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "Towers of Googology",
+                banner: "/index/res/banners/games/towers.png",
                 description: `
                     <p>
                         Defeat enemies and grow your towers, incremental game style!
@@ -73,6 +77,7 @@ export const games: ProjectCollection = {
         "prestige tree -kind": [
             {
                 name: "The Communitree!",
+                banner: "/index/res/banners/games/communitree.png",
                 description: `
                     <p>
                         A prestige-tree like game about other prestige-tree like games and the community that makes prestige-tree like games.
@@ -90,6 +95,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "The Prestreestuck",
+                banner: "/index/res/banners/games/prestreestuck.png",
                 description: `
                     <p>
                         A prestige-tree like game loosely based on the hit web-comic <a href="https://homestuck.com">Homestuck</a>.
@@ -112,6 +118,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "The Dynas Tree",
+                banner: "/index/res/banners/games/dynastree.png",
                 description: `
                     <p>
                         An old prestige-tree like game about growing an empire or something.
@@ -127,6 +134,7 @@ export const games: ProjectCollection = {
         "incremental games on esoteric places": [
             {
                 name: "Untitled Dice Game",
+                banner: "/index/res/banners/games/udg.png",
                 description: `
                     <p>
                         An incremental game on Scratch, a coding platform for children.
@@ -143,6 +151,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "Unfeaturable Game",
+                banner: "/index/res/banners/games/unfeaturable-game.png",
                 description: `
                     <p>
                         An incremental game on Fancade, a UGC-based bite-sized gaming platform on phones. Beware of the ads!
@@ -158,6 +167,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "Sparklifer",
+                banner: "/index/res/banners/games/sparklifer.png",
                 prototype: true,
                 description: `
                     <p>
@@ -175,6 +185,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "MSPFA Incremental",
+                banner: "/index/res/banners/games/mspfa-incremental.png",
                 prototype: true,
                 description: `
                     <p>
@@ -193,6 +204,7 @@ export const games: ProjectCollection = {
         "other prototypes": [
             {
                 name: "Project: Incremental",
+                banner: "/index/res/banners/games/project-incremental.png",
                 prototype: true,
                 description: `
                     <p>
@@ -206,6 +218,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "A+1→A",
+                banner: "/index/res/banners/games/a1a.png",
                 prototype: true,
                 description: `
                     <p>
@@ -223,6 +236,7 @@ export const games: ProjectCollection = {
         "not mine but I was involved": [
             {
                 name: "Advent Incremental",
+                banner: "/index/res/banners/games/advent-incremental.png",
                 description: `
                     <p>
                         A incremental game which also acts as an advent calendar—content are unlocked throughout the days of December
@@ -244,6 +258,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: `The Camellia Tree: duducat's Extremely Novel and (Almost) Completely Overhauled "I wanna be the Kamiller" Rewrite/Modification`,
+                banner: "/index/res/banners/games/camellia-tree.png",
                 description: `
                     <p>
                         A TPT-like game loosely based on the hit EDM composer 
@@ -260,6 +275,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: `The Longest Incremental^2`,
+                banner: "/index/res/banners/games/tli-2.png",
                 prototype: true,
                 description: `
                     <p>
@@ -280,6 +296,7 @@ export const games: ProjectCollection = {
         "rhythm games": [
             {
                 name: "JANOARG",
+                banner: "/index/res/banners/games/janoarg.png",
                 prototype: true,
                 description: `
                     <p>
@@ -296,6 +313,7 @@ export const games: ProjectCollection = {
         "puzzle games": [
             {
                 name: "Yet Another Match-3 Clone",
+                banner: "/index/res/banners/games/match-3.png",
                 description: `
                     <p>
                         It's like Bejeweled but free, and on the internet, just like Bejeweled!
@@ -309,6 +327,7 @@ export const games: ProjectCollection = {
             },
             {
                 name: "Painteract",
+                banner: "/index/res/banners/games/painteract.png",
                 prototype: true,
                 description: `
                     <p>
@@ -327,6 +346,7 @@ export const games: ProjectCollection = {
         "roblox grinding simulators (ewww)": [
             {
                 name: "Browser Mining",
+                banner: "/index/res/banners/games/browser-mining.png",
                 prototype: true,
                 description: `
                     <p>

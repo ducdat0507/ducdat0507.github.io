@@ -118,12 +118,13 @@
         flex: 1;
     }
     .webring-nav .link-tile > a {
+        --inset-border: 0px;
         display: block;
         width: 100%;
         height: 100%;
-        border: 2px solid white;
-        background: black;
-        color: white;
+        border: none;
+        background: #abf;
+        color: black;
         padding: 0.5em;
     }
 </style>

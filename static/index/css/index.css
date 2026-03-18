@@ -32,7 +32,10 @@
     text-decoration: none;
 }
 .live-tiles > :not(.live-tiles-folder) > .pop-out-btn:first-child {
-    border-color: white;
+    --inset-border: 0px;
+    background: #abf;
+    color: black;
+    border: none;
 }
 .live-tiles > :not(.live-tiles-folder) > :first-child.broken {
     background-image: linear-gradient(135deg, #f007 33.33%, transparent 33.33%, transparent 50%, #f007 50%, #f007 83.33%, transparent 83.33%, transparent 100%);
@@ -89,38 +92,40 @@
     right: -0.1em;
     top: -0.06em;
     font-size: 3.5em;
-    opacity: 0.3;
+    opacity: 0.15;
 }
 .link-tile > :hover > .status-cafe-face {
-    opacity: 0.4;
+    opacity: 0.3;
 }
 .link-tile > * .stat-online-bubble {
     display: inline-block;
     font-size: 0;
     width: .55rem;
     height: .55rem;
-    background: lime;
+    background: #0c0;
     border-radius: 50%;
     vertical-align: .55rem;
+    box-shadow: inset 0 0 0 1px #0007;
 }
 .link-tile > * .stat-total-bubble {
     display: inline-block;
     font-size: 0;
     width: .55rem;
     height: .55rem;
-    background: #0007;
+    background: #fff7;
     border-radius: 50%;
     vertical-align: .55rem;
-    box-shadow: inset 0 0 0 .125rem #fff7;
+    box-shadow: inset 0 0 0 .125rem #0007;
 }
 .link-tile > * .stat-watch-bubble {
     display: inline-block;
     font-size: 0;
     width: .55rem;
     height: .55rem;
-    background: #f77;
+    background: #f22;
     border-radius: 50%;
     vertical-align: .55rem;
+    box-shadow: inset 0 0 0 1px #0007;
 }
 .link-tile > * > :is(svg, .icon) {
     position: absolute;
@@ -128,12 +133,12 @@
     top: 0;
     height: 80%;
     width: auto;
-    opacity: 0.3;
+    opacity: 0.15;
     image-rendering: crisp-edges;
     filter: grayscale(1);
 }
 .link-tile > :hover > :is(svg, .icon) {
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 .project-list {

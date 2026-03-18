@@ -45,7 +45,7 @@ button, input, textarea {
     top: calc(var(--outset) * -1 - var(--inset-border));
     bottom: calc(var(--inset-border) * -1);
     z-index: -1;
-    background: #abf;
+    background: #fff;
     clip-path: polygon(nonzero,
         0% 0%, 
         0% calc(100% - var(--outset)), 

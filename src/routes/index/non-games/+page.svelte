@@ -11,6 +11,27 @@
 </svelte:head>
 
 <div class="category-box">
+  <section id="featured" data-category-name="featured" data-icon="tabler:star">
+    <div class="box help-box">
+      Click on a project's title to learn more<br>
+      Projects with dashed border are prototypes and aren't very stable
+    </div>
+    <h2>featured</h2>
+    <ul class="project-list big">
+      {#each [
+        nongames["apps & websites"]["the modding tools"][1],
+        nongames["developer resources"]["libraries"][0],
+        nongames["apps & websites"]["not mine but I was involved"][0],
+        nongames["fun stuff"]["instant toys"][1],
+      ] as project}
+        <ProjectCard prototype={!!project.prototype} links={project.links} title={project.name} banner={project.banner}>
+          {#snippet description()}
+            {@html project.description}
+          {/snippet}
+        </ProjectCard>
+      {/each}
+    </ul>
+  </section>
   <ProjectLister projects={nongames} 
     altNames={["apps & sites", "fun stuff", "web resources", "miscellaneous"]}
     altIcons={["tabler:browser", "tabler:dice-5", "tabler:book-2", "material-symbols:box-outline-sharp"]}
@@ -18,6 +39,13 @@
 </div>
 
 <style>
+  h2 {
+    margin-block: 1em .5em;
+  }
+
+  .project-list.big > :global(* > :first-child) {
+      min-height: 8em;
+  }
 
   @media (max-width: 49.999em) {
     .category-box :global(h2) {
@@ -25,6 +53,9 @@
       width: 0.0001px;
       height: 0.0001px;
       margin: 0 0 -0.0001px 0;
+    }
+    .help-box {
+      margin-bottom: 1em;
     }
   }
 
@@ -39,25 +70,31 @@
       padding-bottom: 5em;
     }
 
-    .category-box > :global(:nth-child(1)) {
+    .category-box > :global(:is(:nth-child(1), :nth-child(2))) {
       grid-column: span 2;
     }
     
-    .category-box > :global(:nth-child(n+2)) {
+    .category-box > :global(:nth-child(n+3)) {
       grid-column: span 1;
     }
-    .category-box > :global(:nth-child(n+2) > ul) {
+    .category-box > :global(:nth-child(n+3) > ul) {
       grid-template-columns: 1fr;
     }
   }
 
   @media (min-width: 70em) {
+    .project-list.big {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: -4px;
+    }
+
     .category-box {
       width: 70em;
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .category-box > :global(:nth-child(1)) {
+    .category-box > :global(:is(:nth-child(1), :nth-child(2))) {
       grid-column: span 3;
     }
   }

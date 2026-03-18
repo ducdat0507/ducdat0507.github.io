@@ -20,7 +20,7 @@
   let showInactiveSocials = $state(false);
   let isTwitterX = $state(false);
   let isTwitterXTimeout = 0;
-  let isTwitterXAudio: Audio | null = null;
+  let isTwitterXAudio: HTMLAudioElement | null = null;
 
   const setupCounter: Action = (elm: Element) => {
     setupInterval = setInterval(() => {
@@ -107,6 +107,7 @@
 
   onMount(() => {
     isTwitterXAudio = new Audio("/index/res/sounds/x.mp3");
+    isTwitterXAudio.volume = 0.5;
   })
 </script>
 
@@ -464,7 +465,7 @@
 
   .links {
     position: absolute;
-    inset: auto -.3em -.3em auto;
+    inset: auto -2px -2px auto;
     min-width: calc(100%);
     display: flex;
     flex-flow: row;
@@ -483,12 +484,13 @@
     flex: 1;
   }
   .links .link-tile > a {
+    --inset-border: 0px;
     display: block;
     width: 100%;
     height: 100%;
-    border: 2px solid white;
-    background: black;
-    color: white;
+    border: none;
+    background: #abf;
+    color: black;
     padding: 0.5em;
   }
 
@@ -526,8 +528,7 @@
     animation: twitter-x-shaking 0.1s linear infinite;
   }
   .twitter-x > :first-child {
-    background: red;
-    color: black;
+    background: red !important;
   }
 
   @keyframes twitter-x-shaking {

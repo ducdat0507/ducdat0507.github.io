@@ -78,6 +78,11 @@
       iconStyle: "width: 75%; height: 75%",
       priority: 3,
     },
+    {
+      name: "Godot",
+      iconName: "logos:godot-icon",
+      priority: 3.5,
+    },
   ]
 
 </script>

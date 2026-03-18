@@ -37,7 +37,7 @@
     .website-button a {
         display: flex;
         font-size: .75em;
-        color: white;
+        color: black;
         text-decoration: none;
         margin: 0;
         padding-top: 2px;
@@ -49,16 +49,15 @@
         flex: 1;
     }
     .website-image {
-        flex: 0 0 90px;
-        border: 2px solid white;
-        border-right: 0;
+        flex: 0 0 88px;
         background: black;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 35px;
+        min-height: 31px;
     }
     .website-image img {
+        display: block;
         max-width: 88px;
         max-height: 31px;
         image-rendering: pixelated;
@@ -69,8 +68,7 @@
     }
     .website-name {
         position: relative;
-        border: 2px solid white;
-        background: black;
+        background: #abf;
         display: flex;
         align-items: center;
         padding-inline: calc(15px - 0.5em);
@@ -82,12 +80,11 @@
         position: absolute;
         left: 0;
         top: 50%;
-        transform: translate(calc(-50% - 1px), -50%) rotate(45deg);
+        transform: translate(-50%, -50%) rotate(45deg);
         width: 0;
         height: 0;
-        background: linear-gradient(45deg, black 60%, #0000 60%);
-        border-left: 2px solid white;
-        border-bottom: 2px solid white;
+        background: linear-gradient(45deg, #abf 60%, #0000 60%);
+        background-clip: border-box;
         transition: all .1s;
     }
     .website-button a:hover .website-name::before {
@@ -96,21 +93,21 @@
     }
     .outlink-icon {
         position: absolute;
-        right: 0;
+        right: -2px;
         top: 0;
-        bottom: 0;
+        bottom: -2px;
         overflow: hidden;
         pointer-events: none;
     }
     .outlink-icon :global(svg) {
         height: 200%;
         width: auto;
-        opacity: 0.3;
+        opacity: 0.15;
     }
     .outlink-icon :global(svg path) {
         stroke-width: 1.5 !important;
     }
     .website-button a:hover .outlink-icon :global(svg) {
-        opacity: 0.4;
+        opacity: 0.3;
     }
 </style>

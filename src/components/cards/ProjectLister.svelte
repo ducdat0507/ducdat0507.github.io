@@ -18,7 +18,7 @@
           <h3>{categoryName}</h3>
           <ul class="project-list">
             {#each category as project}
-              <ProjectCard prototype={project.prototype} links={project.links} title={project.name}>
+              <ProjectCard prototype={project.prototype} links={project.links} title={project.name} banner={project.banner}>
                 {#snippet description()}
                   {@html project.description}
                 {/snippet}

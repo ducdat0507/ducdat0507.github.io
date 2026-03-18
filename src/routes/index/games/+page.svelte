@@ -12,13 +12,17 @@
 
 <div class="category-box">
   <section id="featured" data-category-name="featured" data-icon="tabler:star">
+    <div class="box help-box">
+      Click on a game's title to learn more<br>
+      Projects with dashed border are prototypes and will not last very long
+    </div>
     <h2>featured</h2>
     <ul class="project-list big">
       {#each [
         games["incremental games"]["flagships (a.k.a. originals)"][0], 
         games["non-incremental games"]["rhythm games"][0]
       ] as project}
-        <ProjectCard prototype={!!project.prototype} links={project.links} title={project.name}>
+        <ProjectCard prototype={!!project.prototype} links={project.links} title={project.name} banner={project.banner}>
           {#snippet description()}
             {@html project.description}
           {/snippet}
@@ -46,6 +50,9 @@
       width: 0.0001px;
       height: 0.0001px;
       margin: 0 0 -0.0001px 0;
+    }
+    .help-box {
+      margin-bottom: 1em;
     }
   }
 

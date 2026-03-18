@@ -28,12 +28,24 @@
     <div class="status-cafe-face">{lastStatus?.face}</div>
     <div class="status-cafe">
         <time style="opacity: .5">{lastStatus?.timeAgo}</time><br/>
-        {@html DOMPurify.sanitize(lastStatus.content)}
+        <div class="status-cafe-content">
+            {@html DOMPurify.sanitize(lastStatus.content)}
+        </div>
     </div>
 {/if}
 
 <style>
     .status-cafe-face {
         filter: grayscale(1);
+    }
+    .status-cafe {
+        display: flex;
+        flex-direction: column;
+    }
+    .status-cafe-content {
+        font-style: italic;
+        flex-grow: 1;
+        overflow: hidden;
+        mask-image: linear-gradient(#fff 60%, #0000);
     }
 </style>

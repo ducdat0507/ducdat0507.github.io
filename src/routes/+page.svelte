@@ -11,6 +11,7 @@
   import type { Action } from "svelte/action";
   import { setPopup } from "../components/utils/PopupDisplayer.svelte";
   import { onMount } from "svelte";
+    import ClockWidget from "../components/widgets/ClockWIdget.svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
@@ -396,6 +397,7 @@
             <img src="https://tamanotchi.world/i2/25572" alt="It's tamaNOTchi! Click to feed!">
           </a>
         </li>
+        <ClockWidget />
       </ul>
     </section>
   </div>

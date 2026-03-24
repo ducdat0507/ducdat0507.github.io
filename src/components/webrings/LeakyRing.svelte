@@ -45,7 +45,7 @@
         if (bilging) return;
 
         if (page.url.hostname == "localhost") {
-            fillAmount = 40;
+            fillAmount = 80;
             allSites = [];
             busy = false;
             return;
@@ -183,28 +183,38 @@
     .leaky-ring-holder::before {
         content: "";
         display: block;
+        position: absolute;
         inset: -1em -1em -1em -1em;
         width: calc(100% + 2em);
         height: calc(100% + 2em);
-        margin: -1em;
         background: 
-            linear-gradient(black, black) top left / 100% calc(100% - var(--level, 0) * 100%) no-repeat,
+            url(/index/res/images/flood-background.png) top left / 314px 98px repeat;
+        animation: leaky-wave-bg 10s linear infinite;
+        filter: url(#leaky-ring-water);
+    }
+    .leaky-ring-holder::after {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: -1em -1em -1em -1em;
+        width: calc(100% + 2em);
+        height: calc(100% + 2em);
+        background: 
+            linear-gradient(#f1eee0, #f1eee0) top left / 100% calc(100% - var(--level, 0) * 100%) no-repeat,
             url(/index/res/images/wave.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 9.9px)) / 100px 10px repeat-x, 
-            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 14.9px)) / 150px 15px repeat-x, 
-            url(/index/res/images/tiling-bg.svg) repeat, 
-            linear-gradient(#fd5, #f95);
+            url(/index/res/images/wave2.svg) left calc(calc(1 - var(--level, 0)) * calc(100% + 14.9px)) / 150px 15px repeat-x;
         transition: background 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-        mix-blend-mode: exclusion;
         filter: url(#leaky-ring-water);
     }
     .leaky-ring .broken .leaky-ring-holder {
         display: none;
     }
-    .leaky-ring.bilging .leaky-ring-holder::before {
+    .leaky-ring.bilging .leaky-ring-holder::after {
         transition: background 5s linear;
     }
     .ring-title {
         pointer-events: none;
+        z-index: 3;
     }
     .ring-title > div {
         height: 0;
@@ -239,11 +249,19 @@
         }
     }
 
+    @keyframes leaky-wave-bg {
+        from {
+            background-position: 0 0;
+        } to {
+            background-position: -314px 0;
+        }
+    }
+
     @keyframes wavy-text {
         from {
-        transform: translateY(-.125em);
+            transform: translateY(-.125em);
         } to {
-        transform: translateY(.125em);
+            transform: translateY(.125em);
         }
     }
 

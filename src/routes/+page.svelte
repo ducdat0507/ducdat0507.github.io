@@ -11,7 +11,7 @@
   import type { Action } from "svelte/action";
   import { setPopup } from "../components/utils/PopupDisplayer.svelte";
   import { onMount } from "svelte";
-    import ClockWidget from "../components/widgets/ClockWIdget.svelte";
+    import ClockWidget from "../components/widgets/ClockWidget.svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");

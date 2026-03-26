@@ -95,6 +95,7 @@
     })
 
     onMount(() => {
+        tick();
         tickHandle = setTimeout(tick, 100);
         console.log(tickHandle);
         return () => {

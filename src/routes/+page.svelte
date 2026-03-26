@@ -394,7 +394,10 @@
       <ul class="widget-box live-tiles">
         <li style="--col: 2; --row: 2" aria-label="It's tamaNOTchi! Click to feed!">
           <a href="https://tamanotchi.world/25572c" class="center-child">
-            <img src="https://tamanotchi.world/i2/25572" alt="It's tamaNOTchi! Click to feed!">
+            <span class="tamanotchi">
+              <img src="https://tamanotchi.world/i2/25572" alt="It's tamaNOTchi! Click to feed!">
+              <br/>(feed me!)
+            </span>
           </a>
         </li>
         <ClockWidget />
@@ -531,6 +534,11 @@
   }
   .twitter-x > :first-child {
     background: red !important;
+  }
+
+  .tamanotchi {
+    font-size: 0.7em;
+    text-align: center;
   }
 
   @keyframes twitter-x-shaking {

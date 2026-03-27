@@ -12,6 +12,7 @@
   import { setPopup } from "../components/utils/PopupDisplayer.svelte";
   import { onMount } from "svelte";
     import ClockWidget from "../components/widgets/ClockWidget.svelte";
+    import TamanotchiWidget from "../components/widgets/TamanotchiWidget.svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
@@ -392,14 +393,7 @@
     <section>
       <h2>random internet widgets go:</h2>
       <ul class="widget-box live-tiles">
-        <li style="--col: 2; --row: 2" aria-label="It's tamaNOTchi! Click to feed!">
-          <a href="https://tamanotchi.world/25572c" class="center-child">
-            <span class="tamanotchi">
-              <img src="https://tamanotchi.world/i2/25572" alt="It's tamaNOTchi! Click to feed!">
-              <br/>(feed me!)
-            </span>
-          </a>
-        </li>
+        <TamanotchiWidget/>
         <ClockWidget />
       </ul>
     </section>
@@ -534,11 +528,6 @@
   }
   .twitter-x > :first-child {
     background: red !important;
-  }
-
-  .tamanotchi {
-    font-size: 0.7em;
-    text-align: center;
   }
 
   @keyframes twitter-x-shaking {

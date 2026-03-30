@@ -125,22 +125,22 @@
 
         ctx.lineCap = "round";
 
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 10;
         ctx.strokeStyle = "#79da";
         ctx.beginPath();
-        ctx.arc(w / 2, w / 2, w / 2 - 10, (secondHandEnd * 2 - 0.5) * Math.PI, (secondHandStart * 2 - 0.5) * Math.PI);
+        ctx.arc(w / 2, w / 2, w / 2 - 14, (secondHandEnd * 2 - 0.5) * Math.PI, (secondHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
 
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 10;
         ctx.strokeStyle = "#abf";
         ctx.beginPath();
-        ctx.arc(w / 2, w / 2, w / 2 - 18, (minuteHandEnd * 2 - 0.5) * Math.PI, (minuteHandStart * 2 - 0.5) * Math.PI);
+        ctx.arc(w / 2, w / 2, w / 2 - 26, (minuteHandEnd * 2 - 0.5) * Math.PI, (minuteHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
 
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 10;
         ctx.strokeStyle = "#ffff";
         ctx.beginPath();
-        ctx.arc(w / 2, w / 2, w / 2 - 26, (hourHandEnd * 2 - 0.5) * Math.PI, (hourHandStart * 2 - 0.5) * Math.PI);
+        ctx.arc(w / 2, w / 2, w / 2 - 38, (hourHandEnd * 2 - 0.5) * Math.PI, (hourHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
 
         clockCanvas.style.fontFamily = "'MS Gothic', 'M PLUS 1 Code', 'Menlo', 'Meslo', monospace";
@@ -170,7 +170,7 @@
 
 </script>
 
-<li style="--col: 1; --row: 1" aria-label={"The time is: " + timeText}>
+<li style="--col: 2; --row: 2" aria-label={"The time is: " + timeText}>
     <button class="clock-widget" aria-label="(press to change time format)" onclick={toggleMode}>
         <canvas bind:this={clockCanvas}></canvas>
     </button>

@@ -13,6 +13,7 @@
   import { onMount } from "svelte";
     import ClockWidget from "../components/widgets/ClockWidget.svelte";
     import TamanotchiWidget from "../components/widgets/TamanotchiWidget.svelte";
+    import ButtonPopup from "../components/popups/ButtonPopup.svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
@@ -105,6 +106,12 @@
     isTwitterXTimeout = setTimeout(() => {
       isTwitterX = false;
     }, 1000)
+  }
+
+  function handleSnagButtonButton(e: Event) {
+    setPopup("snag my buttons", ButtonPopup, [
+      { name: "close", icon: "iconoir:arrow-left" },
+    ])
   }
 
   onMount(() => {
@@ -261,7 +268,7 @@
             <DiscordInviteStat invite="6FD2bYMqV9" />
           </a>
         </li>
-        <li class="link-tile" style="--col: 2; --row: 1" aria-label="sign the guestbook">
+        <li class="link-tile" style="--col: 1; --row: 1" aria-label="sign the guestbook">
           <a class="pop-out-btn" href="https://duducat.atabook.org" rel="me">
             <Tooltip>
               <p>(note: I don't check this very often)</p>
@@ -271,33 +278,11 @@
             <h3>sign the guestbook!</h3>
           </a>
         </li>
-        <li class="link-tile button-snagger" style="--col: 2; --row: 1">
-          <div>
-            <img src="/index/res/buttons/duducat.svg" alt='"duducat&#39;s website" button' />
-            <h3>snag this button!</h3>
-            <div class="links">
-              <div class="link-tile">
-                <a class="pop-out-btn" href="/index/res/buttons/duducat.svg" aria-label="download .svg" download="duducat.svg">
-                  <Tooltip>
-                    <p>(&infin; resolution, &infin; frame rate, though with less than ideal support)</p>
-                    <p class="tooltip-action touch-only">(click again to download)</p>
-                  </Tooltip>
-                  <Icon icon="iconoir:arrow-down" />
-                  <span>.svg</span>
-                </a>
-              </div>
-              <div class="link-tile">
-                <a class="pop-out-btn" href="/index/res/buttons/duducat.gif" aria-label="download .gif" download="duducat.gif">
-                  <Tooltip>
-                    <p>(88&times;31 pixels, 12.5fps, is more likely to be played correctly by your OS's image viewer)</p>
-                    <p class="tooltip-action touch-only">(click again to download)</p>
-                  </Tooltip>
-                  <Icon icon="iconoir:arrow-down" />
-                  <span>.gif</span>
-                </a>
-              </div>
-            </div>
-          </div>
+        <li class="link-tile" style="--col: 1; --row: 1">
+          <button class="pop-out-btn" onclick={handleSnagButtonButton}>
+            <Icon icon="fluent:button-20-regular" />
+            <h3>snag my buttons!</h3>
+          </button>
         </li>
       </ul>
     </section>
@@ -305,7 +290,7 @@
     <section>
       <h2>throw me some money for no reason at all:</h2>
       <ul class="widget-box live-tiles">
-        <li class="link-tile" style="--col: 2; --row: 1" aria-label="liberapay">
+        <li class="link-tile" style="--col: 1; --row: 1" aria-label="liberapay">
           <a class="pop-out-btn" href="https://en.liberapay.com/ducdat0507" rel="me">
             <Tooltip>
               <p>@ducdat0507</p>
@@ -315,7 +300,7 @@
             <h3>liberapay</h3>
           </a>
         </li>
-        <li class="link-tile" style="--col: 2; --row: 1" aria-label="liberapay">
+        <li class="link-tile" style="--col: 1; --row: 1" aria-label="liberapay">
           <a class="pop-out-btn" href="https://ko-fi.com/duducat" rel="me">
             <Tooltip>
               <p>@duducat</p>
@@ -448,49 +433,6 @@
   }
   .image-link, .image-link > img {
     display: block;
-  }
-
-  .button-snagger {
-    text-align: end;
-  }
-  .button-snagger img {
-    margin: 0.5em;
-  }
-  .button-snagger > * > h3 {
-    text-align: start;
-    padding-right: 7em;
-    display: block;
-  }
-
-  .links {
-    position: absolute;
-    inset: auto -2px -2px auto;
-    min-width: calc(100%);
-    display: flex;
-    flex-flow: row;
-    justify-content: end;
-    gap: 4px;
-  }
-  .links > .link-tile {
-    flex: 0 0 2.4em;
-    aspect-ratio: 1;
-  }
-  .links > .link-tile span {
-    line-height: 1;
-    bottom: .4em;
-  }
-  .links > .flex-space {
-    flex: 1;
-  }
-  .links .link-tile > a {
-    --inset-border: 0px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #abf;
-    color: black;
-    padding: 0.5em;
   }
 
   @media (min-width: 50em) {

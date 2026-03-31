@@ -18,6 +18,6 @@
 
 {#if ready}
     <span style="font-weight: bold">
-        {followerCount?.toLocaleString("en-US")} <span class="stat-watch-bubble">followers</span>
+        {followerCount?.toLocaleString("en-US")} <span class="stat-total-bubble">followers</span>
     </span>
 {/if}

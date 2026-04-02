@@ -24,7 +24,7 @@
           <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 -2"/>
         </filter>
       </defs>
-      <image href={`https://tamanotchi.world/i2/${id}`} width={50} height={100000} y={-99000} preserveAspectRatio="none" filter="url(#bar-quantize-mask)"/>
+      <image href={`https://tamanotchi.world/i2/${id}`} width={50} height={1000} y={-990} preserveAspectRatio="none" filter="url(#bar-quantize-mask)"/>
     </svg>
 
     <img class="tamanotchi-img" src={`https://tamanotchi.world/i2/${id}`} alt="It's tamaNOTchi! Click to feed!" onload={handleImageLoaded} />
@@ -35,7 +35,7 @@
           <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 5 -2"/>
         </filter>
       </defs>
-      <image href={`https://tamanotchi.world/i2/${id}`} width={50} height={100000} y={-99000} preserveAspectRatio="none" filter="url(#bar-quantize)"/>
+      <image href={`https://tamanotchi.world/i2/${id}`} width={50} height={1000} y={-990} preserveAspectRatio="none" filter="url(#bar-quantize)"/>
     </svg>
   </a>
 </li>
@@ -70,9 +70,9 @@
   }
   .tamanotchi-bar-mask {
     position: absolute;
-    inset: 0 auto 0 -28000%;
+    inset: 0 auto 0 -2000%;
     height: 100%;
-    width: 100000%;
+    width: 10000%;
   }
   .tamanotchi-feed-me-box {
     display: inline-block;

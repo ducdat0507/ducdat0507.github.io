@@ -21,6 +21,7 @@
   let hasSetup = false;
 
   let showInactiveSocials = $state(false);
+  let interactedInactiveSocials = $state(false);
   let isTwitterX = $state(false);
   let isTwitterXTimeout = 0;
   let isTwitterXAudio: HTMLAudioElement | null = null;
@@ -75,6 +76,7 @@
 
   function toggleInactiveSocials() {
     showInactiveSocials = !showInactiveSocials;
+    interactedInactiveSocials = true;
   }
 
   function handleMelonlandForum(e: Event) {
@@ -181,14 +183,26 @@
             <StatusCafeStat />
           </a>
         </li>
-        <li class="link-tile" class:active={showInactiveSocials} aria-label={showInactiveSocials ? "hide inactive links" : "show inactive links"}>
+        <li class="link-tile inactive-link-tile" class:active={showInactiveSocials} aria-label={showInactiveSocials ? "hide inactive links" : "show inactive links"}>
           <button class="pop-out-btn" onclick={() => toggleInactiveSocials()}>
-            <Icon icon={showInactiveSocials ? "tabler:chevron-down" : "tabler:chevron-left"} />
+            <Icon icon="tabler:chevron-left" />
             <h3>other links...</h3>
           </button>
         </li>
-        <li class="inactive-links live-tiles-folder" class:active={showInactiveSocials} aria-label="inactive links">
+        <li class="inactive-links live-tiles-folder" aria-label="inactive links"
+            class:active={showInactiveSocials} class:interacted={interactedInactiveSocials}
+            >
           <ul class="widget-box live-tiles" style="width: 100%" >
+            <li class="link-tile" aria-label="youtube">
+              <a class="pop-out-btn" href="https://www.youtube.com/@duduneko" rel="me">
+                <Tooltip>
+                  <p>@duduneko</p>
+                  <p class="tooltip-action touch-only">(click again to view profile)</p>
+                </Tooltip>
+                <Icon icon="bi:youtube" />
+                <h3>youtube</h3>
+              </a>
+            </li>
             <li class="link-tile" aria-label="newgrounds">
               <a class="pop-out-btn" href="https://ducdat0507.newgrounds.com" rel="me">
                 <Tooltip>
@@ -207,6 +221,17 @@
                 </Tooltip>
                 <VorkedLarfleezeIcon />
                 <h3>mspfa</h3>
+              </a>
+            </li>
+            <li class="link-tile" aria-label="melonland forum">
+              <a class="pop-out-btn" href="https://www.tumblr.com/ducdat0507" rel="me"
+                onclick={handleMelonlandForum}>
+                <Tooltip>
+                  <p>@duducat</p>
+                  <p class="tooltip-action touch-only">(click again to view profile)</p>
+                </Tooltip>
+                <Icon icon="ri:tumblr-fill" />
+                <h3>tumblr</h3>
               </a>
             </li>
             <li class="link-tile" aria-label="melonland forum">
@@ -454,19 +479,166 @@
     }
   }
 
+
+
   .link-tile.active > :first-child { 
     background: white;
     color: black;
   }
+  .inactive-link-tile :global(svg) { 
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .inactive-link-tile.active :global(svg) { 
+    transform: rotate(-90deg);
+  }
   .inactive-links {
-    display: none;
+    height: 0;
+    opacity: 0;
+    margin-bottom: -8px;
+    overflow: hidden;
   }
   .inactive-links.active {
+    height: auto;
+    opacity: 1;
+    margin-bottom: 0;
     display: block;
   }
+  .inactive-links.interacted {
+    animation: 0.3s inactive-tiles-outro;
+  }
+  .inactive-links.interacted > ul {
+    animation: 0.4s inactive-tiles-outro-child;
+  }
+  .inactive-links.interacted > ul > li:nth-child(1) {
+    animation: 0.5s 0s inactive-tiles-outro-tile;
+  }
+  .inactive-links.interacted > ul > li:nth-child(2) {
+    animation: 0.6s inactive-tiles-outro-tile;
+  }
+  .inactive-links.interacted > ul > li:nth-child(3) {
+    animation: 0.7s inactive-tiles-outro-tile;
+  }
+  .inactive-links.interacted > ul > li:nth-child(4) {
+    animation: 0.8s inactive-tiles-outro-tile;
+  }
+  .inactive-links.interacted > ul > li:nth-child(5) {
+    animation: 0.9s inactive-tiles-outro-tile;
+  }
+  .inactive-links.interacted > ul > li:nth-child(n+6) {
+    animation: 1s inactive-tiles-outro-tile;
+  }
+  .inactive-links.interacted.active {
+    animation: 0.3s inactive-tiles-intro;
+  }
+  .inactive-links.interacted.active > ul {
+    animation: 0.3s inactive-tiles-intro-child;
+  }
+  .inactive-links.interacted.active > ul > li:nth-child(1) {
+    animation: 0.8s 0s inactive-tiles-intro-tile;
+  }
+  .inactive-links.interacted.active > ul > li:nth-child(2) {
+    animation: 0.9s -0.1s inactive-tiles-intro-tile;
+  }
+  .inactive-links.interacted.active > ul > li:nth-child(3) {
+    animation: 1s -0.2s inactive-tiles-intro-tile;
+  }
+  .inactive-links.interacted.active > ul > li:nth-child(4) {
+    animation: 1.1s -0.3s inactive-tiles-intro-tile;
+  }
+  .inactive-links.interacted.active > ul > li:nth-child(5) {
+    animation: 1.2s -0.4s inactive-tiles-intro-tile;
+  }
+  .inactive-links.interacted.active > ul > li:nth-child(n+6) {
+    animation: 1.3s -0.5s inactive-tiles-intro-tile;
+  }
+
+  @keyframes inactive-tiles-intro {
+    from {
+      overflow: hidden;
+      height: 0;
+      padding-bottom: 0;
+      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+    } 50% {
+      height: 0;
+      padding-bottom: 2em;
+      margin-bottom: 0;
+    } 50.01% {
+      height: fit-content;
+      padding-bottom: 0;
+      margin-bottom: -2em;
+    } to {
+      padding-bottom: 4px;
+      height: fit-content;
+      opacity: 1;
+    }
+  }
+
+  @keyframes inactive-tiles-intro-child {
+    from {
+      transform: translateY(-100%);
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    } 50% {
+      transform: translateY(-100%);
+    } to {
+      transform: 0;
+    }
+  }
+
+  @keyframes inactive-tiles-intro-tile {
+    from {
+      transform: translateY(-6em);
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    } to {
+      transform: 0;
+    }
+  }
+
+  @keyframes inactive-tiles-outro {
+    from {
+      opacity: 1;
+      margin-bottom: 0;
+      height: fit-content;
+      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+    } 50% {
+      height: fit-content;
+      margin-bottom: -2em;
+      padding-block: 0
+    } 50.01% {
+      height: 0;
+      padding-block: 2em;
+      margin-bottom: 0;
+    } to {
+      padding-block: 0;
+      margin-bottom: 0;
+      height: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes inactive-tiles-outro-child {
+    from {
+      transform: 0;
+      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+    } 50% {
+      transform: translateY(-100%);
+    } to {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes inactive-tiles-outro-tile {
+    from {
+      transform: 0l;
+      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+    } to {
+      transform: translateY(-3em);
+    }
+  }
+
+  
 
   .twitter-x {
-    animation: twitter-x-shaking 0.1s linear infinite;
+    animation: twitter-x-shaking 0.1s linear infinite !important;
   }
   .twitter-x > :first-child {
     background: red !important;

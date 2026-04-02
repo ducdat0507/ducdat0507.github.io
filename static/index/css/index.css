@@ -11,6 +11,9 @@
 .live-tiles > .live-tiles-folder {
     grid-column: 1 / -1;
     padding: 4px;
+    width: 100%;
+}
+.live-tiles > .live-tiles-folder > .live-tiles {
     width: calc(100% + 8px);
 }
 .live-tiles > :not(.live-tiles-folder) {
@@ -74,6 +77,9 @@
     font-size: 0.75em;
     line-height: 1.2;
 }
+.link-tile > .status-cafe-btn {
+    container-type: size;
+}
 .link-tile > * > .status-cafe {
     position: absolute;
     font-size: 0.75em;
@@ -92,6 +98,7 @@
     right: -0.1em;
     top: -0.06em;
     font-size: 3.5em;
+    font-size: max(2em, 65cqh);
     opacity: 0.15;
 }
 .link-tile > :hover > .status-cafe-face {
@@ -131,7 +138,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    height: 80%;
+    height: max(2em, 65%);
     width: auto;
     opacity: 0.15;
     image-rendering: crisp-edges;

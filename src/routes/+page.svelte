@@ -174,7 +174,7 @@
           </a>
         </li>
         <li class="link-tile" style="--col: 2" aria-label="status.cafe">
-          <a class="pop-out-btn" href="https://status.cafe/users/duducat" rel="me">
+          <a class="pop-out-btn status-cafe-btn" href="https://status.cafe/users/duducat" rel="me">
             <Tooltip>
               <p>@duducat</p>
               <p class="tooltip-action touch-only">(click again to view profile)</p>
@@ -192,7 +192,7 @@
         <li class="inactive-links live-tiles-folder" aria-label="inactive links"
             class:active={showInactiveSocials} class:interacted={interactedInactiveSocials}
             >
-          <ul class="widget-box live-tiles" style="width: 100%" >
+          <ul class="widget-box live-tiles">
             <li class="link-tile" aria-label="youtube">
               <a class="pop-out-btn" href="https://www.youtube.com/@duduneko" rel="me">
                 <Tooltip>
@@ -227,7 +227,7 @@
               <a class="pop-out-btn" href="https://www.tumblr.com/ducdat0507" rel="me"
                 onclick={handleMelonlandForum}>
                 <Tooltip>
-                  <p>@duducat</p>
+                  <p>@ducdat0507</p>
                   <p class="tooltip-action touch-only">(click again to view profile)</p>
                 </Tooltip>
                 <Icon icon="ri:tumblr-fill" />
@@ -557,7 +557,7 @@
       overflow: hidden;
       height: 0;
       padding-bottom: 0;
-      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+      animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
     } 50% {
       height: 0;
       padding-bottom: 2em;
@@ -566,6 +566,7 @@
       height: fit-content;
       padding-bottom: 0;
       margin-bottom: -2em;
+      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
     } to {
       padding-bottom: 4px;
       height: fit-content;
@@ -575,10 +576,10 @@
 
   @keyframes inactive-tiles-intro-child {
     from {
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - 3em));
       animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     } 50% {
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - 3em));
     } to {
       transform: 0;
     }
@@ -586,7 +587,7 @@
 
   @keyframes inactive-tiles-intro-tile {
     from {
-      transform: translateY(-6em);
+      transform: translateY(-12em);
       animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     } to {
       transform: 0;
@@ -598,17 +599,18 @@
       opacity: 1;
       margin-bottom: 0;
       height: fit-content;
-      animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+      animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
     } 50% {
       height: fit-content;
       margin-bottom: -2em;
-      padding-block: 0
+      padding-bottom: 0
     } 50.01% {
       height: 0;
-      padding-block: 2em;
+      padding-bottom: 2em;
       margin-bottom: 0;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     } to {
-      padding-block: 0;
+      padding-bottom: 0;
       margin-bottom: 0;
       height: 0;
       opacity: 1;
@@ -619,8 +621,6 @@
     from {
       transform: 0;
       animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-    } 50% {
-      transform: translateY(-100%);
     } to {
       transform: translateY(-100%);
     }

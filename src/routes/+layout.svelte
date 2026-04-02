@@ -40,7 +40,7 @@
             <footer>
                 <p>
                     website &copy; 2021-{new Date().getFullYear()} duducat/ducdat0507<br/>
-                    sometimes rights are reserved
+                    all rights reserved unless specified
                 </p>
                 <p class="buttons">
                     <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL">

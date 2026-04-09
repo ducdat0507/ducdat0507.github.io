@@ -31,6 +31,7 @@
     let iframe: HTMLIFrameElement;
     iframe = document.createElement("iframe");
     iframe.ariaHidden = "true";
+    iframe.sandbox = "allow-same-origin allow-scripts";
     iframe.src = "https://duducat.nekoweb.org/hmmm.html";
     document.body.append(iframe);
 

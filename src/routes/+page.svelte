@@ -14,11 +14,12 @@
     import ClockWidget from "../components/widgets/ClockWidget.svelte";
     import TamanotchiWidget from "../components/widgets/TamanotchiWidget.svelte";
     import ButtonPopup from "../components/popups/ButtonPopup.svelte";
+  import { page } from "$app/state";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
-  let setupInterval: number = 0;
-  let hasSetup = false;
+  let hasSetup = $state(false);
+  let countImg: Array<string> = $derived(hasSetup ? getCountImages(count) : []);
 
   let showInactiveSocials = $state(false);
   let interactedInactiveSocials = $state(false);
@@ -27,49 +28,30 @@
   let isTwitterXAudio: HTMLAudioElement | null = null;
 
   const setupCounter: Action = (elm: Element) => {
-    setupInterval = setInterval(() => {
-      let link = elm.querySelector("a");
-      console.log(...elm.children);
-      if (!link) return;
+    let iframe: HTMLIFrameElement;
+    iframe = document.createElement("iframe");
+    iframe.ariaHidden = "true";
+    iframe.src = "https://duducat.nekoweb.org/hmmm.html";
+    document.body.append(iframe);
 
-      let images = [...elm.querySelectorAll("img")];
-
-      count = +images.map(img => img.src.charAt(img.src.length - 5)).filter(x => !Number.isNaN(+x)).join("");
-      let id = link.getAttribute("onmouseover")?.match(/_FC2COUNTER(.*)_\d/)![1];
-      graphURL = `https://counter1-cdn-ssl.fc2.com/popup.php?id=${id}&main=1&lang=1`;
-
-      // Decimal point
-      let decimalPointIndex = 0;
-      let digits = [...images];
-      digits.reverse(); digits.pop(); digits.shift();
-      for (let img of digits) {
-        decimalPointIndex++;
-        if (decimalPointIndex == 4) {
-          let decimalPoint = new Image();
-          decimalPoint.src = "/index/res/images/counter/decimal.png";
-          img.insertAdjacentElement("afterend", decimalPoint);
-          decimalPointIndex = 1;
-        }
+    let msgEvent = (e: MessageEvent) => {
+      if (e.origin == "https://duducat.nekoweb.org") {
+        let data = JSON.parse(e.data);
+        count = data.count;
+        hasSetup = true;
       }
+    }
+    window.addEventListener("message", msgEvent);
 
-      link.prepend(elm.querySelector("x-tooltip")!);
-      link.removeAttribute("onmouseover");
-      link.removeAttribute("onmouseout");
-      images.forEach(img => img.removeAttribute("title"));
-      link.ariaLabel = `FC2 Counter - ${count.toLocaleString("en-US")} visitors`
-      elm.querySelector("nobr")!.ariaHidden = "true";
-
+    if (page.url.hostname == "localhost") {
+      count = 1000;
       hasSetup = true;
-      clearInterval(setupInterval);
-    }, 30);
-    setTimeout(() => {
-      if (!hasSetup) elm.parentElement?.parentElement?.classList.add("broken");
-      clearInterval(setupInterval)
-    }, 5000)
+    }
+
 
     return {
       destroy() {
-        clearInterval(setupInterval);
+        iframe.remove();
       }
     }
   }
@@ -114,6 +96,24 @@
     setPopup("snag my buttons", ButtonPopup, [
       { name: "close", icon: "iconoir:arrow-left" },
     ])
+  }
+
+  function getCountImages(count: number): Array<string> {
+    let result = []
+
+    result.push("/index/res/images/counter/begin.png")
+    for (let chr of count.toLocaleString("en-US")) {
+      console.log(chr);
+      let digit = parseInt(chr);
+      if (digit == digit) {
+        result.push("/index/res/images/counter/" + chr + ".png")
+      } else {
+        result.push("/index/res/images/counter/decimal.png")
+      }
+    }
+    result.push("/index/res/images/counter/end.png")
+
+    return result
   }
 
   onMount(() => {
@@ -344,19 +344,17 @@
       <h2>boxes of numbers going up:</h2>
       <ul class="widget-box live-tiles">
         <!-- FC2 Counter -->
-        <li style="--col: 3; --row: 1" aria-label="FC2 Counter">
+        <li style="--col: 3; --row: 1" aria-label="Counter">
           <div class="x2">
             <div>
               <div use:setupCounter class="fc2-counter">
-                <Tooltip>
-                  <p>
-                    FC2 Counter<br/>
-                    (is the number saying {count.toLocaleString("en-US")}?)
-                  </p>
-                  <img src={graphURL} alt="" style="margin-left:32px" aria-hidden="true" />
-                  <p class="tooltip-action touch-only">(click again to navigate)</p>
-                </Tooltip>
-                <script id="fc2-counter" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40236645&amp;lang=1&amp;main=1"></script>
+                {#if hasSetup}
+                  <nobr>
+                    {#each countImg as src}
+                      <img src={src} alt="" aria-hidden="true" />
+                    {/each}
+                  </nobr>
+                {/if}
               </div>
             </div>
           </div>
@@ -448,7 +446,7 @@
   .fc2-counter :global(nobr) {
     display: flex;
     justify-content: end;
-    margin: 0 -2px 3px 0;
+    margin: 0 -2px 0 0;
   }
 
   .center-child {

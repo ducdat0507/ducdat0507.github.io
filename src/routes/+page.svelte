@@ -39,6 +39,10 @@
         let data = JSON.parse(e.data);
         count = data.count;
         hasSetup = true;
+        iframe.contentWindow?.postMessage(
+          JSON.stringify({stopMessage: true}),
+          "https://duducat.nekoweb.org"
+        )
       }
     }
     window.addEventListener("message", msgEvent);

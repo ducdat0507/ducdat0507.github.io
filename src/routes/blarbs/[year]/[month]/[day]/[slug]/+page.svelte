@@ -75,9 +75,9 @@
         }
 
         .blarb-box {
-            padding: 3em;
-            margin-inline: -3em;
-            margin-top: 3em;
+            padding: 2em;
+            margin-inline: -2em;
+            margin-top: 2em;
         }
 
         #blarb-post {
@@ -92,7 +92,7 @@
             overflow: auto;
             transform: translateX(calc(-1em - 1px));
             margin: -10em -4em -6em -4em;
-            padding: 10em 4em 6em 4em;
+            padding: 10em 3em 6em 3em;
         }
     }
 

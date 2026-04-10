@@ -12,6 +12,7 @@ export const entries: EntryGenerator = () => {
       day: list[2],
       slug: list.slice(3).join("-"),
     }
+    data.slug = data.slug.substring(0, data.slug.lastIndexOf("."));
     return data;
   })
   return allBlarbPosts;

@@ -41,12 +41,14 @@
 
 <style>
     h1 {
+        font-size: 2em;
         margin-top: 2em;
         margin-bottom: 0.5em;
     }
 
     time {
         font-style: italic;
+        white-space: nowrap;
     }
 
     .blarb-box {

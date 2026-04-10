@@ -29,7 +29,6 @@
 
 <style>
     h1 {
-        margin-top: -2em;
         margin-bottom: 0.5em;
     }
     
@@ -38,11 +37,8 @@
     }
 
     @media (max-width: 49.999em) {
-        .category-box :global(h2) {
-            overflow: hidden;
-            width: 0.0001px;
-            height: 0.0001px;
-            margin: 0 0 -0.0001px 0;
+        h1 {
+            margin-top: -2em;
         }
     }
 

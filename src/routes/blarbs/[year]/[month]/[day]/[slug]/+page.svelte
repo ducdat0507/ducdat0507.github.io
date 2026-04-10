@@ -23,7 +23,7 @@
 
 {#if Post != null}
     <div class="category-box">
-        <section id="blarb-post" data-category-name="" data-icon="lucide:message-circle">
+        <section id="blarb-post" data-category-name="" data-icon="ri:speak-line">
             <div>
                 <h1>
                     {Post.metadata.title}

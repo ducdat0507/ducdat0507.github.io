@@ -1,6 +1,7 @@
 import type { EntryGenerator } from "./$types";
 
 export const prerender = true;
+export const csr = true;
 
 export const entries: EntryGenerator = () => {
   let allBlarbPostsRaw = import.meta.glob("../../data/blarbs/*.md") as Record<string, any>;

@@ -1,5 +1,9 @@
 <script lang="ts">
+  import { goto, preloadData, pushState } from "$app/navigation";
+  import { preventDefault } from "svelte/legacy";
+
   let allBlarbPostsRaw = import.meta.glob("../../data/blarbs/*.md", {eager: true}) as Record<string, any>;
+
   let allBlarbPosts = Object.entries(allBlarbPostsRaw).map(([id, post]) => {
     let list = id.substring(id.lastIndexOf("/") + 1).split("-")
     console.log(list);
@@ -19,6 +23,14 @@
     title: string,
     subtitle: string,
   }[]
+
+  allBlarbPosts.sort((x, y) => +y.date - +x.date)
+
+  function printDate(date: Date) {
+    return date.getFullYear() + "-" 
+      + (date.getMonth() + 1).toString().padStart(2, "0") + "-"
+      + (date.getDate()).toString().padStart(2, "0")
+  }
 </script>
 
 <svelte:head>
@@ -26,13 +38,16 @@
 </svelte:head>
 
 <div class="category-box">
-  <section id="blarbs" data-category-name="blarbs" data-icon="lucide:message-circle">
+  <section id="blarbs" data-category-name="blarb posts" data-icon="lucide:message-circle">
     <h2>blarb posts</h2>
     <ul class="blarb-list">
       {#each allBlarbPosts as post}
         <li>
-          <a href={post.link} class="pop-out-btn">
-            <h3>{post.title}</h3>
+          <a href={post.link} target="_self" class="pop-out-btn">
+            <div>
+              <h3>{post.title}</h3>
+              <time>({printDate(post.date)})</time>
+            </div>
             <p>{post.subtitle}</p>
           </a>
         </li>
@@ -69,7 +84,12 @@
   }
   
   .blarb-list a h3 {
+    display: inline;
     font-size: 1em;
+  }
+  .blarb-list a time {
+    display: inline;
+    font-size: 0.8em;
   }
   .blarb-list a p {
     font-size: 0.8em;
@@ -99,4 +119,11 @@
       padding-bottom: 5em;
     }
   }
+
+    @media (min-width: 70em) {
+        .category-box {
+            width: 70em;
+            padding-inline: 15em;
+        }
+    }
 </style>

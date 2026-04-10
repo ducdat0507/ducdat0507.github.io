@@ -9,7 +9,7 @@
       ...post.metadata,
     }
     data.slug = data.slug.substring(0, data.slug.lastIndexOf("."));
-    data.link = list[0] + "/" + list[1] + "/" + list[2] + "/" + data.slug,
+    data.link = list[0] + "/" + list[1] + "/" + list[2] + "/" + data.slug + "/",
     console.log(data.slug);
     return data;
   }) as unknown as {

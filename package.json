@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"mdsvex": "^0.12.7",
 		"svelte": "^5.38.1",
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
@@ -24,6 +25,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^3.0.8",
 		"dompurify": "^3.2.6",
+		"mdsvex": "^0.12.7",
 		"planck": "^1.4.2",
 		"svelte-focus-trap": "^1.2.0"
 	}

@@ -7,7 +7,7 @@
         href, target = "_self", icon, children
     } = $props();
 
-    let selected = $derived(page.url.pathname == href)
+    let selected = $derived(href == "/" ? false : page.url.pathname.startsWith(href))
 
     onMount(() => {
         if (target == "_self") target = ""

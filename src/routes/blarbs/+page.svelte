@@ -1,34 +1,9 @@
 <script lang="ts">
   import { goto, preloadData, pushState } from "$app/navigation";
+  import { getBlarbPosts } from "$lib/posts";
   import Icon from "@iconify/svelte";
-  import { preventDefault } from "svelte/legacy";
 
-  let allBlarbPostsRaw = import.meta.glob("../../data/blarbs/*.md", {
-    eager: true,
-  }) as Record<string, any>;
-
-  let allBlarbPosts = Object.entries(allBlarbPostsRaw).map(([id, post]) => {
-    let list = id.substring(id.lastIndexOf("/") + 1).split("-");
-    console.log(list);
-    let data = {
-      date: new Date(+list[0], +list[1] - 1, +list[2]),
-      slug: list.slice(3).join("-"),
-      ...post.metadata,
-    };
-    data.slug = data.slug.substring(0, data.slug.lastIndexOf("."));
-    (data.link =
-      list[0] + "/" + list[1] + "/" + list[2] + "/" + data.slug + "/"),
-      console.log(data.slug);
-    return data;
-  }) as unknown as {
-    date: Date;
-    slug: string;
-    link: string;
-    title: string;
-    subtitle: string;
-  }[];
-
-  allBlarbPosts.sort((x, y) => +y.date - +x.date);
+  let allBlarbPosts = getBlarbPosts();
 
   function printDate(date: Date) {
     return (
@@ -59,6 +34,12 @@
           <span>rss feed</span>
         </a>
       </div>
+      <div class="link-tile">
+        <a class="pop-out-btn" href="feed.atom.xml">
+          <Icon icon="iconoir:rss-feed" />
+          <span>atom feed</span>
+        </a>
+      </div>
     </div>
     <ul class="blarb-list">
       {#each allBlarbPosts as post}
@@ -66,7 +47,7 @@
           <a href={post.link} target="_self" class="pop-out-btn">
             <div>
               <h3>{post.title}</h3>
-              <time>({printDate(post.date)})</time>
+              <time>({printDate(post.modified)})</time>
             </div>
             <p>{post.subtitle}</p>
           </a>

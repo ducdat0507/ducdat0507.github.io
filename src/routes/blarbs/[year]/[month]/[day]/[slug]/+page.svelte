@@ -13,6 +13,14 @@
             `../../../../../../data/blarbs/${params.year}-${params.month}-${params.day}-${params.slug}.md`
         ];
 
+    let createdDate = new Date(+params.year, +params.month - 1, +params.day);
+    let modifiedDate = createdDate;
+    if (Post.metadata.modified) {
+        let dateComps = (Post.metadata.modified as string).substring(0, 10).split("-");
+        console.log(dateComps);
+        modifiedDate = new Date(+dateComps[0], +dateComps[1] - 1, +dateComps[2]);
+    }
+
 
     function printDate(date: Date) {
         return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][date.getMonth()] + " "
@@ -28,9 +36,17 @@
                 <h1>
                     {Post.metadata.title}
                 </h1>
-                <time>
-                    Posted {printDate(new Date(+params.year, +params.month - 1, +params.day))}
-                </time>
+                <p>
+                    <time>
+                        Published <b>{printDate(createdDate)}</b>
+                    </time>
+                    {#if createdDate != modifiedDate}
+                        <br/>
+                        <time>
+                            (Updated <b>{printDate(modifiedDate)}</b>)
+                        </time>
+                    {/if}
+                </p>
                 <div class="blarb-box">
                     <Post.default />
                 </div>

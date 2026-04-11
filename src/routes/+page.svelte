@@ -354,7 +354,7 @@
             <div>
               <div use:setupCounter class="fc2-counter">
                 {#if hasSetup}
-                  <nobr>
+                  <nobr aria-label={"Count: " + count.toLocaleString("en-US")}>
                     {#each countImg as src}
                       <img src={src} alt="" aria-hidden="true" />
                     {/each}

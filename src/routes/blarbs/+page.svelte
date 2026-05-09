@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-  <title>blarbs - duducat's website!</title>
+  <title>duducat's blarbs</title>
 </svelte:head>
 
 <div class="category-box">

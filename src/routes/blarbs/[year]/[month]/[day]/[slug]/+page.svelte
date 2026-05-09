@@ -29,6 +29,10 @@
     }
 </script>
 
+<svelte:head>
+  <title>{Post.metadata.title} - duducat's blarbs</title>
+</svelte:head>
+
 {#if Post != null}
     <div class="category-box">
         <section id="blarb-post" data-category-name="" data-icon="ri:speak-line">

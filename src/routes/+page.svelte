@@ -406,8 +406,8 @@
     <section>
       <h2>random internet widgets go:</h2>
       <ul class="widget-box live-tiles">
-        <TamanotchiWidget id={25572} />
         <ClockWidget />
+        <TamanotchiWidget id={25572} />
       </ul>
     </section>
   </div>

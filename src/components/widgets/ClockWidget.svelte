@@ -125,22 +125,22 @@
 
         ctx.lineCap = "round";
 
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 6;
         ctx.strokeStyle = "#79da";
         ctx.beginPath();
-        ctx.arc(w / 2, w / 2, w / 2 - 14, (secondHandEnd * 2 - 0.5) * Math.PI, (secondHandStart * 2 - 0.5) * Math.PI);
+        ctx.arc(w - h / 2, h / 2, h / 2 - 8, (secondHandEnd * 2 - 0.5) * Math.PI, (secondHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
 
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 6;
         ctx.strokeStyle = "#abf";
         ctx.beginPath();
-        ctx.arc(w / 2, w / 2, w / 2 - 26, (minuteHandEnd * 2 - 0.5) * Math.PI, (minuteHandStart * 2 - 0.5) * Math.PI);
+        ctx.arc(w - h / 2, h / 2, h / 2 - 16, (minuteHandEnd * 2 - 0.5) * Math.PI, (minuteHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
 
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 6;
         ctx.strokeStyle = "#ffff";
         ctx.beginPath();
-        ctx.arc(w / 2, w / 2, w / 2 - 38, (hourHandEnd * 2 - 0.5) * Math.PI, (hourHandStart * 2 - 0.5) * Math.PI);
+        ctx.arc(w - h / 2, h / 2, h / 2 - 24, (hourHandEnd * 2 - 0.5) * Math.PI, (hourHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
 
         clockCanvas.style.fontFamily = "'MS Gothic', 'M PLUS 1 Code', 'Menlo', 'Meslo', monospace";
@@ -149,11 +149,11 @@
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = "white";
-        ctx.fillText(timeTextDisplay, w / 2, h / 2 - 5, w - 110);
+        ctx.fillText(timeTextDisplay, h / 2 + 6, h / 2 - 5, h - 10);
 
         clockCanvas.style.fontSize = "0.5em";
         ctx.font = getComputedStyle(clockCanvas).font;
-        ctx.fillText(timeSubtext, w / 2, h / 2 + 13, w - 120);
+        ctx.fillText(timeSubtext, h / 2 + 6, h / 2 + 13, h - 20);
     })
 
     onMount(() => {
@@ -170,7 +170,7 @@
 
 </script>
 
-<li style="--col: 2; --row: 2" aria-label={"The time is: " + timeText}>
+<li style="--col: 2; --row: 1" aria-label={"The time is: " + timeText}>
     <button class="clock-widget" aria-label="(press to change time format)" onclick={toggleMode}>
         <canvas bind:this={clockCanvas}></canvas>
     </button>

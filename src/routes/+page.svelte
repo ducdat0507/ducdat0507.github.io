@@ -15,6 +15,7 @@
     import TamanotchiWidget from "../components/widgets/TamanotchiWidget.svelte";
     import ButtonPopup from "../components/popups/ButtonPopup.svelte";
   import { page } from "$app/state";
+  import CalendarWidget from "../components/widgets/CalendarWidget.svelte";
 
   let count: number = $state(0);
   let graphURL: string = $state("");
@@ -407,6 +408,7 @@
       <h2>random internet widgets go:</h2>
       <ul class="widget-box live-tiles">
         <ClockWidget />
+        <CalendarWidget />
         <TamanotchiWidget id={25572} />
       </ul>
     </section>

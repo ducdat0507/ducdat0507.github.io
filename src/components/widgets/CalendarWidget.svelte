@@ -50,17 +50,26 @@
         let ctx = calendarCanvas.getContext("2d")!;
         ctx.setTransform(s, 0, 0, s, 0, 0);
 
-        calendarCanvas.style.fontFamily = "'MS Mincho', 'sans-serif'";
+        calendarCanvas.style.fontFamily = "'MS Mincho', 'serif'";
         calendarCanvas.style.fontWeight = "700";
-        calendarCanvas.style.fontSize = (h / 3 - 8) + "px";
+        calendarCanvas.style.fontSize = (h / 3 - 3) + "px";
         ctx.font = getComputedStyle(calendarCanvas).font;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = "white";
-        ctx.fillText(GANS[lunarDate.yearGanzhi[0]]  + ZHIS[lunarDate.yearGanzhi[1] ] + "年", h / 2, h * 0.16667 + 6, h - 10);
-        ctx.fillText(GANS[lunarDate.monthGanzhi[0]] + ZHIS[lunarDate.monthGanzhi[1]] + "月", h / 2, h * 0.5,         h - 10);
-        ctx.fillText(GANS[lunarDate.dayGanzhi[0]]   + ZHIS[lunarDate.dayGanzhi[1]  ] + "日", h / 2, h * 0.83333 - 6, h - 10);
-
+        let chars = [
+            GANS[lunarDate.yearGanzhi[0]],  ZHIS[lunarDate.yearGanzhi[1] ], "年",
+            GANS[lunarDate.monthGanzhi[0]], ZHIS[lunarDate.monthGanzhi[1]], "月",
+            GANS[lunarDate.dayGanzhi[0]],   ZHIS[lunarDate.dayGanzhi[1]  ], "日",
+        ]
+        let coords = [
+            h * 0.16667 + 5,
+            h * 0.5,        
+            h * 0.83333 - 5,
+        ]
+        for (let i = 0; i < 9; i++) {
+            ctx.fillText(chars[i], coords[i % 3], coords[Math.floor(i / 3)], h / 3 - 2);
+        }
     })
 
     onMount(() => {

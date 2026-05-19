@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+  import Tooltip from "../utils/Tooltip.svelte";
 
     let clockCanvas: HTMLCanvasElement;
 
@@ -9,9 +10,7 @@
     let delta = 0;
     let mode = $state(modes[0]) as typeof modes[number];
 
-    let timeText = $state("");
-
-    let timeTextDisplay = "";
+    let timeText = $state(""), timeSubtext = $state("");
     let hourHandStart = 0, minuteHandStart = 0, secondHandStart = 0;
     let hourHandEnd = 0, minuteHandEnd = 0, secondHandEnd = 0;
     let animOffset = 0;
@@ -40,27 +39,28 @@
 
         ctx.setTransform(s, 0, 0, s, 0, 0);
 
-        let hourHand, minuteHand, secondHand, timeSubtext;
+        let hourHand, minuteHand, secondHand;
         switch (mode) {
             case "24-hour": {
-                let timeZone = -new Date().getTimezoneOffset();
+                let timeZone = 420;
                 let normalizedTime = time / 86400000 + timeZone / 24 / 60;
 
                 secondHand = normalizedTime * 24 * 60 % 1;
                 minuteHand = normalizedTime * 24 % 1;
                 hourHand = normalizedTime % 1;
 
-                timeText = timeTextDisplay = 
+                timeText =
                             Math.floor(hourHand * 24).toFixed(0).padStart(2, "0")     // h
                     + ":" + Math.floor(minuteHand * 60).toFixed(0).padStart(2, "0")   // m
                     + ":" + Math.floor(secondHand * 60).toFixed(0).padStart(2, "0");  // s
                 timeSubtext = 
-                    "24h GMT" + (timeZone < 0 ? "-" : "+")
+                    "(GMT" + (timeZone < 0 ? "-" : "+")
                           + Math.floor(Math.abs(timeZone) / 60).toFixed(0).padStart(2, "0")   // h
-                    + ":" + Math.floor(Math.abs(timeZone) % 60).toFixed(0).padStart(2, "0");  // m
+                    + ":" + Math.floor(Math.abs(timeZone) % 60).toFixed(0).padStart(2, "0")   // m
+                    + ")";
             } break;
             case "12-hour": {
-                let timeZone = -new Date().getTimezoneOffset();
+                let timeZone = 420;
                 let normalizedTime = time / 86400000 + timeZone / 24 / 60;
 
                 secondHand = normalizedTime * 24 * 60 % 1;
@@ -68,16 +68,16 @@
                 hourHand = normalizedTime * 2 % 1;
                 let isPm = (normalizedTime % 1) >= 0.5;
 
-                timeTextDisplay = 
+                timeText = 
                             Math.floor(hourHand * 12 || 12).toFixed(0).padStart(2, "0")  // h
                     + ":" + Math.floor(minuteHand * 60).toFixed(0).padStart(2, "0")      // m
-                    + ":" + Math.floor(secondHand * 60).toFixed(0).padStart(2, "0");     // s
-                timeText = timeTextDisplay + " " + (isPm ? "PM" : "AM");
+                    + ":" + Math.floor(secondHand * 60).toFixed(0).padStart(2, "0")      // s
+                    + " " + (isPm ? "PM" : "AM");
                 timeSubtext = 
-                        (isPm ? "PM" : "AM")
-                    + "  GMT" + (timeZone < 0 ? "-" : "+")
+                    "(GMT" + (timeZone < 0 ? "-" : "+")
                           + Math.floor(Math.abs(timeZone) / 60).toFixed(0).padStart(2, "0")   // h
-                    + ":" + Math.floor(Math.abs(timeZone) % 60).toFixed(0).padStart(2, "0");  // m
+                    + ":" + Math.floor(Math.abs(timeZone) % 60).toFixed(0).padStart(2, "0")   // m
+                    + ")";
             } break;
             case "swatch-internet-time": {
                 let normalizedTime = (time / 86400 + 1000 / 24) % 1000;
@@ -87,9 +87,7 @@
                 hourHand = normalizedTime / 1000 % 1;
 
                 timeText = "@" + (Math.floor(normalizedTime * 100) / 100).toFixed(2);
-                timeTextDisplay = "@" + (Math.floor(normalizedTime * 100) / 100).toFixed(2).padStart(7, " ");
-                timeSubtext = 
-                    "INTERNET TIME";
+                timeSubtext = "(GMT+01:00)";
             } break;
         }
 
@@ -109,13 +107,13 @@
         var lerpDelta = 1 - 1e-5 ** (delta / 1000);
         animOffset = 0;
         animOffset += Math.abs(hourHand - hourHandStart);
-        hourHandStart += (hourHand - hourHandStart) * lerpDelta;
+        hourHandStart += (hourHand - hourHandStart) * lerpDelta ** 1.2;
         animOffset += Math.abs(hourHandEnd);
-        hourHandEnd += (0 - hourHandEnd) * lerpDelta;
+        hourHandEnd += (0 - hourHandEnd) * lerpDelta ** 1.2;
         animOffset += Math.abs(minuteHand - minuteHandStart);
-        minuteHandStart += (minuteHand - minuteHandStart) * lerpDelta;
+        minuteHandStart += (minuteHand - minuteHandStart) * lerpDelta ** 1.1;
         animOffset += Math.abs(minuteHandEnd);
-        minuteHandEnd += (0 - minuteHandEnd) * lerpDelta;
+        minuteHandEnd += (0 - minuteHandEnd) * lerpDelta ** 1.1;
         animOffset += Math.abs(secondHand - secondHandStart);
         secondHandStart += (secondHand - secondHandStart) * lerpDelta;
         animOffset += Math.abs(secondHandEnd);
@@ -142,18 +140,6 @@
         ctx.beginPath();
         ctx.arc(w - h / 2, h / 2, h / 2 - 24, (hourHandEnd * 2 - 0.5) * Math.PI, (hourHandStart * 2 - 0.5) * Math.PI);
         ctx.stroke();
-
-        clockCanvas.style.fontFamily = "'MS Gothic', 'M PLUS 1 Code', 'Menlo', 'Meslo', monospace";
-        clockCanvas.style.fontSize = "1.5em";
-        ctx.font = getComputedStyle(clockCanvas).font;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = "white";
-        ctx.fillText(timeTextDisplay, h / 2 + 6, h / 2 - 5, h - 10);
-
-        clockCanvas.style.fontSize = "0.5em";
-        ctx.font = getComputedStyle(clockCanvas).font;
-        ctx.fillText(timeSubtext, h / 2 + 6, h / 2 + 13, h - 20);
     })
 
     onMount(() => {
@@ -170,8 +156,16 @@
 
 </script>
 
-<li style="--col: 2; --row: 1" aria-label={"The time is: " + timeText}>
+<li style="--col: 1; --row: 1" aria-label={"The time is: " + timeText}>
     <button class="clock-widget" aria-label="(press to change time format)" onclick={toggleMode}>
+        <Tooltip hideOnClick={false}>
+            <div>
+                {timeText}
+            </div>
+            <small>
+                {timeSubtext}
+            </small>
+        </Tooltip>
         <canvas bind:this={clockCanvas}></canvas>
     </button>
 </li>

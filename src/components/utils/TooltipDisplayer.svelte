@@ -166,4 +166,9 @@
     .tooltip :global(.tooltip-action) {
         opacity: 0.6;
     }
+
+    .tooltip :global(small) {
+        font-size: 1em;
+        opacity: 0.5;
+    }
 </style>

@@ -275,7 +275,7 @@
             <Tooltip>
               <p>
                 @duducat<br/>
-                (my rhythm game studio)
+                <small>(my rhythm game studio)</small>
               </p>
               <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>
@@ -289,8 +289,8 @@
             <Tooltip>
               <p>
                 @duducat<br/>
-                (for incremental game related stuff)<br/>
-                (note: not my server)
+                <small>(for incremental game related stuff)<br/>
+                (note: not my server)</small>
               </p>
               <p class="tooltip-action touch-only">(click again to join server)</p>
             </Tooltip>

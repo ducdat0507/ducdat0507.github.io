@@ -4,9 +4,11 @@
 
     let {
         children,
+        hideOnClick = true,
         ...containerProps
     }: {
         children: Snippet
+        hideOnClick?: boolean
     } = $props();
 
     let tooltip: HTMLElement | null = $state(null);
@@ -80,6 +82,7 @@
                 if ((ev.clientX - ev2.clientX) ** 2 + (ev.clientY - ev2.clientY) ** 2 > 100) bodyTouch(ev2);
             }
             function bodyTouch(ev2: PointerEvent) {
+                if (hideOnClick && parent && (ev2.target as Node == parent || parent.contains(ev2.target as Node))) return;
                 onTooltipUnset();
                 document.body.removeEventListener("pointerdown", bodyTouch);
                 document.body.removeEventListener("pointermove", bodyMove);
@@ -90,7 +93,9 @@
             parent.addEventListener("click", cancelTouch);
         }
         else {
-            onTooltipUnset();
+            if (hideOnClick) {
+                onTooltipUnset();
+            }
         }
     }
 </script>

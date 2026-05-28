@@ -46,6 +46,9 @@
                     <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL">
                         <img src="/index/res/buttons/smil.svg" alt="&quot;Enhanced with SMIL! :D&quot; button" />
                     </a>
+                    <a href="https://www.beepbird.net/articles/accessibility/inaccessible.html">
+                        <img src="/index/res/buttons/desktopchump.png" alt="&quot;Don't be a desktop chump&quot; button" />
+                    </a>
                 </p>
             </footer>
         </div>
@@ -106,10 +109,17 @@
         line-height: 1.1;
     }
     .nav-bar .buttons {
-        margin-top: .3em;
+        margin-top: .5em;
         display: flex;
         gap: 5px;
     }
+    .nav-bar .buttons a {
+        display: inline-block;
+    }
+    .nav-bar .buttons img {
+        display: block;
+    }
+
 
     .content-container {
         display: flex;
